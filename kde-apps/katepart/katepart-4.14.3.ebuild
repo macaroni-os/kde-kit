@@ -1,5 +1,6 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=5
 
@@ -10,7 +11,7 @@ inherit kde4-meta
 
 DESCRIPTION="Editor KPart by KDE"
 HOMEPAGE+=" http://kate-editor.org/about-katepart/"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 RESTRICT="test"

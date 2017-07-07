@@ -1,5 +1,6 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=6
 
@@ -11,7 +12,7 @@ HOMEAGE="https://www.kde.org/applications/system/kwalletmanager
 https://utils.kde.org/projects/kwalletmanager"
 SRC_URI="mirror://kde/Attic/applications/${PV}/src/${P}.tar.xz"
 
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="debug"
 
 DEPEND=""

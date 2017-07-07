@@ -6,6 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="kaccounts">Use <pkg>kde-apps/kaccounts-integration</pkg> backend (default) instead of <pkg>dev-libs/qtkeychain</pkg></flag>
+		<flag name="dolphin">Enable integration with <pkg>kde-apps/dolphin</pkg></flag>
 	</use>
 </pkgmetadata>
