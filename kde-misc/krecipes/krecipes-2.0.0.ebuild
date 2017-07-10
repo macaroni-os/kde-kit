@@ -1,5 +1,6 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=6
 
@@ -23,7 +24,7 @@ DEPEND="
 	dev-db/sqlite:3
 	dev-libs/libxml2
 	dev-libs/libxslt
-	media-libs/qimageblitz[-qt5(-)]
+	media-libs/qimageblitz
 "
 RDEPEND="${DEPEND}"
 

@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -6,9 +6,6 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
-		<flag name="google">Google service integration via <pkg>kde-apps/libkgapi</pkg></flag>
+		<flag name="google">Google service integration via <pkg>net-libs/libkgapi</pkg></flag>
 	</use>
-	<upstream>
-		<remote-id type="launchpad">~pali</remote-id>
-	</upstream>
 </pkgmetadata>

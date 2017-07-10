@@ -1,5 +1,6 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=6
 
@@ -19,7 +20,7 @@ HOMEPAGE="https://pim.kde.org/akonadi"
 
 LICENSE="LGPL-2.1"
 SLOT="4"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="+mysql postgres sqlite test"
 
 REQUIRED_USE="|| ( sqlite mysql postgres )"
@@ -52,7 +53,7 @@ PATCHES=(
 )
 
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]] && tc-is-gcc; then
+	if [[ ${MERGE_TYPE} != binary ]]; then
 		[[ $(gcc-major-version) -lt 4 ]] || \
 			( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]] ) \
 			&& die "Sorry, but gcc-4.6 and earlier won't work (see bug #520102)."
