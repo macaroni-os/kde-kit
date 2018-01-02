@@ -13,6 +13,7 @@ dev-qt
 dev-util
 dev-vcs
 games-board
+games-mud
 games-puzzle
 kde-apps
 kde-frameworks
@@ -31,9 +32,11 @@ net-misc
 net-nntp
 net-p2p
 net-vpn
+sci-calculators
 sci-electronics
 sci-mathematics
 sci-visualization
 sys-block
+x11-libs
 x11-misc
 x11-themes

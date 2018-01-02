@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-COMMON_DEPEND="
+RDEPEND="
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
@@ -36,11 +36,8 @@ COMMON_DEPEND="
 	>=media-libs/taglib-1.10
 	media-sound/cdparanoia
 "
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	sys-devel/gettext
-"
-RDEPEND="${COMMON_DEPEND}
-	!media-sound/soundkonverter:4
 "
 
 PATCHES=( "${FILESDIR}/${PN}-3.0.0-deps.patch" )

@@ -4,31 +4,29 @@
 # @ECLASS: kde5-functions.eclass
 # @MAINTAINER:
 # kde@gentoo.org
-# @SUPPORTED_EAPIS: 6
-# @BLURB: Common ebuild functions for packages based on KDE Frameworks 5.
+# @BLURB: Common ebuild functions for KDE 5 packages
 # @DESCRIPTION:
-# This eclass contains functions shared by the other KDE eclasses and forms
-# part of their public API.
-#
-# This eclass should (almost) never be inherited directly by an ebuild.
+# This eclass contains all functions shared by the different eclasses,
+# for KDE 5 ebuilds.
 
 if [[ -z ${_KDE5_FUNCTIONS_ECLASS} ]]; then
 _KDE5_FUNCTIONS_ECLASS=1
 
 inherit toolchain-funcs versionator
 
+# @ECLASS-VARIABLE: EAPI
+# @DESCRIPTION:
+# Currently EAPI 6 is supported.
 case ${EAPI} in
 	6) ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
-# @ECLASS-VARIABLE: KDE_BUILD_TYPE
-# @DESCRIPTION:
-# If PV matches "*9999*", this is automatically set to "live".
-# Otherwise, this is automatically set to "release".
-KDE_BUILD_TYPE="release"
+# determine the build type
 if [[ ${PV} = *9999* ]]; then
 	KDE_BUILD_TYPE="live"
+else
+	KDE_BUILD_TYPE="release"
 fi
 export KDE_BUILD_TYPE
 
@@ -38,45 +36,37 @@ case ${CATEGORY} in
 		;;
 	kde-plasma)
 		if [[ ${KDE_BUILD_TYPE} = live ]]; then
-			: ${QT_MINIMAL:=5.9.1}
 			: ${FRAMEWORKS_MINIMAL:=9999}
-		fi
-		;;
-	kde-apps)
-		if [[ ${KDE_BUILD_TYPE} = live || ${PV} = 17.12* ]]; then
-			: ${QT_MINIMAL:=5.9.1}
 		fi
 		;;
 esac
 
 # @ECLASS-VARIABLE: QT_MINIMAL
 # @DESCRIPTION:
-# Minimum version of Qt to require. This affects add_qt_dep.
+# Minimal Qt version to require for the package.
 : ${QT_MINIMAL:=5.7.1}
 
 # @ECLASS-VARIABLE: FRAMEWORKS_MINIMAL
 # @DESCRIPTION:
-# Minimum version of Frameworks to require. This affects add_frameworks_dep.
-: ${FRAMEWORKS_MINIMAL:=5.40.0}
+# Minimal Frameworks version to require for the package.
+: ${FRAMEWORKS_MINIMAL:=5.37.0}
 
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:
-# Minimum version of Plasma to require. This affects add_plasma_dep.
+# Minimal Plasma version to require for the package.
 : ${PLASMA_MINIMAL:=5.10.5}
 
 # @ECLASS-VARIABLE: KDE_APPS_MINIMAL
 # @DESCRIPTION:
-# Minimum version of KDE Applications to require. This affects add_kdeapps_dep.
+# Minimal KDE Applications version to require for the package.
 : ${KDE_APPS_MINIMAL:=14.12.0}
 
 # @ECLASS-VARIABLE: KDE_GCC_MINIMAL
 # @DEFAULT_UNSET
 # @DESCRIPTION:
-# Minimum version of active GCC to require. This is checked in kde5.eclass in
-# kde5_pkg_pretend and kde5_pkg_setup.
+# Minimal GCC version to require for the package.
 
 # @ECLASS-VARIABLE: KDEBASE
-# @DEFAULT_UNSET
 # @DESCRIPTION:
 # This gets set to a non-zero value when a package is considered a
 # kdevelop ebuild.
@@ -88,8 +78,7 @@ debug-print "${ECLASS}: ${KDEBASE} ebuild recognized"
 
 # @ECLASS-VARIABLE: KDE_SCM
 # @DESCRIPTION:
-# SCM to use if KDE_BUILD_TYPE is determined to be "live".
-# Currently, only git is supported.
+# SCM to use if this is a live ebuild.
 : ${KDE_SCM:=git}
 
 case ${KDE_SCM} in
@@ -145,7 +134,7 @@ _add_category_dep() {
 
 	if [[ -n ${version} ]] ; then
 		local operator=">="
-		local version="-${version}"
+		local version="-$(get_version_component_range 1-3 ${version})"
 	fi
 
 	if [[ -n ${slot} ]] ; then
@@ -158,7 +147,7 @@ _add_category_dep() {
 }
 
 # @FUNCTION: add_frameworks_dep
-# @USAGE: <package name> [USE flags] [minimum version] [slot + operator]
+# @USAGE: <package> [USE flags] [minimum version]
 # @DESCRIPTION:
 # Create proper dependency for kde-frameworks/ dependencies.
 # This takes 1 to 4 arguments. The first being the package name, the optional
@@ -182,7 +171,7 @@ add_frameworks_dep() {
 		version=${3}
 	elif [[ ${CATEGORY} = kde-frameworks ]]; then
 		version=$(get_version_component_range 1-2)
-	elif [[ -z ${3} ]] ; then
+	elif [[ -z "${version}" ]] ; then
 		version=${FRAMEWORKS_MINIMAL}
 	fi
 
@@ -190,7 +179,7 @@ add_frameworks_dep() {
 }
 
 # @FUNCTION: add_plasma_dep
-# @USAGE: <package name> [USE flags] [minimum version] [slot + operator]
+# @USAGE: <package> [USE flags] [minimum version]
 # @DESCRIPTION:
 # Create proper dependency for kde-plasma/ dependencies.
 # This takes 1 to 4 arguments. The first being the package name, the optional
@@ -213,8 +202,8 @@ add_plasma_dep() {
 	if [[ -n ${3} ]]; then
 		version=${3}
 	elif [[ ${CATEGORY} = kde-plasma ]]; then
-		version=$(get_version_component_range 1-3)
-	elif [[ -z ${3} ]] ; then
+		version=${PV}
+	elif [[ -z "${version}" ]] ; then
 		version=${PLASMA_MINIMAL}
 	fi
 
@@ -222,7 +211,7 @@ add_plasma_dep() {
 }
 
 # @FUNCTION: add_kdeapps_dep
-# @USAGE: <package name> [USE flags] [minimum version] [slot + operator]
+# @USAGE: <package> [USE flags] [minimum version]
 # @DESCRIPTION:
 # Create proper dependency for kde-apps/ dependencies.
 # This takes 1 to 4 arguments. The first being the package name, the optional
@@ -245,8 +234,8 @@ add_kdeapps_dep() {
 	if [[ -n ${3} ]]; then
 		version=${3}
 	elif [[ ${CATEGORY} = kde-apps ]]; then
-		version=$(get_version_component_range 1-3)
-	elif [[ -z ${3} ]] ; then
+		version=${PV}
+	elif [[ -z "${version}" ]] ; then
 		version=${KDE_APPS_MINIMAL}
 	fi
 
@@ -254,7 +243,7 @@ add_kdeapps_dep() {
 }
 
 # @FUNCTION: add_qt_dep
-# @USAGE: <package name> [USE flags] [minimum version] [slot + operator]
+# @USAGE: <package> [USE flags] [minimum version]
 # @DESCRIPTION:
 # Create proper dependency for dev-qt/ dependencies.
 # This takes 1 to 4 arguments. The first being the package name, the optional
@@ -272,12 +261,15 @@ add_qt_dep() {
 		die "${FUNCNAME} was called with too many arguments"
 	fi
 
-	local version=${3}
+	local version
 	local slot=${4}
 
-	if [[ -z ${version} ]]; then
+	if [[ -n ${3} ]]; then
+		version=${3}
+	elif [[ -z "${version}" ]]; then
 		version=${QT_MINIMAL}
 	fi
+
 	if [[ -z ${slot} ]]; then
 		slot="5"
 	fi
@@ -285,13 +277,10 @@ add_qt_dep() {
 	_add_category_dep dev-qt "${1}" "${2}" "${version}" "${slot}"
 }
 
-# @FUNCTION: get_kde_version [version]
+# @FUNCTION: get_kde_version
 # @DESCRIPTION:
-# Translates an ebuild version into a major.minor KDE release version, taking
-# into account KDE's prerelease versioning scheme.
-# For example, get_kde_version 17.07.80 will return "17.08".
-# If the version equals 9999, "live" is returned.
-# If no version is specified, ${PV} is used.
+# Translates an ebuild version into a major.minor KDE SC
+# release version. If no version is specified, ${PV} is used.
 get_kde_version() {
 	local ver=${1:-${PV}}
 	local major=$(get_major_version ${ver})

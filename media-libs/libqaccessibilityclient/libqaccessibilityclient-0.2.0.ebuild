@@ -11,7 +11,7 @@ HOMEPAGE="https://accessibility.kde.org/ https://cgit.kde.org/libqaccessibilityc
 SRC_URI="mirror://kde/unstable/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
@@ -21,14 +21,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	kde5_src_prepare
-	cmake_comment_add_subdirectory tests
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DQT5_BUILD=ON
 	)
+
 	kde5_src_configure
 }

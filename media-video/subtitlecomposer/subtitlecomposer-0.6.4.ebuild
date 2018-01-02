@@ -4,7 +4,6 @@
 EAPI=6
 
 KDE_TEST="forceoptional"
-VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Text-based subtitles editor"
