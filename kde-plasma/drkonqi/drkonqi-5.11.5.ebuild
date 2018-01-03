@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,6 +22,7 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kjobwidgets)
 	$(add_frameworks_dep knotifications)
 	$(add_frameworks_dep kservice)
+	$(add_frameworks_dep kwallet)
 	$(add_frameworks_dep kwayland)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlrpcclient)
