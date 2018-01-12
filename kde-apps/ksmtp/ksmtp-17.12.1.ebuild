@@ -21,9 +21,4 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=(
-	"${FILESDIR}/${P}-ehlo-auth-fix.patch"
-	"${FILESDIR}/${P}-correct-hostname.patch"
-)
-
 RESTRICT+=" test" # bug 642410
