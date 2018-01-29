@@ -3,6 +3,7 @@
 # * generated automatically using egencache *
 
 app-accessibility/simon:opencv - Use media-libs/opencv
+app-accessibility/simon:pim - Enable support for KDE PIM resources integration
 app-accessibility/simon:sphinx - Build sphinx backend (pulls app-accessibility/julius if disabled
 app-admin/calamares:pythonqt - Enable PythonQt-based module interface
 app-office/calligra:activities - Enable kactivities support
@@ -18,21 +19,26 @@ app-office/kexi:webkit - Enable web form designer widget using dev-qt/qtwebkit
 app-office/kmymoney:hbci - Enable HBCI support using net-libs/aqbanking
 app-office/kmymoney:quotes - Enable Online Stock Quote retrieval
 app-office/kmymoney:weboob - Enable import of online banking transactions extracted by www-client/weboob
+app-office/kraft:pim - Enable support for KDE PIM resources integration
 app-office/libreoffice:coinmp - Use sci-libs/coinor-mp as alternative solver
 app-office/libreoffice:collada - Enable Collada for rendering 3D models stored in *.dae and *.kmz format
 app-office/libreoffice:gltf - Use media-libs/libgltf for inserting 3D models in the glTF format into presentations
 app-office/libreoffice:googledrive - Enable support for remote files on Google Drive
-app-office/libreoffice:gtk3 - Enable highly experimental gtk3 frontend
+app-office/libreoffice:gtk2 - Enable legacy gtk2 frontend
+app-office/libreoffice:gtk3 - Enable experimental gtk3 frontend
 app-office/libreoffice:jemalloc - Use dev-libs/jemalloc for allocations
 app-office/libreoffice:odk - Build the Office Development Kit
 app-office/libreoffice:pdfimport - Enable PDF import via the Poppler library
 app-office/libreoffice:quickstarter - Build the system tray quickstarter
-app-office/libreoffice:telepathy - Enable document colaboration features using telepathy communication framework.
 app-office/libreoffice:vlc - Use media-video/vlc for video embedding
 app-office/skrooge:activities - Enable kactivities support
 app-office/skrooge:designer - Build plugins for dev-qt/designer
+app-text/kbibtex:webengine - Use dev-qt/qtwebengine for HTML previews
+app-text/kbibtex:webkit - Use dev-qt/qtwebkit for HTML previews
+app-text/kbibtex:zotero - Enable support for synchronisation with zotero.org web service
 dev-libs/kreport:marble - Enable displaying of maps using kde-apps/marble
 dev-libs/kreport:scripting - Support Qml scripting using dev-qt/qtdeclarative
+dev-libs/purpose:kaccounts - Enable support for system-wide defined KAccounts
 dev-qt/assistant:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/designer:declarative - Build the qdeclarativeview plugin
 dev-qt/designer:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
@@ -67,25 +73,14 @@ dev-qt/qt-creator:systemd - Add support for retrieving application output from j
 dev-qt/qt-creator:valgrind - Add support for memory debugging using dev-util/valgrind
 dev-qt/qt-creator:webengine - Use dev-qt/qtwebengine to view documentation
 dev-qt/qt-creator:winrt - Build plugin for WinRT devices
+dev-qt/qt-docs:charts - Install documentation for dev-qt/qtcharts
+dev-qt/qt-docs:datavis - Install documentation for dev-qt/qtdatavis3d
+dev-qt/qt-docs:networkauth - Install documentation for dev-qt/qtnetworkauth
+dev-qt/qt-docs:script - Install documentation for dev-qt/qtscript
+dev-qt/qt-docs:speech - Install documentation for dev-qt/qtspeech
+dev-qt/qt-docs:virtualkeyboard - Install documentation for dev-qt/qtvirtualkeyboard
+dev-qt/qt-docs:webengine - Install documentation for dev-qt/qtwebengine
 dev-qt/qt-meta:qt3support - Enable the Qt3Support library for Qt4
-dev-qt/qt-mobility:bluetooth - Enable Bluetooth support in QtConnectivity and QtSystemInfo modules
-dev-qt/qt-mobility:connectivity - Build the QtConnectivity module
-dev-qt/qt-mobility:contacts - Build the QtContacts module
-dev-qt/qt-mobility:feedback - Build the QtFeedback module
-dev-qt/qt-mobility:gallery - Build the QtGallery module
-dev-qt/qt-mobility:location - Build the QtLocation module
-dev-qt/qt-mobility:messaging - Build the QtMessaging module
-dev-qt/qt-mobility:multimedia - Build the QtMultimediaKit module
-dev-qt/qt-mobility:networkmanager - Enable NetworkManager support in QtBearer and QtSystemInfo modules
-dev-qt/qt-mobility:organizer - Build the QtOrganizer module
-dev-qt/qt-mobility:publishsubscribe - Build the QtPublishSubscribe module
-dev-qt/qt-mobility:pulseaudio - Enable PulseAudio support in QtMultimediaKit module
-dev-qt/qt-mobility:qml - Build QML bindings
-dev-qt/qt-mobility:sensors - Build the QtSensors module
-dev-qt/qt-mobility:serviceframework - Build the QtServiceFramework module
-dev-qt/qt-mobility:systeminfo - Build the QtSystemInfo module
-dev-qt/qt-mobility:tools - Build various useful tools (e.g.: qcrmlgen, servicexmlgen, vsexplorer, ...)
-dev-qt/qt-mobility:versit - Build the QtVersit module
 dev-qt/qt3d:gles2 - Use GLES 2.0 or later instead of full OpenGL
 dev-qt/qt3d:qml - Build QML/QtQuick bindings
 dev-qt/qt3support:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
@@ -159,15 +154,12 @@ dev-qt/qtsvg:exceptions - Add support for exceptions - like catching them inside
 dev-qt/qttest:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qtvirtualkeyboard:handwriting - Adds handwriting recognition integration support
 dev-qt/qtwayland:libinput - Enable support for input devices via dev-libs/libinput
-dev-qt/qtwayland:qml - Build QML/QtQuick bindings
-dev-qt/qtwayland:wayland-compositor - Build Qt compositor for wayland
 dev-qt/qtwebchannel:qml - Build QML/QtQuick bindings and imports
 dev-qt/qtwebengine:geolocation - Enable physical position determination via dev-qt/qtpositioning
 dev-qt/qtwebengine:pax_kernel - Enable building under a PaX enabled kernel
 dev-qt/qtwebengine:system-ffmpeg - Use the system-wide media-video/ffmpeg instead of bundled.
 dev-qt/qtwebengine:system-icu - Use the system-wide dev-libs/icu instead of bundled.
 dev-qt/qtwebengine:widgets - Enable QtWidgets support
-dev-qt/qtwebkit:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/qtwebkit:geolocation - Enable physical position determination via dev-qt/qtpositioning
 dev-qt/qtwebkit:gles2 - Use GLES 2.0 or later instead of full OpenGL
 dev-qt/qtwebkit:gstreamer - Enable HTML5 audio/video support via media-libs/gstreamer using SLOT 1.0
@@ -180,23 +172,22 @@ dev-qt/qtwebkit:webchannel - Enable integration with dev-qt/qtwebchannel
 dev-qt/qtwebkit:webp - Add support for WebP image format
 dev-qt/qtwebsockets:qml - Build QML bindings
 dev-qt/qtwidgets:gles2 - Use GLES 2.0 or later instead of full OpenGL
-dev-qt/qtwidgets:gtkstyle - Build a Qt style called GTK+ that mimics the active GTK+ theme
 dev-util/kdevelop:gdbui - Enable GUI for attaching GDB to a running process
-dev-util/kdevelop:ninja - Enable support for Ninja build system
-dev-util/kdevelop:okteta - Enable hex editor plugin
+dev-util/kdevelop:okteta - Enable hex editor plugin via kde-apps/okteta
 dev-util/kdevelop:qmake - Enable support for QMake build system
-dev-util/kdevelop:qthelp - Enable support for QtHelp documentation browsing
+dev-util/kdevelop:reviewboard - Enable reviewboard support
+dev-util/kdevelop:webkit - Enable deprecated dev-qt/qtwebkit instead of dev-qt/qtwebengine for integrated documentation
+dev-util/kdevelop:welcomepage - Enable welcome page, requires dev-qt/qtdeclarative
 dev-util/kdevplatform:reviewboard - Enable reviewboard support
 dev-util/kdevplatform:welcomepage - Enable welcome page, requires dev-qt/qtdeclarative
 dev-util/massif-visualizer:callgraph - Enable detailed snapshot analysis using media-gfx/kgraphviewer
 dev-vcs/kdesvn:man - Build and install man pages
+games-board/knights:speech - Enable text-to-speech support
 kde-apps/akonadi:designer - Install plugin for dev-qt/designer
 kde-apps/akonadi:tools - Install tools for developers and testing
-kde-apps/akonadi-contacts:prison - Enable support for QRcodes in contacts
 kde-apps/analitza:eigen - Enable dev-cpp/eigen mathematical templates support
 kde-apps/ark:zip - Enable ZIP archive support via dev-libs/libzip
 kde-apps/artikulate:qtmedia - Enable playback via Qt5Multimedia
-kde-apps/blogilo:google - Google service integration via kde-apps/libkgapi
 kde-apps/cantor:R - Enable dev-lang/R backend support
 kde-apps/cantor:analitza - Enable kde-apps/analitza backend support
 kde-apps/cantor:julia - Enable dev-lang/julia backend support
@@ -206,29 +197,27 @@ kde-apps/dolphin-plugins:bazaar - Enable support for the bazaar VCS
 kde-apps/dolphin-plugins:dropbox - Enable support for the dropbox fileviewer plugin
 kde-apps/dolphin-plugins:git - Enable support for the git VCS
 kde-apps/dolphin-plugins:mercurial - Enable support for the mercurial VCS
+kde-apps/gwenview:fits - Enable support for NASA's sci-libs/cfitsio library
 kde-apps/gwenview:kipi - Support for the KDE Image Plugin Interface
 kde-apps/k3b:emovix - Enable burning support for eMoviX images
-kde-apps/kaccessible:speechd - Enable support for the speech-dispatcher speech synthesizer
-kde-apps/kaddressbook:prison - Enable support for QRcodes in contacts
 kde-apps/kalzium:editor - Enable the embedded molecule editor/viewer
 kde-apps/kalzium:solver - Enable the equation solver
+kde-apps/kanagram:speech - Enable text-to-speech support
 kde-apps/kate:addons - Build and install additional plugins
 kde-apps/kde-apps-meta:pim - Pull in KDE PIM suite
 kde-apps/kde-apps-meta:sdk - Pull in developer-specific meta-packages
 kde-apps/kdeadmin-meta:cron - Installs KDE application for virtual/cron configuration
-kde-apps/kdebase-kioslaves:sftp - Enable SFTP protocol support using net-libs/libssh
 kde-apps/kdegraphics-mobipocket:thumbnail - Enables thumbnail generation
 kde-apps/kdemultimedia-meta:cdrom - Include packages for optical discs
-kde-apps/kdenetwork-meta:ppp - Enable support for net-dialup/ppp.
 kde-apps/kdenlive:freesound - Enable freesound.org credentials support via dev-qt/qtwebkit to download files
 kde-apps/kdenlive:gles2 - Use GLES 2.0 or later instead of full OpenGL
 kde-apps/kdenlive:jogshuttle - Enable support for Jog-Shuttle devices
 kde-apps/kdepim-addons:importwizard - Enable additional import plugins for kde-apps/akonadi-import-wizard
-kde-apps/kdepim-apps-libs:prison - Enable support for QRcodes in contacts
-kde-apps/kdepim-meta:google - Google service integration via kde-apps/libkgapi
-kde-apps/kdepim-runtime:google - Google service integration via kde-apps/libkgapi
+kde-apps/kdepim-runtime:speech - Enable text-to-speech support
 kde-apps/kdeutils-meta:floppy - Install kde-apps/kfloppy to format and create DOS or ext2fs filesystems in a floppy.
 kde-apps/keditbookmarks:man - Build and install man pages
+kde-apps/kget:bittorrent - Enable bittorrent transfer plugin through net-libs/libktorrent
+kde-apps/kget:gpg - Enable signature verification by GpgME++ via app-crypt/gpgme
 kde-apps/kget:mms - Enable MMS (Microsoft Media Server) plugin through media-libs/libmms
 kde-apps/kig:geogebra - Support files created by sci-mathematics/geogebra
 kde-apps/kig:scripting - Support Python scripting
@@ -243,7 +232,6 @@ kde-apps/konqueror:speech - Build text-to-speech plugin
 kde-apps/kopete:addbookmarks - Automatically add incoming urls to bookmarks.
 kde-apps/kopete:autoreplace - Automatically replace selected text
 kde-apps/kopete:contactnotes - Enables writing personal notes for contacts.
-kde-apps/kopete:cryptography - Enable cryptography plugin
 kde-apps/kopete:gadu - Enable the Gadu protocol handler.
 kde-apps/kopete:groupwise - Enable the Groupwise protocol handler.
 kde-apps/kopete:highlight - Allows you to specify highlights on specific events.
@@ -254,7 +242,6 @@ kde-apps/kopete:nowlistening - Shows song you currently listen to in your status
 kde-apps/kopete:otr - Allows crypting your chat (drugs and talking nonsense are considered as good alternatives ;]).
 kde-apps/kopete:pipes - Send messages to external pipe.
 kde-apps/kopete:privacy - Filter for incoming messages
-kde-apps/kopete:skype - Enable Skype protocol handler (not fully functional yet).
 kde-apps/kopete:statistics - Everybody loves statistic graphs, especially cake ones. ;]
 kde-apps/kopete:testbed - Enable the testbed protocol.
 kde-apps/kopete:texteffect - Various fancy text effects for your messages (don't ever consider writing us with this enabled ;]).
@@ -281,15 +268,16 @@ kde-apps/mailcommon:designer - Build plugins for dev-qt/designer
 kde-apps/marble:aprs - Enable support for APRS data sources
 kde-apps/marble:designer - Install plugin for dev-qt/designer
 kde-apps/marble:phonon - Enable sound support via media-libs/phonon
-kde-apps/marble:positioning - Enable position information via dev-qt/qtpositioning and dev-qt/qtlocation
 kde-apps/marble:shapefile - Enable support for ESRI shapefiles
 kde-apps/okteta:designer - Build plugins for dev-qt/designer
 kde-apps/okular:chm - Enable support for Microsoft Compiled HTML Help files
-kde-apps/okular:epub - Add E-Book support via app-text/ebook-tools
+kde-apps/okular:epub - Enable E-Book support via app-text/ebook-tools
 kde-apps/okular:image-backend - Enable image viewing support
-kde-apps/okular:mobi - Add mobipocket support
+kde-apps/okular:markdown - Enable Markdown support via app-text/discount
+kde-apps/okular:mobi - Enable mobipocket support
 kde-apps/okular:mobile - Enable Plasma mobile support
 kde-apps/okular:plucker - Enable Plucker E-Book for Palm OS devices support
+kde-apps/okular:share - Enable support for a share menu using dev-libs/purpose
 kde-apps/okular:speech - Enable text-to-speech support
 kde-apps/pimcommon:designer - Build plugins for dev-qt/designer
 kde-apps/spectacle:kipi - Enable support for the KDE Image Plugin Interface
@@ -298,7 +286,6 @@ kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
 kde-frameworks/frameworkintegration:appstream - Enable AppStream software metadata support
 kde-frameworks/kconfigwidgets:man - Build and install man pages
 kde-frameworks/kded:man - Build and install man pages
-kde-frameworks/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
 kde-frameworks/kdelibs:qt3support - Enable kde3support/qt3support for very old applications
 kde-frameworks/kdesignerplugin:designer - Build KF5 widgets plugin for QtDesigner
 kde-frameworks/kdesignerplugin:webkit - Build kdewebkit plugin for QtDesigner
@@ -318,7 +305,6 @@ kde-frameworks/kwallet:gpg - Support wallets with GnuPG encryption in addition t
 kde-frameworks/kwallet:man - Build and install man pages
 kde-frameworks/kxmlgui:attica - Enable support for kde-frameworks/attica
 kde-frameworks/networkmanager-qt:teamd - Enable Teamd control support
-kde-frameworks/oxygen-icons:sources - Additionally install the svg sources of the bitmap icons (needed for redistribution)
 kde-frameworks/plasma:gles2 - Use GLES 2.0 or later instead of full OpenGL
 kde-frameworks/sonnet:aspell - Enable the app-text/aspell spell-checking backend
 kde-frameworks/sonnet:hunspell - Enable the app-text/hunspell spell-checking backend
@@ -342,7 +328,10 @@ kde-plasma/plasma-desktop:gtk2 - Add support for gtk+2-based applications using 
 kde-plasma/plasma-desktop:gtk3 - Add support for gtk+3-based applications using legacy xembed systray icons via libappindicator.
 kde-plasma/plasma-desktop:ibus - Use ibus input method via app-i18n/ibus
 kde-plasma/plasma-desktop:legacy-systray - Add support for applications using legacy xembed systray icons.
+kde-plasma/plasma-desktop:mouse - Enable mouse KCM
 kde-plasma/plasma-desktop:scim - Enable applets that use app-i18n/scim
+kde-plasma/plasma-desktop:touchpad - Enable touchpad KCM
+kde-plasma/plasma-meta:crypt - Pull in kde-plasma/plasma-vault for encrypted vaults integration
 kde-plasma/plasma-meta:display-manager - Pull in a graphical display manager
 kde-plasma/plasma-meta:grub - Pull in Breeze theme for sys-boot/grub
 kde-plasma/plasma-meta:gtk - Enable Breeze widget style and KCM for GTK2 and GTK3
@@ -359,7 +348,7 @@ kde-plasma/plasma-workspace:appstream - Enable AppStream software metadata suppo
 kde-plasma/plasma-workspace:geolocation - Enables dataengine providing location information
 kde-plasma/plasma-workspace:prison - Enable support for barcodes/QRcodes
 kde-plasma/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/libqalculate
-kde-plasma/powerdevil:consolekit - Enable sys-auth/consolekit support
+kde-plasma/powerdevil:consolekit - Enable sys-auth/consolekit support instead of logind session tracking
 kde-plasma/powerdevil:wireless - Enable wireless energy saving actions via kde-frameworks/bluez-qt and kde-frameworks/networkmanager-qt
 kde-plasma/systemsettings:classic - Enable classic mode plugin, requires kde-frameworks/khtml
 media-gfx/digikam:addressbook - Enable akonadi contact integration
@@ -369,7 +358,6 @@ media-gfx/digikam:marble - Enable support for geolocation using kde-apps/marble
 media-gfx/digikam:mediaplayer - Enable support for media player using media-libs/qtav
 media-gfx/digikam:panorama - Build the panorama plugin which requires media-gfx/hugin
 media-gfx/digikam:semantic-desktop - Enable kde-frameworks/kfilemetadata support
-media-gfx/kphotoalbum:face - Enable face detection and recognition using kde-apps/libkface
 media-gfx/kphotoalbum:kipi - Support for the KDE Image Plugin Interface
 media-gfx/kphotoalbum:map - Enable map display support using kde-apps/libkgeomap
 media-gfx/krita:color-management - Enable color management via media-libs/opencolorio
@@ -379,12 +367,6 @@ media-plugins/kipi-plugins:flashexport - Build the flash export plugin
 media-plugins/kipi-plugins:mediawiki - Build the mediawiki export plugin
 media-plugins/kipi-plugins:remotestorage - Build plugin for remote storage using network protocols such as FTP, SSH, SAMBA via kde-frameworks/kio
 media-plugins/kipi-plugins:vkontakte - Build plugin for vkontakte.ru
-media-sound/amarok:embedded - Use libmysqld, MySQL embedded server library. Try disabling this if you encounter -PIC related in amarok, it will make amarok rely only on standalone MySQL server.
-media-sound/amarok:lastfm - Enable Last.fm streaming services support through media-libs/liblastfm
-media-sound/amarok:mp3tunes - Enable mp3tunes integration
-media-sound/amarok:mtp - Enable support for libMTP (Plays4Sure) devices access through libmtp
-media-sound/amarok:ofa - Use media-libs/libofa to compute MusicDNS acoustic fingerprints (used by MusicBrainz)
-media-sound/amarok:utils - Build the utils - old media-sound/amarok-utils
 media-sound/kid3:acoustid - Enable support for acoustic fingerprinting plugin using (media-libs/chromaprint)
 media-sound/tomahawk:hatchet - Enable support for the synchronisation through Hatchet
 media-sound/tomahawk:telepathy - Enable support for the real-time communication framework telepathy

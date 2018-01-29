@@ -1,3 +1,4 @@
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +10,7 @@ BASE_PACKAGENAME="bin"
 BASE_AMD64_URI="http://packages.gentooexperimental.org/packages/amd64-libreoffice/amd64-${BASE_PACKAGENAME}-"
 BASE_X86_URI="http://packages.gentooexperimental.org/packages/x86-libreoffice/x86-${BASE_PACKAGENAME}-"
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 PYTHON_REQ_USE="threads,xml"
 
 inherit kde4-base java-pkg-opt-2 python-single-r1 pax-utils prefix versionator
@@ -59,12 +60,15 @@ BIN_COMMON_DEPEND="
 	app-text/hunspell:0/1.6
 	=app-text/libexttextcat-3.4*
 	=app-text/libmwaw-0.3*
+	dev-libs/boost:0/1.63.0
 	dev-libs/icu:0/58.2
 	>=media-gfx/graphite2-1.3.10
 	media-libs/harfbuzz:0/0.9.18[icu]
 	media-libs/libpng:0/16
+	>=sys-devel/gcc-5.4.0-r3
+	>=sys-libs/glibc-2.25
 	virtual/jpeg:62
-	kde? ( >=kde-frameworks/kdelibs-4.14.36:4 >=dev-qt/qtcore-4.8.7-r2:4 >=dev-qt/qtgui-4.8.7:4 )
+	kde? ( >=kde-frameworks/kdelibs-4.14.37:4 >=dev-qt/qtcore-4.8.7-r3:4 >=dev-qt/qtgui-4.8.7:4 )
 "
 
 # PLEASE place any restrictions that are specific to the binary builds
@@ -243,4 +247,3 @@ pkg_postinst() {
 pkg_postrm() {
 	kde4-base_pkg_postrm
 }
-
