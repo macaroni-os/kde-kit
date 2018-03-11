@@ -1,16 +1,18 @@
-# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+KDE_REQUIRED="optional"
+CMAKE_REQUIRED="never"
 
 BASE_PACKAGENAME="bin"
 BASE_AMD64_URI="http://packages.gentooexperimental.org/packages/amd64-libreoffice/amd64-${BASE_PACKAGENAME}-"
 BASE_X86_URI="http://packages.gentooexperimental.org/packages/x86-libreoffice/x86-${BASE_PACKAGENAME}-"
 
-PYTHON_COMPAT=( python3_5 )
+PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads,xml"
 
-inherit gnome2-utils java-pkg-opt-2 python-single-r1 pax-utils prefix versionator xdg-utils
+inherit kde4-base java-pkg-opt-2 python-single-r1 pax-utils prefix versionator
 
 DESCRIPTION="A full office productivity suite. Binary package"
 HOMEPAGE="http://www.libreoffice.org"
@@ -57,15 +59,12 @@ BIN_COMMON_DEPEND="
 	app-text/hunspell:0/1.6
 	=app-text/libexttextcat-3.4*
 	=app-text/libmwaw-0.3*
-	dev-libs/boost:0/1.65.0
-	dev-libs/icu:0/60.2
+	dev-libs/icu:0/58.2
 	>=media-gfx/graphite2-1.3.10
 	media-libs/harfbuzz:0/0.9.18[icu]
 	media-libs/libpng:0/16
-	>=sys-devel/gcc-6.4.0
-	>=sys-libs/glibc-2.25
 	virtual/jpeg:62
-	kde? ( >=kde-frameworks/kdelibs-4.14.37:4 >=dev-qt/qtcore-4.8.7-r3:4 >=dev-qt/qtgui-4.8.7:4 )
+	kde? ( >=kde-frameworks/kdelibs-4.14.36:4 >=dev-qt/qtcore-4.8.7-r2:4 >=dev-qt/qtgui-4.8.7:4 )
 "
 
 # PLEASE place any restrictions that are specific to the binary builds
@@ -137,9 +136,9 @@ COMMON_DEPEND="
 	dev-libs/dbus-glib
 	gnome? (
 		dev-libs/glib:2
-		gnome-base/dconf
 		gnome-extra/evolution-data-server
 	)
+	gnome? ( gnome-base/dconf )
 	media-libs/gstreamer:1.0
 	media-libs/gst-plugins-base:1.0
 	x11-libs/gdk-pixbuf
@@ -147,13 +146,7 @@ COMMON_DEPEND="
 	gnome? (
 		dev-libs/glib:2
 		dev-libs/gobject-introspection
-		gnome-base/dconf
 		x11-libs/gtk+:3
-	)
-	kde? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-		kde-frameworks/kdelibs
 	)
 "
 
@@ -165,11 +158,10 @@ RDEPEND="${COMMON_DEPEND}
 	media-fonts/libertine
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools )
 	java? ( >=virtual/jre-1.6 )
-	kde? ( kde-frameworks/oxygen-icons:* )
 "
 
 PDEPEND="
-	=app-office/libreoffice-l10n-${PV}*
+	=app-office/libreoffice-l10n-5.4.5*
 "
 
 DEPEND="dev-util/xdelta:3"
@@ -192,6 +184,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
+	kde4-base_pkg_setup
 	python-single-r1_pkg_setup
 }
 
@@ -233,13 +226,12 @@ src_install() {
 }
 
 pkg_preinst() {
-	gnome2_icon_savelist
+	# Cache updates - all handled by kde eclass for all environments
+	kde4-base_pkg_preinst
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
+	kde4-base_pkg_postinst
 
 	pax-mark -m "${EPREFIX}"/usr/$(get_libdir)/libreoffice/program/soffice.bin
 	pax-mark -m "${EPREFIX}"/usr/$(get_libdir)/libreoffice/program/unopkg.bin
@@ -249,7 +241,6 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
+	kde4-base_pkg_postrm
 }
+

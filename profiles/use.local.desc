@@ -35,6 +35,7 @@ app-office/libreoffice:odk - Build the Office Development Kit
 app-office/libreoffice:pdfimport - Enable PDF import via the Poppler library
 app-office/libreoffice:quickstarter - Build the system tray quickstarter
 app-office/libreoffice:vlc - Use media-video/vlc for video embedding
+app-office/libreoffice-l10n:offlinehelp - Install help files locally instead of using the LibreOffice Wiki
 app-office/skrooge:activities - Enable kactivities support
 app-office/skrooge:designer - Build plugins for dev-qt/designer
 app-text/kbibtex:webengine - Use dev-qt/qtwebengine for HTML previews
