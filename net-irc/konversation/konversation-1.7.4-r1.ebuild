@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -47,12 +47,14 @@ DEPEND="
 	$(add_qt_dep qtxml)
 	media-libs/phonon[qt5(+)]
 	sys-devel/gettext
-	crypt? ( app-crypt/qca:2[qt5] )
+	crypt? ( app-crypt/qca:2[qt5(+)] )
 "
 RDEPEND="${DEPEND}
 	!net-irc/konversation:4
 	crypt? ( app-crypt/qca:2[ssl] )
 "
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
 
 src_configure() {
 	local mycmakeargs=(
