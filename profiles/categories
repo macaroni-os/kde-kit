@@ -2,6 +2,7 @@ app-accessibility
 app-admin
 app-backup
 app-cdr
+app-crypt
 app-dicts
 app-editors
 app-office
@@ -33,6 +34,7 @@ net-p2p
 net-vpn
 sci-mathematics
 sci-visualization
+sys-auth
 sys-block
 www-client
 x11-misc
