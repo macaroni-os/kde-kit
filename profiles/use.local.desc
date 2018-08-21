@@ -6,6 +6,7 @@ app-accessibility/simon:opencv - Use media-libs/opencv
 app-accessibility/simon:pim - Enable support for KDE PIM resources integration
 app-accessibility/simon:sphinx - Build sphinx backend (pulls app-accessibility/julius if disabled
 app-admin/calamares:pythonqt - Enable PythonQt-based module interface
+app-editors/okteta:designer - Build plugins for dev-qt/designer
 app-office/calligra:activities - Enable kactivities support
 app-office/calligra:gemini - Enable tablet and 2:1 devices support
 app-office/calligra:import-filter - Enable support for various import filter file formats like WordPerfect, Visio and Apple Keynote
@@ -296,7 +297,6 @@ kde-apps/marble:aprs - Enable support for APRS data sources
 kde-apps/marble:designer - Install plugin for dev-qt/designer
 kde-apps/marble:phonon - Enable sound support via media-libs/phonon
 kde-apps/marble:shapefile - Enable support for ESRI shapefiles
-kde-apps/okteta:designer - Build plugins for dev-qt/designer
 kde-apps/okular:chm - Enable support for Microsoft Compiled HTML Help files
 kde-apps/okular:epub - Enable E-Book support via app-text/ebook-tools
 kde-apps/okular:image-backend - Enable image viewing support
