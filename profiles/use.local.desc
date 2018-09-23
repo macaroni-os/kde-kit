@@ -25,17 +25,6 @@ app-office/kmymoney:holidays - Enable kde-apps/kholidays integration
 app-office/kmymoney:quotes - Enable Online Stock Quote retrieval
 app-office/kmymoney:weboob - Enable import of online banking transactions extracted by www-client/weboob
 app-office/kraft:pim - Enable support for KDE PIM resources integration
-app-office/libreoffice:coinmp - Use sci-libs/coinor-mp as alternative solver
-app-office/libreoffice:collada - Enable Collada for rendering 3D models stored in *.dae and *.kmz format
-app-office/libreoffice:gltf - Use media-libs/libgltf for inserting 3D models in the glTF format into presentations
-app-office/libreoffice:googledrive - Enable support for remote files on Google Drive
-app-office/libreoffice:gtk2 - Enable legacy gtk2 frontend
-app-office/libreoffice:gtk3 - Enable experimental gtk3 frontend
-app-office/libreoffice:jemalloc - Use dev-libs/jemalloc for allocations
-app-office/libreoffice:odk - Build the Office Development Kit
-app-office/libreoffice:pdfimport - Enable PDF import via the Poppler library
-app-office/libreoffice:quickstarter - Build the system tray quickstarter
-app-office/libreoffice:vlc - Use media-video/vlc for video embedding
 app-office/libreoffice-l10n:offlinehelp - Install help files locally instead of using the LibreOffice Wiki
 app-office/skrooge:activities - Enable kactivities support
 app-office/skrooge:designer - Build plugins for dev-qt/designer
@@ -44,31 +33,6 @@ app-text/kbibtex:webkit - Use dev-qt/qtwebkit for HTML previews
 app-text/kbibtex:zotero - Enable support for synchronisation with zotero.org web service
 dev-libs/kreport:marble - Enable displaying of maps using kde-apps/marble
 dev-libs/kreport:scripting - Support Qml scripting using dev-qt/qtdeclarative
-dev-python/PyQt5:bluetooth - Build bindings for the QtBluetooth module
-dev-python/PyQt5:dbus - Build bindings for the QtDBus module
-dev-python/PyQt5:declarative - Build bindings for the QtQml/QtQuick modules and enable the qmlscene plugin
-dev-python/PyQt5:designer - Build bindings for the QtDesigner module and enable the designer plugin
-dev-python/PyQt5:gles2 - Use GLES 2.0 or later instead of full OpenGL
-dev-python/PyQt5:gui - Build bindings for the QtGui module
-dev-python/PyQt5:help - Build bindings for the QtHelp module
-dev-python/PyQt5:location - Build bindings for the QtLocation module
-dev-python/PyQt5:multimedia - Build bindings for the QtMultimedia module
-dev-python/PyQt5:network - Build bindings for the QtNetwork module
-dev-python/PyQt5:opengl - Build bindings for the QtOpenGL module
-dev-python/PyQt5:positioning - Build bindings for the QtPositioning module
-dev-python/PyQt5:printsupport - Build bindings for the QtPrintSupport module
-dev-python/PyQt5:sensors - Build bindings for the QtSensors module
-dev-python/PyQt5:serialport - Build bindings for the QtSerialPort module
-dev-python/PyQt5:sql - Build bindings for the QtSql module
-dev-python/PyQt5:svg - Build bindings for the QtSvg module
-dev-python/PyQt5:testlib - Build bindings for the QtTest module
-dev-python/PyQt5:webchannel - Build bindings for the QtWebChannel module
-dev-python/PyQt5:webengine - Build bindings for the QtWebEngine module
-dev-python/PyQt5:webkit - Build bindings for the QtWebKit module
-dev-python/PyQt5:websockets - Build bindings for the QtWebSockets module
-dev-python/PyQt5:widgets - Build bindings for the QtWidgets module
-dev-python/PyQt5:x11extras - Build bindings for the QtX11Extras module
-dev-python/PyQt5:xmlpatterns - Build bindings for the QtXmlPatterns module
 dev-qt/assistant:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)
 dev-qt/designer:declarative - Build the qdeclarativeview plugin
 dev-qt/designer:exceptions - Add support for exceptions - like catching them inside the event loop (recommended by upstream)

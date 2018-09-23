@@ -10,7 +10,6 @@ app-portage
 app-text
 dev-db
 dev-libs
-dev-python
 dev-qt
 dev-util
 dev-vcs
