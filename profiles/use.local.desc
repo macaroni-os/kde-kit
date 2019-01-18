@@ -60,8 +60,6 @@ kde-apps/gwenview:fits - Enable support for NASA's sci-libs/cfitsio library
 kde-apps/gwenview:kipi - Enable support for the KDE Image Plugin Interface
 kde-apps/gwenview:mpris - Enable support for MPRIS2 interface, requiring dev-qt/qtdbus as dependency.
 kde-apps/k3b:emovix - Enable burning support for eMoviX images
-kde-apps/kalzium:editor - Enable the embedded molecule editor/viewer
-kde-apps/kalzium:solver - Enable the equation solver
 kde-apps/kanagram:speech - Enable text-to-speech support
 kde-apps/kate:addons - Build and install additional plugins
 kde-apps/kde-apps-meta:pim - Pull in KDE PIM suite

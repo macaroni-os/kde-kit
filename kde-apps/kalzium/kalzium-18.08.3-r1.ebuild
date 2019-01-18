@@ -36,10 +36,11 @@ DEPEND="
 		$(add_frameworks_dep knewstuff)
 		dev-cpp/eigen:3
 		sci-chemistry/openbabel
-		sci-libs/avogadrolibs
+		sci-libs/avogadrolibs[qt5]
 	)
 	solver? ( dev-ml/facile[ocamlopt] )
 "
+PATCHES=( "${FILESDIR}/${P}-deps.patch" )
 RDEPEND="${DEPEND}
 	sci-chemistry/chemical-mime-data
 "
