@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ DESCRIPTION="Data Model and Extraction System for Travel Reservation information
 HOMEPAGE="https://www.kde.org/applications/office/kontact/"
 
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="pdf"
 
 DEPEND="
@@ -29,6 +29,8 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!<kde-apps/kdepim-addons-18.07.80
 "
+
+PATCHES=( "${FILESDIR}/${P}-poppler-0.72.patch" )
 
 src_configure() {
 	local mycmakeargs=(

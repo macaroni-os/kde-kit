@@ -8,6 +8,7 @@ app-accessibility/simon:sphinx - Build sphinx backend (pulls app-accessibility/j
 app-admin/calamares:pythonqt - Enable PythonQt-based module interface
 app-editors/okteta:designer - Build plugins for dev-qt/designer
 app-office/calligra:activities - Enable kactivities support
+app-office/calligra:charts - Build chartshape plugin for creating business charts with dev-libs/kreport
 app-office/calligra:gemini - Enable tablet and 2:1 devices support
 app-office/calligra:import-filter - Enable support for various import filter file formats like WordPerfect, Visio and Apple Keynote
 app-office/calligra:lcms - Build colorengine plugins using media-libs/lcms
@@ -15,6 +16,10 @@ app-office/calligra:okular - Enable bindings for kde-apps/okular
 app-office/calligra:phonon - Build stage/eventplugins and videoshape plugin using media-libs/phonon
 app-office/calligra:pim - Enable support for KDE PIM resources integration
 app-office/calligra:spacenav - Enable support for the 3Dconnexion spacenav input device via dev-libs/libspnav
+app-office/calligraplan:activities - Enable kactivities support
+app-office/calligraplan:holidays - Enable kde-frameworks/kholidays integration
+app-office/calligraplan:kwallet - Enable access to encrypted OpenDocument files with kde-frameworks/kwallet storage
+app-office/calligraplan:pim - Enable support for KDE PIM resources integration
 app-office/kexi:experimental - Enable features deemed experimental by upstream
 app-office/kexi:marble - Enable displaying of maps using kde-apps/marble
 app-office/kexi:mdb - Enable support for Microsoft Access database
@@ -28,6 +33,7 @@ app-office/kmymoney:weboob - Enable import of online banking transactions extrac
 app-office/kraft:pim - Enable support for KDE PIM resources integration
 app-office/skrooge:activities - Enable kactivities support
 app-office/skrooge:designer - Build plugins for dev-qt/designer
+app-office/skrooge:webkit - Build with dev-qt/qtwebkit instead of dev-qt/qtwebengine
 app-text/kbibtex:webengine - Use dev-qt/qtwebengine for HTML previews
 app-text/kbibtex:webkit - Use dev-qt/qtwebkit for HTML previews
 app-text/kbibtex:zotero - Enable support for synchronisation with zotero.org web service
@@ -49,6 +55,7 @@ kde-apps/artikulate:qtmedia - Enable playback via Qt5Multimedia
 kde-apps/cantor:R - Enable dev-lang/R backend support
 kde-apps/cantor:analitza - Enable kde-apps/analitza backend support
 kde-apps/cantor:julia - Enable dev-lang/julia backend support
+kde-apps/cantor:markdown - Enable Markdown support via app-text/discount
 kde-apps/cantor:qalculate - Enable sci-libs/libqalculate backend support
 kde-apps/dolphin:thumbnail - Enables thumbnail generation
 kde-apps/dolphin-plugins:bazaar - Enable support for the bazaar VCS
@@ -60,22 +67,38 @@ kde-apps/gwenview:fits - Enable support for NASA's sci-libs/cfitsio library
 kde-apps/gwenview:kipi - Enable support for the KDE Image Plugin Interface
 kde-apps/gwenview:mpris - Enable support for MPRIS2 interface, requiring dev-qt/qtdbus as dependency.
 kde-apps/k3b:emovix - Enable burning support for eMoviX images
+kde-apps/kalzium:editor - Enable the embedded molecule editor/viewer
+kde-apps/kalzium:solver - Enable the equation solver
 kde-apps/kanagram:speech - Enable text-to-speech support
 kde-apps/kate:addons - Build and install additional plugins
 kde-apps/kde-apps-meta:pim - Pull in KDE PIM suite
 kde-apps/kde-apps-meta:sdk - Pull in developer-specific meta-packages
 kde-apps/kdeadmin-meta:cron - Installs KDE application for virtual/cron configuration
+kde-apps/kdecore-meta:webengine - Enable www-client/falkon which depends on dev-qt/qtwebengine
 kde-apps/kdeedu-meta:webengine - Enable kde-apps/kalzium and kde-apps/parley, requiring dev-qt/qtwebengine
 kde-apps/kdegraphics-mobipocket:thumbnail - Enables thumbnail generation
 kde-apps/kdemultimedia-meta:cdrom - Include packages for optical discs
+kde-apps/kdenetwork-meta:dropbox - Enable support for Dropbox in kde-apps/dolphin via kde-apps/dolphin-plugins-dropbox
 kde-apps/kdenetwork-meta:telepathy - Enable support for Plasma Telepathy (instant messaging) integration via kde-apps/plasma-telepathy-meta
 kde-apps/kdenlive:freesound - Enable freesound.org credentials support via dev-qt/qtwebkit to download files
 kde-apps/kdenlive:gles2 - Use GLES 2.0 or later instead of full OpenGL
 kde-apps/kdenlive:jogshuttle - Enable support for Jog-Shuttle devices
 kde-apps/kdenlive:share - Enable support for a share menu using kde-frameworks/purpose
 kde-apps/kdepim-addons:importwizard - Enable additional import plugins for kde-apps/akonadi-import-wizard
+kde-apps/kdepim-addons:markdown - Enable Markdown support via app-text/discount
+kde-apps/kdepim-meta:bogofilter - Install mail-filter/bogofilter for spam filter support in kde-apps/kmail
+kde-apps/kdepim-meta:clamav - Install app-antivirus/clamav for virus detection support in kde-apps/kmail
+kde-apps/kdepim-meta:spamassassin - Install mail-filter/spamassassin for spam filter support in kde-apps/kmail
+kde-apps/kdepim-runtime:oauth - Enable support OAuth authentication for EWS via dev-qt/qtnetworkauth
 kde-apps/kdepim-runtime:speech - Enable text-to-speech support
+kde-apps/kdesdk-meta:bazaar - Enable support for Bazaar VCS in kde-apps/dolphin via kde-apps/dolphin-plugins-bazaar
+kde-apps/kdesdk-meta:git - Enable support for Git VCS in kde-apps/dolphin via kde-apps/dolphin-plugins-git
+kde-apps/kdesdk-meta:mercurial - Enable support for Mercurial VCS in kde-apps/dolphin via kde-apps/dolphin-plugins-mercurial
+kde-apps/kdesdk-meta:subversion - Enable support for Apache Subversion VCS in kde-apps/dolphin via kde-apps/dolphin-plugins-subversion
+kde-apps/kdeutils-meta:7zip - Install app-arch/p7zip for 7zip archive support in kde-apps/ark
 kde-apps/kdeutils-meta:floppy - Install kde-apps/kfloppy to format and create DOS or ext2fs filesystems in a floppy.
+kde-apps/kdeutils-meta:lrz - Install app-arch/lrzip for LRZ archive support in kde-apps/ark
+kde-apps/kdeutils-meta:rar - Install app-arch/unar or app-arch/unrar for RAR archive support in kde-apps/ark
 kde-apps/keditbookmarks:man - Build and install man pages
 kde-apps/kget:bittorrent - Enable bittorrent transfer plugin through net-libs/libktorrent
 kde-apps/kget:gpg - Enable signature verification by GpgME++ via app-crypt/gpgme
@@ -83,7 +106,6 @@ kde-apps/kget:mms - Enable MMS (Microsoft Media Server) plugin through media-lib
 kde-apps/kig:geogebra - Support files created by sci-mathematics/geogebra
 kde-apps/kig:scripting - Support Python scripting
 kde-apps/kio-extras:activities - Enable activities kioslave and fileitem plugin
-kde-apps/kio-extras:htmlthumbs - Enable HTML thumbnail previews via dev-qt/qtwebengine
 kde-apps/kio-extras:man - Enable manpages kioslave
 kde-apps/kio-extras:phonon - Enable file audio preview plugin using media-libs/phonon
 kde-apps/kio-extras:sftp - Enable SFTP protocol support using net-libs/libssh
@@ -126,8 +148,10 @@ kde-apps/libksane:kwallet - Enable encrypted storage of passwords with kde-frame
 kde-apps/mailcommon:designer - Build plugins for dev-qt/designer
 kde-apps/marble:aprs - Enable support for APRS data sources
 kde-apps/marble:designer - Install plugin for dev-qt/designer
+kde-apps/marble:geolocation - Enable position information via dev-qt/qtpositioning
 kde-apps/marble:phonon - Enable sound support via media-libs/phonon
 kde-apps/marble:shapefile - Enable support for ESRI shapefiles
+kde-apps/marble:webengine - Use dev-qt/qtwebengine for embedded web browser
 kde-apps/okular:chm - Enable support for Microsoft Compiled HTML Help files
 kde-apps/okular:epub - Enable E-Book support via app-text/ebook-tools
 kde-apps/okular:image-backend - Enable image viewing support
@@ -138,6 +162,7 @@ kde-apps/okular:plucker - Enable Plucker E-Book for Palm OS devices support
 kde-apps/okular:share - Enable support for a share menu using kde-frameworks/purpose
 kde-apps/okular:speech - Enable text-to-speech support
 kde-apps/pimcommon:designer - Build plugins for dev-qt/designer
+kde-apps/pimcommon:share - Enable support for a share menu using kde-frameworks/purpose
 kde-apps/spectacle:kipi - Enable support for the KDE Image Plugin Interface
 kde-apps/spectacle:share - Enable support for a share menu using kde-frameworks/purpose
 kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
@@ -175,15 +200,19 @@ kde-misc/kimtoy:scim - Enable Smart Common Input Method support
 kde-misc/kio-gdrive:kaccounts - Use kde-apps/kaccounts-integration backend (default) instead of dev-libs/qtkeychain
 kde-misc/kmarkdownwebview:webkit - Use dev-qt/qtwebkit instead of dev-qt/qtwebengine
 kde-misc/tellico:discid - Add support for reading disc IDs from audio CDs
+kde-misc/tellico:yaz - Add support for searching Z39.50 databases
+kde-misc/yakuake:absolute-position - Use kde-frameworks/kwayland for absolute window positioning in KWin
+kde-plasma/discover:firmware - Enable support for firmware upgrades using sys-apps/fwupd
 kde-plasma/kde-cli-tools:kdesu - Build graphical frontend for kde-frameworks/kdesu
 kde-plasma/kdeplasma-addons:share - Enable applet for quickly sharing data to a variety of sources
 kde-plasma/kdeplasma-addons:webengine - Enable dictionary and web browser applets using dev-qt/qtwebengine
 kde-plasma/kinfocenter:gles2 - Show OpenGL ES information in kinfocenter
 kde-plasma/kinfocenter:pci - Show advanced PCI information
 kde-plasma/kmenuedit:hotkeys - Enable support for hotkey editing
+kde-plasma/kscreenlocker:consolekit - Support for killing the screenlocker when sys-auth/consolekit is the session tracker
 kde-plasma/kwin:gles2 - Use OpenGL ES 2 instead of full GL
 kde-plasma/kwin:multimedia - Enable effect video button in desktop effects KCM
-kde-plasma/libksysguard:detailedmemory - Enable display of detailed memory information using dev-qt/qtwebkit.
+kde-plasma/libksysguard:webengine - Enable display of detailed memory information using dev-qt/qtwebengine.
 kde-plasma/libksysguard:webkit - Enable display of detailed memory information using dev-qt/qtwebkit.
 kde-plasma/plasma-desktop:appstream - Enable AppStream software metadata support
 kde-plasma/plasma-desktop:ibus - Use ibus input method via app-i18n/ibus
@@ -191,13 +220,18 @@ kde-plasma/plasma-desktop:mouse - Enable mouse KCM
 kde-plasma/plasma-desktop:scim - Enable applets that use app-i18n/scim
 kde-plasma/plasma-desktop:touchpad - Enable touchpad KCM
 kde-plasma/plasma-meta:browser-integration - Enable integration with Chrome/Firefox with browser extensions
+kde-plasma/plasma-meta:consolekit - Enable sys-auth/consolekit support instead of logind session tracking
 kde-plasma/plasma-meta:crypt - Pull in kde-plasma/plasma-vault for encrypted vaults integration
+kde-plasma/plasma-meta:desktop-portal - Enable sys-apps/xdg-desktop-portal backend implementation for Plasma
+kde-plasma/plasma-meta:discover - Pull in resources management GUI; a centralised GHNS alternative and optional sys-apps/fwupd frontend
 kde-plasma/plasma-meta:display-manager - Pull in a graphical display manager
+kde-plasma/plasma-meta:elogind - Use sys-auth/elogind for session tracking
 kde-plasma/plasma-meta:grub - Pull in Breeze theme for sys-boot/grub
 kde-plasma/plasma-meta:gtk - Enable Breeze widget style and KCM for GTK2 and GTK3
-kde-plasma/plasma-meta:legacy-systray - Add support for GTK+ applications using legacy xembed systray icons
+kde-plasma/plasma-meta:legacy-systray - Add support for legacy applications using kde-plasma/xembed-sni-proxy
 kde-plasma/plasma-meta:pam - Enable support for kwallet auto-unlocking
 kde-plasma/plasma-meta:plymouth - Pull in Breeze theme for sys-boot/plymouth
+kde-plasma/plasma-meta:pm-utils - Enable support for suspend/resume with sys-power/pm-utils when using sys-auth/consolekit
 kde-plasma/plasma-meta:pulseaudio - Install Plasma applet for PulseAudio volume management
 kde-plasma/plasma-meta:sddm - Pull in the x11-misc/sddm display manager and KCM
 kde-plasma/plasma-meta:sdk - Pull in kde-plasma/plasma-sdk for Plasma development
@@ -210,16 +244,16 @@ kde-plasma/plasma-workspace:geolocation - Enables dataengine providing location 
 kde-plasma/plasma-workspace:prison - Enable support for barcodes/QRcodes
 kde-plasma/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/libqalculate
 kde-plasma/powerdevil:brightness-control - Enable screen brightness control using app-misc/ddcutil
-kde-plasma/powerdevil:consolekit - Enable sys-auth/consolekit support instead of logind session tracking
 kde-plasma/powerdevil:wireless - Enable wireless energy saving actions via kde-frameworks/bluez-qt and kde-frameworks/networkmanager-qt
 kde-plasma/systemsettings:classic - Enable classic mode plugin, requires kde-frameworks/khtml
 media-gfx/digikam:addressbook - Enable akonadi contact integration
-media-gfx/digikam:kipi - Enable support for media-plugins/kipi-plugins
 media-gfx/digikam:lensfun - Enable support for media-libs/lensfun
 media-gfx/digikam:marble - Enable support for geolocation using kde-apps/marble
 media-gfx/digikam:mediaplayer - Enable support for media player using media-libs/qtav
 media-gfx/digikam:panorama - Build the panorama plugin which requires media-gfx/hugin
 media-gfx/digikam:semantic-desktop - Enable kde-frameworks/kfilemetadata support
+media-gfx/digikam:vkontakte - Build net-libs/libkvkontakte plugin for vkontakte.ru
+media-gfx/digikam:webkit - Build with dev-qt/qtwebkit instead of dev-qt/qtwebengine
 media-gfx/kphotoalbum:kipi - Support for the KDE Image Plugin Interface
 media-gfx/kphotoalbum:map - Enable map display support using kde-apps/libkgeomap
 media-gfx/krita:color-management - Enable color management via media-libs/opencolorio
@@ -232,7 +266,6 @@ media-plugins/kipi-plugins:remotestorage - Build plugin for remote storage using
 media-plugins/kipi-plugins:vkontakte - Build plugin for vkontakte.ru
 media-sound/elisa:mpris - Enable MPRIS support
 media-sound/kid3:acoustid - Enable support for acoustic fingerprinting plugin using (media-libs/chromaprint)
-media-sound/tomahawk:telepathy - Enable support for the real-time communication framework telepathy
 media-video/kmplayer:npp - Compile the npp backend that plays xembed style browser plugins.
 media-video/subtitlecomposer:mpv - Build mpv backend support
 net-im/choqok:attica - Build Open Collaboration Services plugin using kde-frameworks/attica
@@ -255,8 +288,8 @@ net-p2p/ktorrent:upnp - Forward ports using UPnP
 net-p2p/ktorrent:zeroconf - Discover peers on the local network using the Zeroconf protocol
 sci-astronomy/kstars:fits - Enable support for NASA's sci-libs/cfitsio library
 sci-astronomy/kstars:indi - Enable support for Astronomical control library using libindi
+sci-astronomy/kstars:password - Store passwords securely via dev-libs/qtkeychain
 sci-astronomy/kstars:wcs - Enable support for World Coordinate System library using wcslib
-sci-astronomy/kstars:xplanet - Enable support for Xplanet
 sci-visualization/labplot:cantor - Enable support for different open-source computer algebra systems via kde-apps/cantor
 sci-visualization/labplot:fits - Enable support for NASA's sci-libs/cfitsio library
 sci-visualization/labplot:libcerf - Enable special functions from sci-libs/libcerf

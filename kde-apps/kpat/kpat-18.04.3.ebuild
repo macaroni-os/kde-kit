@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ inherit kde5
 
 DESCRIPTION="KDE patience game"
 HOMEPAGE="https://games.kde.org/game.php?game=kpat"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="
@@ -33,4 +33,8 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 	x11-misc/shared-mime-info
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!kde-apps/kpat:4
+"
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
