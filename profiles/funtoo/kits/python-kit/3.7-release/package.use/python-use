@@ -1,3 +1,4 @@
+=kde-apps/lokalize-18.12.3 python_single_target_python2_7
 app-office/kmymoney python_single_target_python2_7
 kde-apps/kig python_single_target_python2_7
 kde-apps/kross-interpreters python_single_target_python2_7
