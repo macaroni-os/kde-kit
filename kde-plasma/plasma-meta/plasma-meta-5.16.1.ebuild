@@ -9,9 +9,9 @@ HOMEPAGE="https://kde.org/plasma-desktop"
 LICENSE="metapackage"
 SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="bluetooth +browser-integration consolekit crypt +desktop-portal discover
-+display-manager elogind grub gtk +handbook +legacy-systray networkmanager pam
-plymouth +pm-utils pulseaudio +sddm sdk systemd +wallpapers"
+IUSE="bluetooth +browser-integration -consolekit crypt +desktop-portal discover
++display-manager +elogind grub gtk +handbook +legacy-systray networkmanager pam
+plymouth +pm-utils pulseaudio +sddm sdk -systemd +wallpapers"
 
 REQUIRED_USE="?? ( consolekit elogind systemd )"
 
@@ -45,7 +45,7 @@ RDEPEND="
 	>=kde-plasma/systemsettings-${PV}:${SLOT}
 	>=kde-plasma/user-manager-${PV}:${SLOT}
 	sys-apps/dbus[elogind?,systemd?]
-	sys-auth/polkit[elogind?,systemd?]
+	sys-auth/polkit[elogind?]
 	sys-fs/udisks:2[elogind?,systemd?]
 	bluetooth? ( >=kde-plasma/bluedevil-${PV}:${SLOT} )
 	browser-integration? ( >=kde-plasma/plasma-browser-integration-${PV}:${SLOT} )
@@ -76,7 +76,7 @@ RDEPEND="
 	)
 	pam? (
 		>=kde-plasma/kwallet-pam-${PV}:${SLOT}
-		sys-auth/pambase[consolekit?,elogind?,systemd?]
+		sys-libs/pam
 	)
 	plymouth? (
 		>=kde-plasma/breeze-plymouth-${PV}:${SLOT}
