@@ -36,6 +36,7 @@ app-office/skrooge:designer - Build plugins for dev-qt/designer
 app-office/skrooge:webkit - Build with dev-qt/qtwebkit instead of dev-qt/qtwebengine
 app-text/kbibtex:webengine - Use dev-qt/qtwebengine for HTML previews
 app-text/kbibtex:zotero - Enable support for synchronisation with zotero.org web service
+dev-libs/atcore:gui - Build test GUI
 dev-libs/kreport:marble - Enable displaying of maps using kde-apps/marble
 dev-libs/kreport:scripting - Support Qml scripting using dev-qt/qtdeclarative
 dev-util/kdevelop:gdbui - Enable GUI for attaching GDB to a running process
