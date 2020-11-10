@@ -59,7 +59,7 @@ RDEPEND="
 	display-manager? (
 		sddm? (
 			>=kde-plasma/sddm-kcm-${PV}:${SLOT}
-			x11-misc/sddm[consolekit?,elogind?,systemd?]
+			x11-misc/sddm[consolekit(-)?,elogind(+)?,systemd(-)?]
 		)
 		!sddm? ( x11-misc/lightdm )
 	)
@@ -72,7 +72,7 @@ RDEPEND="
 	legacy-systray? ( >=kde-plasma/xembed-sni-proxy-${PV}:${SLOT} )
 	networkmanager? (
 		>=kde-plasma/plasma-nm-${PV}:${SLOT}
-		net-misc/networkmanager[consolekit?,elogind?,systemd?]
+		net-misc/networkmanager[consolekit(-)?,elogind(+)?,systemd(-)?]
 	)
 	pam? (
 		>=kde-plasma/kwallet-pam-${PV}:${SLOT}
