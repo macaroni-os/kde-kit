@@ -11,7 +11,7 @@ inherit kde5
 DESCRIPTION="Flexible, composited Window Manager for windowing systems on Linux"
 LICENSE="GPL-2+"
 KEYWORDS="amd64 ~arm arm64 x86"
-IUSE="caps gles2 multimedia"
+IUSE="caps gles2-only multimedia"
 
 COMMON_DEPEND="
 	$(add_frameworks_dep kactivities)
@@ -44,7 +44,7 @@ COMMON_DEPEND="
 	$(add_plasma_dep kscreenlocker)
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtdeclarative)
-	$(add_qt_dep qtgui 'gles2=' '' '5=')
+	$(add_qt_dep qtgui 'gles2-only=' '' '5=')
 	$(add_qt_dep qtscript)
 	$(add_qt_dep qtsensors)
 	$(add_qt_dep qtwidgets)
@@ -54,7 +54,8 @@ COMMON_DEPEND="
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/libepoxy
-	media-libs/mesa[egl,gbm,gles2?,wayland]
+	media-libs/mesa[egl,gbm,wayland,X(+)]
+	gles2-only? ( media-libs/mesa[gles2] )
 	virtual/libudev:=
 	x11-libs/libICE
 	x11-libs/libSM
