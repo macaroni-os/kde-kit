@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="Plasma framework"
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="gles2 wayland X"
+IUSE="gles2-only wayland X"
 
 BDEPEND="
 	$(add_frameworks_dep kdoctools)
@@ -36,12 +36,12 @@ RDEPEND="
 	$(add_frameworks_dep kxmlgui)
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtdeclarative)
-	$(add_qt_dep qtgui 'gles2=')
+	$(add_qt_dep qtgui 'gles2-only=')
 	$(add_qt_dep qtquickcontrols)
 	$(add_qt_dep qtsql)
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
-	!gles2? ( virtual/opengl )
+	!gles2-only? ( virtual/opengl )
 	wayland? (
 		$(add_frameworks_dep kwayland)
 		media-libs/mesa[egl]
@@ -60,7 +60,7 @@ RESTRICT+=" test"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package !gles2 OpenGL)
+		$(cmake-utils_use_find_package !gles2-only OpenGL)
 		$(cmake-utils_use_find_package wayland EGL)
 		$(cmake-utils_use_find_package wayland KF5Wayland)
 		$(cmake-utils_use_find_package X X11)

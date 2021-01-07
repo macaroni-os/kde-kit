@@ -11,9 +11,9 @@ DESCRIPTION="Utility providing information about the computer hardware"
 HOMEPAGE="https://kde.org/applications/system/kinfocenter/"
 SRC_URI+=" https://www.gentoo.org/assets/img/logo/gentoo-3d-small.png -> glogo-small.png"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="gles2 ieee1394 +opengl +pci wayland"
+IUSE="gles2-only ieee1394 +opengl +pci wayland"
 
-REQUIRED_USE="wayland? ( || ( gles2 opengl ) )"
+REQUIRED_USE="wayland? ( || ( gles2-only opengl ) )"
 
 COMMON_DEPEND="
 	$(add_frameworks_dep kcmutils)
@@ -36,12 +36,13 @@ COMMON_DEPEND="
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
+	$(add_qt_dep qtgui 'gles2-only=')
 	x11-libs/libX11
 	ieee1394? ( sys-libs/libraw1394 )
+	gles2-only? ( media-libs/mesa[gles2] )
 	opengl? (
-		$(add_qt_dep qtgui 'gles2=')
-		media-libs/mesa[gles2?]
-		!gles2? ( media-libs/glu )
+		media-libs/mesa[X(+)]
+		!gles2-only? ( media-libs/glu )
 	)
 	pci? ( sys-apps/pciutils )
 	wayland? (
@@ -66,8 +67,8 @@ src_configure() {
 		$(cmake-utils_use_find_package wayland KF5Wayland)
 	)
 
-	if has_version "dev-qt/qtgui[gles2]"; then
-		mycmakeargs+=( $(cmake-utils_use_find_package gles2 OpenGLES) )
+	if has_version "dev-qt/qtgui[gles2-only]"; then
+		mycmakeargs+=( $(cmake-utils_use_find_package gles2-only OpenGLES) )
 	else
 		mycmakeargs+=( $(cmake-utils_use_find_package opengl OpenGL) )
 	fi
