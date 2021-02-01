@@ -8,7 +8,7 @@ inherit kde5
 DESCRIPTION="NetworkManager bindings for Qt"
 LICENSE="LGPL-2"
 KEYWORDS="*"
-IUSE="teamd"
+IUSE="elogind teamd"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -19,7 +19,7 @@ DEPEND="
 	>=net-misc/networkmanager-1.4.0-r1[teamd=]
 "
 RDEPEND="${DEPEND}
-	>=net-misc/networkmanager-1.4.0-r1[elogind]
+	>=net-misc/networkmanager-1.4.0-r1[elogind?]
 "
 
 src_test() {
