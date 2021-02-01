@@ -1,20 +1,28 @@
-# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+FRAMEWORKS_MINIMAL=5.60.0
+QT_MINIMAL=5.12.3
 COMMIT="c8b3da65bfd289d0a0262aa673aa6b697022d4a3"
 inherit kde5
 
-DESCRIPTION="An input method frontend for Plasma"
+DESCRIPTION="Input method frontend for Plasma"
 HOMEPAGE="https://www.linux-apps.com/content/show.php?content=140967"
 SRC_URI="https://github.com/KDE/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86"
+SLOT="5"
+KEYWORDS="*"
 IUSE="libressl scim semantic-desktop"
 
 DEPEND="
+	app-i18n/ibus
+	dev-libs/glib:2
+	$(add_qt_dep qtdbus)
+	$(add_qt_dep qtgui)
+	$(add_qt_dep qtwidgets)
+	$(add_qt_dep qtx11extras)
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
@@ -29,12 +37,6 @@ DEPEND="
 	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep kxmlgui)
 	$(add_frameworks_dep plasma)
-	app-i18n/ibus
-	dev-libs/glib:2
-	dev-qt/qtdbus:5
-	dev-qt/qtgui:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
 	media-libs/libpng:0=[apng]
 	x11-libs/libX11
 	!libressl? ( dev-libs/openssl:0= )
@@ -49,6 +51,8 @@ RDEPEND="${DEPEND}
 	!kde-misc/kimtoy:4
 	>=app-i18n/fcitx-4.0
 "
+
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare() {
 	kde5_src_prepare
@@ -66,5 +70,3 @@ src_configure() {
 
 	kde5_src_configure
 }
-
-S="${WORKDIR}/${PN}-${COMMIT}"

@@ -1,39 +1,43 @@
-# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 KDE_QTHELP="true"
 KDE_TEST="true"
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3+ )
+FRAMEWORKS_MINIMAL=5.74.0
+QT_MINIMAL=5.15.1
 VIRTUALX_REQUIRED="test"
 inherit kde5 python-any-r1
 
 DESCRIPTION="Framework for creation and generation of reports in multiple formats"
-[[ ${KDE_BUILD_TYPE} != live ]] && SRC_URI="mirror://kde/stable/${PN}/src/${P}.tar.xz"
+HOMEPAGE="https://community.kde.org/KReport"
+SRC_URI="mirror://kde/stable/${PN}/src/${P}.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="5/4"
-KEYWORDS="amd64 x86"
+KEYWORDS="*"
 IUSE="marble +scripting webkit"
 
 RDEPEND="
-	$(add_frameworks_dep kconfig)
-	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep kguiaddons)
-	$(add_frameworks_dep kwidgetsaddons)
+	>=dev-libs/kproperty-${PV}:5=
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtprintsupport)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	>=dev-libs/kproperty-3.1.0:5=
-	marble? ( $(add_kdeapps_dep marble '' '' '5=') )
+	$(add_frameworks_dep kconfig)
+	$(add_frameworks_dep kcoreaddons)
+	$(add_frameworks_dep kguiaddons)
+	$(add_frameworks_dep kwidgetsaddons)
+	marble? ( $(add_kdeapps_dep marble) )
 	scripting? ( $(add_qt_dep qtdeclarative) )
 	webkit? ( >=dev-qt/qtwebkit-5.212.0_pre20180120:5 )
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 "
+
+PATCHES=( "${FILESDIR}/${P}-gcc10.patch" )
 
 pkg_setup() {
 	python-any-r1_pkg_setup

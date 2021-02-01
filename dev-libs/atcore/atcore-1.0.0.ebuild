@@ -1,9 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils kde5-functions
+ECM_TEST="forceoptional"
+QT_MINIMAL=5.12.3
+inherit kde5
 
 DESCRIPTION="API to manage the serial connection between the computer and 3D Printers"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
@@ -11,11 +12,14 @@ HOMEPAGE="https://atelier.kde.org/"
 
 LICENSE="|| ( LGPL-2.1+ LGPL-3 ) gui? ( GPL-3+ )"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="*"
 IUSE="doc gui test"
 
-RDEPEND="
-	$(add_qt_dep qtcore)
+BDEPEND="
+	$(add_qt_dep linguist-tools)
+	doc? ( app-doc/doxygen[dot] )
+"
+DEPEND="
 	$(add_qt_dep qtserialport)
 	gui? (
 		$(add_qt_dep qtcharts)
@@ -23,23 +27,15 @@ RDEPEND="
 		$(add_qt_dep qtwidgets)
 	)
 "
-DEPEND="${RDEPEND}
-	$(add_frameworks_dep extra-cmake-modules)
-	$(add_qt_dep linguist-tools)
-	doc? ( app-doc/doxygen[dot] )
-	test? ( $(add_qt_dep qttest) )
-"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	kde5_src_prepare
 
 	sed -e "s/${PN}/${PF}/" -i doc/CMakeLists.txt || die
 
 	use gui || punt_bogus_dep Qt5 Charts
-	if ! use test; then
-		cmake_comment_add_subdirectory unittests
-		punt_bogus_dep Qt5 Test
-	fi
+	use test || cmake_comment_add_subdirectory unittests
 }
 
 src_configure() {
@@ -48,5 +44,5 @@ src_configure() {
 		-DBUILD_TEST_GUI=$(usex gui)
 	)
 
-	cmake-utils_src_configure
+	kde5_src_configure
 }

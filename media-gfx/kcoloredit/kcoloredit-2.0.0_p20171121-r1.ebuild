@@ -1,4 +1,3 @@
-# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,6 +5,8 @@ EAPI=7
 COMMIT=50ac0509891343bc01a0aeffda5a44a1e65d9d04
 EGIT_BRANCH="frameworks"
 KDE_HANDBOOK="forceoptional"
+FRAMEWORKS_MINIMAL=5.60.0
+QT_MINIMAL=5.12.3
 inherit kde5
 
 DESCRIPTION="Tool for editing color palettes"
@@ -14,9 +15,11 @@ SRC_URI="https://github.com/KDE/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="*"
 
 DEPEND="
+	$(add_qt_dep qtgui)
+	$(add_qt_dep qtwidgets)
 	$(add_frameworks_dep kactivities)
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
@@ -30,8 +33,6 @@ DEPEND="
 	$(add_frameworks_dep ktextwidgets)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtwidgets)
 "
 RDEPEND="${DEPEND}
 	!media-gfx/kcoloredit:4

@@ -1,19 +1,19 @@
-# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 KDE_HANDBOOK="optional"
+FRAMEWORKS_MINIMAL=5.60.0
+QT_MINIMAL=5.12.3
 inherit kde5
-
-if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="amd64 x86"
-	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-fi
 
 DESCRIPTION="Media player with digital TV support by KDE"
 HOMEPAGE="https://userbase.kde.org/Kaffeine"
+SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
+
 LICENSE="GPL-2+ handbook? ( FDL-1.3 )"
+SLOT="5"
+KEYWORDS="*"
 IUSE="dvb"
 
 BDEPEND="
@@ -21,6 +21,13 @@ BDEPEND="
 	virtual/pkgconfig
 "
 DEPEND="
+	$(add_qt_dep qtdbus)
+	$(add_qt_dep qtgui)
+	$(add_qt_dep qtnetwork)
+	$(add_qt_dep qtsql sqlite)
+	$(add_qt_dep qtwidgets)
+	$(add_qt_dep qtx11extras)
+	$(add_qt_dep qtxml)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
@@ -31,13 +38,6 @@ DEPEND="
 	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep kxmlgui)
 	$(add_frameworks_dep solid)
-	$(add_qt_dep qtdbus)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtnetwork)
-	$(add_qt_dep qtsql 'sqlite')
-	$(add_qt_dep qtwidgets)
-	$(add_qt_dep qtx11extras)
-	$(add_qt_dep qtxml)
 	media-video/vlc[X]
 	x11-libs/libXScrnSaver
 	dvb? ( media-libs/libv4l )
