@@ -1,4 +1,3 @@
-# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +10,8 @@ https://github.com/kotelnik/plasma-applet-network-monitor"
 SRC_URI="https://github.com/kotelnik/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64"
+SLOT="5"
+KEYWORDS="*"
 IUSE=""
 
 DEPEND="

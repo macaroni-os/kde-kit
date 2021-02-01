@@ -1,10 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 KDE_TEST="true"
 KDE_HANDBOOK="forceoptional"
+FRAMEWORKS_MINIMAL=5.60.0
+QT_MINIMAL=5.12.3
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
@@ -13,11 +14,17 @@ HOMEPAGE="https://github.com/basket-notepads/basket"
 SRC_URI="https://github.com/${PN}-notepads/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 x86"
+SLOT="5"
+KEYWORDS="*"
 IUSE="crypt git"
 
 BDEPEND="git? ( virtual/pkgconfig )"
 RDEPEND="
+	$(add_qt_dep qtdbus)
+	$(add_qt_dep qtgui)
+	$(add_qt_dep qtnetwork)
+	$(add_qt_dep qtwidgets)
+	$(add_qt_dep qtxml)
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kcmutils)
 	$(add_frameworks_dep kcodecs)
@@ -40,11 +47,6 @@ RDEPEND="
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep kxmlgui)
-	$(add_qt_dep qtdbus)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtnetwork)
-	$(add_qt_dep qtwidgets)
-	$(add_qt_dep qtxml)
 	media-libs/phonon[qt5(+)]
 	x11-libs/libX11
 	crypt? ( app-crypt/gpgme:= )
@@ -53,6 +55,11 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	$(add_qt_dep qtconcurrent)
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-xdg_mime_install_dir.patch"
+	"${FILESDIR}/${P}-libgit2-0.99-compat.patch" # bug #710832
+)
 
 src_prepare() {
 	kde5_src_prepare

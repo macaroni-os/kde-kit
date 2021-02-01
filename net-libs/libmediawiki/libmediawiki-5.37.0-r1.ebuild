@@ -1,8 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+KDE_TEST="true"
+FRAMEWORKS_MINIMAL=5.60.0
+QT_MINIMAL=5.12.3
 inherit kde5
 
 DESCRIPTION="C++ interface for MediaWiki based web service as wikipedia.org"
@@ -10,12 +12,12 @@ HOMEPAGE="https://www.digikam.org/"
 SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE=""
+SLOT="5"
+KEYWORDS="*"
 
 DEPEND="
-	$(add_frameworks_dep kcoreaddons)
 	$(add_qt_dep qtnetwork)
+	$(add_frameworks_dep kcoreaddons)
 "
 RDEPEND="${DEPEND}"
 

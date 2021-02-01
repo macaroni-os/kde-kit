@@ -1,32 +1,34 @@
-# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 KDE_QTHELP="true"
 KDE_TEST="true"
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3+ )
+FRAMEWORKS_MINIMAL=5.60.0
+QT_MINIMAL=5.12.3
 inherit kde5 python-any-r1
 
 DESCRIPTION="Database connectivity and creation framework for various vendors"
-[[ ${KDE_BUILD_TYPE} != live ]] && SRC_URI="mirror://kde/stable/${PN}/src/${P}.tar.xz"
+HOMEPAGE="https://community.kde.org/KDb"
+SRC_URI="mirror://kde/stable/${PN}/src/${P}.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="5/4"
-KEYWORDS="amd64 x86"
+KEYWORDS="*"
 IUSE="debug mysql postgres sqlite"
 
 BDEPEND="${PYTHON_DEPS}
-	dev-qt/linguist-tools:5
+	$(add_qt_dep linguist-tools)
 "
 DEPEND="
-	$(add_frameworks_dep kcoreaddons)
+	dev-libs/icu:=
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
-	dev-libs/icu:=
-	mysql? ( dev-db/mysql-connector-c:= )
+	$(add_frameworks_dep kcoreaddons)
+	mysql? ( virtual/libmysqlclient )
 	postgres? (
 		$(add_qt_dep qtnetwork)
 		dev-db/postgresql:*
@@ -34,6 +36,11 @@ DEPEND="
 	sqlite? ( dev-db/sqlite:3 )
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-cmake-pg12.patch
+	"${FILESDIR}"/${P}-build-w-pg12.patch
+)
 
 pkg_setup() {
 	python-any-r1_pkg_setup

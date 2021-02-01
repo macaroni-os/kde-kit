@@ -1,20 +1,27 @@
-# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 KDE_TEST="forceoptional"
+FRAMEWORKS_MINIMAL=5.60.0
+QT_MINIMAL=5.12.3
 inherit kde5
 
 DESCRIPTION="Tool visualising massif data"
-HOMEPAGE="https://www.linux-apps.com/content/show.php/Massif+Visualizer?content=122409"
+HOMEPAGE="https://apps.kde.org/en/massif-visualizer"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
-KEYWORDS="~amd64"
+SLOT="5"
+KEYWORDS="*"
 IUSE="+callgraph"
 
 RDEPEND="
+	dev-libs/kdiagram:5
+	$(add_qt_dep qtgui)
+	$(add_qt_dep qtprintsupport)
+	$(add_qt_dep qtsvg)
+	$(add_qt_dep qtwidgets)
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
@@ -25,11 +32,6 @@ RDEPEND="
 	$(add_frameworks_dep kparts)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtprintsupport)
-	$(add_qt_dep qtsvg)
-	$(add_qt_dep qtwidgets)
-	dev-libs/kdiagram:5
 	callgraph? ( media-gfx/kgraphviewer:5 )
 "
 DEPEND="${RDEPEND}

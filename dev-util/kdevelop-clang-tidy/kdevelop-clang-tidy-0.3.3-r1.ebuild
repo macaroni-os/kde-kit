@@ -1,4 +1,3 @@
-# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,14 +7,12 @@ KMNAME="kdev-clang-tidy"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
-if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="mirror://kde/stable/${KMNAME}/${PV}/src/${KMNAME}-${PV}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
-fi
-
 DESCRIPTION="KDevelop plugin for clang-tidy static analysis support"
 HOMEPAGE="https://www.kdevelop.org/"
+SRC_URI="mirror://kde/stable/${KMNAME}/${PV}/src/${KMNAME}-${PV}.tar.xz"
+
 LICENSE="GPL-2+"
+KEYWORDS="*"
 IUSE=""
 
 BDEPEND="

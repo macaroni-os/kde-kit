@@ -1,4 +1,3 @@
-# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +10,7 @@ HOMEPAGE="https://store.kde.org/p/998916/"
 SRC_URI="https://github.com/kotelnik/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_PN}-${PV}.tar.gz"
 
 LICENSE="GPL-2+"
-KEYWORDS="amd64"
+KEYWORDS="*"
 IUSE=""
 
 DEPEND="$(add_frameworks_dep plasma)"

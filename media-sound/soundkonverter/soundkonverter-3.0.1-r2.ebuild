@@ -1,8 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+FRAMEWORKS_MINIMAL=5.60.0
+QT_MINIMAL=5.12.3
 inherit kde5
 
 DESCRIPTION="Frontend to various audio converters"
@@ -10,13 +11,17 @@ HOMEPAGE="https://www.linux-apps.com/p/1126634/ https://github.com/dfaust/soundk
 SRC_URI="https://github.com/dfaust/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
-IUSE=""
+SLOT="5"
+KEYWORDS="*"
 
 BDEPEND="
 	sys-devel/gettext
 "
 DEPEND="
+	$(add_qt_dep qtgui)
+	$(add_qt_dep qtwidgets)
+	$(add_qt_dep qtxml)
+	$(add_kdeapps_dep libkcddb)
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
@@ -30,10 +35,6 @@ DEPEND="
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
 	$(add_frameworks_dep solid)
-	$(add_kdeapps_dep libkcddb)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtwidgets)
-	$(add_qt_dep qtxml)
 	media-libs/phonon[qt5(+)]
 	>=media-libs/taglib-1.10
 	media-sound/cdparanoia
@@ -43,7 +44,8 @@ RDEPEND="${DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.0.0-deps.patch"
+	"${FILESDIR}/${P}-deps.patch" # pending upstream
+	"${FILESDIR}/${P}-kf-5.72-findtaglib.patch" # pending upstream
 	"${FILESDIR}/${P}-fix-add-dirs.patch"
 	"${FILESDIR}/${P}-metainfodir.patch"
 )
