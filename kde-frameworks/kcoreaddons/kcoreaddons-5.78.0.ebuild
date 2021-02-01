@@ -14,7 +14,7 @@ BDEPEND="
 	nls? ( $(add_qt_dep linguist-tools) )
 "
 DEPEND="
-	$(add_qt_dep qtcorei icu)
+	$(add_qt_dep qtcore icu)
 	fam? ( virtual/fam )
 "
 RDEPEND="${DEPEND}"

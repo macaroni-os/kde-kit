@@ -14,7 +14,7 @@ DESCRIPTION="KDE Plasma workspace"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="*"
-IUSE="appstream +calendar +fontconfig geolocation gps qalculate screencast +semantic-desktop systemd telemetry"
+IUSE="appstream +calendar +fontconfig geolocation gps qalculate screencast +semantic-desktop telemetry"
 
 REQUIRED_USE="gps? ( geolocation )"
 
@@ -131,8 +131,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-apps/xprop
 	x11-apps/xrdb
 	x11-apps/xsetroot
-	systemd? ( sys-apps/dbus[user-session] )
-	!systemd? ( sys-apps/dbus )
+	sys-apps/dbus
 	!<kde-plasma/plasma-desktop-5.19.80:5
 "
 PDEPEND="

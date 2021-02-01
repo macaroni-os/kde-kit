@@ -19,10 +19,7 @@ DEPEND="
 	>=net-misc/networkmanager-1.4.0-r1[teamd=]
 "
 RDEPEND="${DEPEND}
-	|| (
-		>=net-misc/networkmanager-1.4.0-r1[elogind]
-		>=net-misc/networkmanager-1.4.0-r1[systemd]
-	)
+	>=net-misc/networkmanager-1.4.0-r1[elogind]
 "
 
 src_test() {
