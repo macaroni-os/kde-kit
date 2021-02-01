@@ -15,7 +15,7 @@ HOMEPAGE="https://apps.kde.org/en/ksystemlog"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="*"
-IUSE="kdesu systemd"
+IUSE="kdesu"
 
 DEPEND="
 	$(add_qt_dep qtgui)
@@ -33,7 +33,6 @@ DEPEND="
 	$(add_frameworks_dep ktextwidgets)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
-	systemd? ( sys-apps/systemd )
 "
 RDEPEND="${DEPEND}
 	kdesu? ( kde-plasma/kde-cli-tools[kdesu] )
@@ -45,13 +44,6 @@ src_prepare() {
 		sed -e "/^X-KDE-SubstituteUID/s:true:false:" \
 			-i src/org.kde.ksystemlog.desktop || die
 	fi
-}
-
-src_configure() {
-	local mycmakeargs=(
-		$(cmake-utils_use_find_package systemd Journald)
-	)
-	kde5_src_configure
 }
 
 pkg_postinst() {

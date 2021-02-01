@@ -13,9 +13,7 @@ SLOT="5"
 KEYWORDS="*"
 IUSE="bluetooth +browser-integration crypt +desktop-portal discover +display-manager
 +elogind grub gtk +handbook +kwallet +legacy-systray +networkmanager
-plymouth pulseaudio qrcode +sddm sdk +smart systemd thunderbolt +wallpapers"
-
-REQUIRED_USE="^^ ( elogind systemd )"
+plymouth pulseaudio qrcode +sddm sdk +smart thunderbolt +wallpapers"
 
 RDEPEND="
 	$(add_plasma_dep breeze)
@@ -46,9 +44,9 @@ RDEPEND="
 	$(add_plasma_dep polkit-kde-agent)
 	$(add_plasma_dep powerdevil)
 	$(add_plasma_dep systemsettings)
-	sys-apps/dbus[elogind?,systemd?]
-	sys-auth/polkit[elogind?,systemd?]
-	sys-fs/udisks:2[elogind?,systemd?]
+	sys-apps/dbus[elogind?]
+	sys-auth/polkit[elogind?]
+	sys-fs/udisks:2[elogind?]
 	bluetooth? ( $(add_plasma_dep bluedevil) )
 	browser-integration? ( $(add_plasma_dep plasma-browser-integration) )
 	crypt? ( $(add_plasma_dep plasma-vault) )
@@ -57,7 +55,7 @@ RDEPEND="
 	display-manager? (
 		sddm? (
 			$(add_plasma_dep sddm-kcm)
-			x11-misc/sddm[elogind?,systemd?]
+			x11-misc/sddm
 		)
 		!sddm? ( x11-misc/lightdm )
 	)
@@ -72,7 +70,7 @@ RDEPEND="
 	legacy-systray? ( $(add_plasma_dep xembed-sni-proxy) )
 	networkmanager? (
 		$(add_plasma_dep plasma-nm)
-		net-misc/networkmanager[elogind?,systemd?]
+		net-misc/networkmanager[elogind?]
 		qrcode? ( kde-frameworks/prison[qml] )
 	)
 	plymouth? (
@@ -88,8 +86,9 @@ RDEPEND="
 
 pkg_postinst() {
 	has_version sys-auth/consolekit || return
+	use elogind || return
 	ewarn "An existing installation of sys-auth/consolekit was detected even though"
-	ewarn "${PN} was configured with USE $(usex elogind elogind systemd)."
+	ewarn "${PN} was configured with USE elogind."
 	ewarn "There can only be one session manager at runtime, otherwise random issues"
 	ewarn "may occur. Please make sure USE consolekit is nowhere enabled in make.conf"
 	ewarn "or package.use and remove sys-auth/consolekit before raising bugs."
