@@ -12,7 +12,7 @@ LICENSE="metapackage"
 SLOT="5"
 KEYWORDS="*"
 IUSE="bluetooth +browser-integration crypt +desktop-portal discover +display-manager
-+elogind grub gtk +handbook +kwallet +legacy-systray +networkmanager
+elogind grub gtk +handbook +kwallet +legacy-systray +networkmanager
 plymouth pulseaudio qrcode +sddm sdk +smart thunderbolt +wallpapers"
 
 RDEPEND="
@@ -55,7 +55,7 @@ RDEPEND="
 	display-manager? (
 		sddm? (
 			$(add_plasma_dep sddm-kcm)
-			x11-misc/sddm
+			x11-misc/sddm[elogind?]
 		)
 		!sddm? ( x11-misc/lightdm )
 	)
