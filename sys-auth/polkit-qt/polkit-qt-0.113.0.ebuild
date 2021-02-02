@@ -2,12 +2,12 @@
 
 EAPI=7
 
-KDE_ORG_NAME="polkit-qt-1"
+KMNAME="polkit-qt-1"
 inherit kde5
 
 DESCRIPTION="Qt wrapper around polkit-1 client libraries"
 HOMEPAGE="https://api.kde.org/kdesupport-api/polkit-qt-1-apidocs/"
-SRC_URI="mirror://kde/stable/${KDE_ORG_NAME}/${KDE_ORG_NAME}-${PV}.tar.xz"
+SRC_URI="mirror://kde/stable/${KMNAME}/${KMNAME}-${PV}.tar.xz"
 
 LICENSE="LGPL-2"
 SLOT="0"
@@ -26,12 +26,12 @@ DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS README README.porting TODO )
 
-S="${WORKDIR}/${KDE_ORG_NAME}-${PV}"
+S="${WORKDIR}/${KMNAME}-${PV}"
 
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_EXAMPLES=OFF
 	)
 
-	cmake_src_configure
+	kde5_src_configure
 }
