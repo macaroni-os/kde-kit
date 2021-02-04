@@ -13,3 +13,8 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="*"
+
+BDEPEND="$(add_frameworks_dep extra-cmake-modules)"
+RDEPEND=">=kde-frameworks/kf-env-4"
+DEPEND="$(add_qt_dep qtcore)"
+
