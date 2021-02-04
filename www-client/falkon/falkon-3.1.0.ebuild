@@ -15,7 +15,6 @@ SLOT="0"
 KEYWORDS="*"
 IUSE="dbus kde libressl +X"
 
-# drop qtwebengine subslot operator when QT_MINIMAL >= 5.12.0
 COMMON_DEPEND="
 	$(add_qt_dep qtdeclarative 'widgets')
 	$(add_qt_dep qtgui)
@@ -23,7 +22,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtprintsupport)
 	$(add_qt_dep qtsql 'sqlite')
 	$(add_qt_dep qtwebchannel)
-	$(add_qt_dep qtwebengine 'widgets' '' '5=')
+	$(add_qt_dep qtwebengine 'widgets')
 	$(add_qt_dep qtwidgets)
 	$(add_frameworks_dep karchive)
 	virtual/libintl
@@ -56,6 +55,8 @@ RDEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}/${P}-use-cmake-find-intl.patch"
 	"${FILESDIR}/${P}-fix-warn-registering-schemes.patch"
+	"${FILESDIR}/${P}-qt-5.14.patch"
+	"${FILESDIR}/${P}-qt-5.15.patch"
 )
 
 # bug 653046
@@ -63,6 +64,7 @@ RESTRICT+=" test"
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_KEYRING=OFF
 		-DCMAKE_DISABLE_FIND_PACKAGE_PySide2=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_Shiboken2=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_PythonLibs=ON

@@ -63,6 +63,8 @@ RDEPEND="${DEPEND}
 
 RESTRICT+=" test"
 
+S="${WORKDIR}/${PN}-kde-${PV}"
+
 src_configure() {
 	local mycmakeargs=(
 		-DBLUETOOTH_ENABLED=$(usex bluetooth)

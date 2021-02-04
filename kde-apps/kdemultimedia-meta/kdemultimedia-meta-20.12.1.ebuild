@@ -2,11 +2,8 @@
 
 EAPI=7
 
-inherit kde5
-
 DESCRIPTION="kdemultimedia - merge this to pull in all kdemultimedia-derived packages"
 HOMEPAGE="https://apps.kde.org/multimedia https://multimedia.kde.org/"
-SRC_URI=""
 
 LICENSE="metapackage"
 SLOT="5"
@@ -14,18 +11,18 @@ KEYWORDS="*"
 IUSE="+cdrom +ffmpeg gstreamer"
 
 RDEPEND="
-	$(add_kdeapps_dep dragon)
-	$(add_kdeapps_dep juk)
-	$(add_kdeapps_dep kdenlive)
-	$(add_kdeapps_dep kmix)
-	$(add_kdeapps_dep kwave)
+	>=kde-apps/dragon-${PV}:${SLOT}
+	>=kde-apps/juk-${PV}:${SLOT}
+	>=kde-apps/kdenlive-${PV}:${SLOT}
+	>=kde-apps/kmix-${PV}:${SLOT}
+	>=kde-apps/kwave-${PV}:${SLOT}
 	>=media-sound/elisa-${PV}:${SLOT}
 	cdrom? (
-		$(add_kdeapps_dep audiocd-kio)
-		$(add_kdeapps_dep k3b)
-		$(add_kdeapps_dep libkcddb)
-		$(add_kdeapps_dep libkcompactdisc)
+		>=kde-apps/audiocd-kio-${PV}:${SLOT}
+		>=kde-apps/k3b-${PV}:${SLOT}
+		>=kde-apps/libkcddb-${PV}:${SLOT}
+		>=kde-apps/libkcompactdisc-${PV}:${SLOT}
 	)
-	ffmpeg? ( $(add_kdeapps_dep ffmpegthumbs) )
-	gstreamer? ( $(add_kdeapps_dep kamoso) )
+	ffmpeg? ( >=kde-apps/ffmpegthumbs-${PV}:${SLOT} )
+	gstreamer? ( >=kde-apps/kamoso-${PV}:${SLOT} )
 "
