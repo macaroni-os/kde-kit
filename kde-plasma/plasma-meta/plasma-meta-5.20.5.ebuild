@@ -2,11 +2,8 @@
 
 EAPI=7
 
-inherit kde5
-
 DESCRIPTION="Merge this to pull in all Plasma 5 packages"
 HOMEPAGE="https://kde.org/plasma-desktop"
-SRC_URI=""
 
 LICENSE="metapackage"
 SLOT="5"
@@ -16,72 +13,72 @@ elogind grub gtk +handbook +kwallet +legacy-systray +networkmanager
 plymouth pulseaudio qrcode +sddm sdk +smart thunderbolt +wallpapers"
 
 RDEPEND="
-	$(add_plasma_dep breeze)
-	$(add_plasma_dep drkonqi)
-	$(add_plasma_dep kactivitymanagerd)
-	$(add_plasma_dep kde-cli-tools)
-	$(add_plasma_dep kdecoration)
-	$(add_plasma_dep kdeplasma-addons)
-	$(add_plasma_dep kgamma)
-	$(add_plasma_dep khotkeys)
-	$(add_plasma_dep kinfocenter)
-	$(add_plasma_dep kmenuedit)
-	$(add_plasma_dep kscreen)
-	$(add_plasma_dep kscreenlocker)
-	$(add_plasma_dep ksshaskpass)
-	$(add_plasma_dep ksysguard)
-	$(add_plasma_dep kwayland-integration)
-	$(add_plasma_dep kwayland-server)
-	$(add_plasma_dep kwin)
-	$(add_plasma_dep kwrited)
-	$(add_plasma_dep libkscreen)
-	$(add_plasma_dep libksysguard)
-	$(add_plasma_dep milou)
-	$(add_plasma_dep oxygen)
-	$(add_plasma_dep plasma-desktop)
-	$(add_plasma_dep plasma-integration)
-	$(add_plasma_dep plasma-workspace)
-	$(add_plasma_dep polkit-kde-agent)
-	$(add_plasma_dep powerdevil)
-	$(add_plasma_dep systemsettings)
+	>=kde-plasma/breeze-${PV}:${SLOT}
+	>=kde-plasma/drkonqi-${PV}:${SLOT}
+	>=kde-plasma/kactivitymanagerd-${PV}:${SLOT}
+	>=kde-plasma/kde-cli-tools-${PV}:${SLOT}
+	>=kde-plasma/kdecoration-${PV}:${SLOT}
+	>=kde-plasma/kdeplasma-addons-${PV}:${SLOT}
+	>=kde-plasma/kgamma-${PV}:${SLOT}
+	>=kde-plasma/khotkeys-${PV}:${SLOT}
+	>=kde-plasma/kinfocenter-${PV}:${SLOT}
+	>=kde-plasma/kmenuedit-${PV}:${SLOT}
+	>=kde-plasma/kscreen-${PV}:${SLOT}
+	>=kde-plasma/kscreenlocker-${PV}:${SLOT}
+	>=kde-plasma/ksshaskpass-${PV}:${SLOT}
+	>=kde-plasma/ksysguard-${PV}:${SLOT}
+	>=kde-plasma/kwayland-integration-${PV}:${SLOT}
+	>=kde-plasma/kwayland-server-${PV}:${SLOT}
+	>=kde-plasma/kwin-${PV}:${SLOT}
+	>=kde-plasma/kwrited-${PV}:${SLOT}
+	>=kde-plasma/libkscreen-${PV}:${SLOT}
+	>=kde-plasma/libksysguard-${PV}:${SLOT}
+	>=kde-plasma/milou-${PV}:${SLOT}
+	>=kde-plasma/oxygen-${PV}:${SLOT}
+	>=kde-plasma/plasma-desktop-${PV}:${SLOT}
+	>=kde-plasma/plasma-integration-${PV}:${SLOT}
+	>=kde-plasma/plasma-workspace-${PV}:${SLOT}
+	>=kde-plasma/polkit-kde-agent-${PV}:${SLOT}
+	>=kde-plasma/powerdevil-${PV}:${SLOT}
+	>=kde-plasma/systemsettings-${PV}:${SLOT}
 	sys-apps/dbus[elogind?]
 	sys-auth/polkit[elogind?]
 	sys-fs/udisks:2[elogind?]
-	bluetooth? ( $(add_plasma_dep bluedevil) )
-	browser-integration? ( $(add_plasma_dep plasma-browser-integration) )
-	crypt? ( $(add_plasma_dep plasma-vault) )
-	desktop-portal? ( $(add_plasma_dep xdg-desktop-portal-kde) )
-	discover? ( $(add_plasma_dep discover) )
+	bluetooth? ( >=kde-plasma/bluedevil-${PV}:${SLOT} )
+	browser-integration? ( >=kde-plasma/plasma-browser-integration-${PV}:${SLOT} )
+	crypt? ( >=kde-plasma/plasma-vault-${PV}:${SLOT} )
+	desktop-portal? ( >=kde-plasma/xdg-desktop-portal-kde-${PV}:${SLOT} )
+	discover? ( >=kde-plasma/discover-${PV}:${SLOT} )
 	display-manager? (
 		sddm? (
-			$(add_plasma_dep sddm-kcm)
+			>=kde-plasma/sddm-kcm-${PV}:${SLOT}
 			x11-misc/sddm[elogind?]
 		)
 		!sddm? ( x11-misc/lightdm )
 	)
-	grub? ( $(add_plasma_dep breeze-grub) )
+	grub? ( >=kde-plasma/breeze-grub-${PV}:${SLOT} )
 	gtk? (
-		$(add_plasma_dep breeze-gtk)
-		$(add_plasma_dep kde-gtk-config)
+		>=kde-plasma/breeze-gtk-${PV}:${SLOT}
+		>=kde-plasma/kde-gtk-config-${PV}:${SLOT}
 		x11-misc/appmenu-gtk-module
 	)
 	handbook? ( kde-apps/khelpcenter:5 )
-	kwallet? ( $(add_plasma_dep kwallet-pam) )
-	legacy-systray? ( $(add_plasma_dep xembed-sni-proxy) )
+	kwallet? ( >=kde-plasma/kwallet-pam-${PV}:${SLOT} )
+	legacy-systray? ( >=kde-plasma/xembed-sni-proxy-${PV}:${SLOT} )
 	networkmanager? (
-		$(add_plasma_dep plasma-nm)
+		>=kde-plasma/plasma-nm-${PV}:${SLOT}
 		net-misc/networkmanager[elogind?]
 		qrcode? ( kde-frameworks/prison[qml] )
 	)
 	plymouth? (
-		$(add_plasma_dep breeze-plymouth)
-		$(add_plasma_dep plymouth-kcm)
+		>=kde-plasma/breeze-plymouth-${PV}:${SLOT}
+		>=kde-plasma/plymouth-kcm-${PV}:${SLOT}
 	)
-	pulseaudio? ( $(add_plasma_dep plasma-pa) )
-	sdk? ( $(add_plasma_dep plasma-sdk) )
-	smart? ( $(add_plasma_dep plasma-disks) )
-	thunderbolt? ( $(add_plasma_dep plasma-thunderbolt) )
-	wallpapers? ( $(add_plasma_dep plasma-workspace-wallpapers) )
+	pulseaudio? ( >=kde-plasma/plasma-pa-${PV}:${SLOT} )
+	sdk? ( >=kde-plasma/plasma-sdk-${PV}:${SLOT} )
+	smart? ( >=kde-plasma/plasma-disks-${PV}:${SLOT} )
+	thunderbolt? ( >=kde-plasma/plasma-thunderbolt-${PV}:${SLOT} )
+	wallpapers? ( >=kde-plasma/plasma-workspace-wallpapers-${PV}:${SLOT} )
 "
 
 pkg_postinst() {

@@ -2,11 +2,8 @@
 
 EAPI=7
 
-inherit kde5
-
 DESCRIPTION="kdeutils - merge this to pull in all kdeutils-derived packages"
 HOMEPAGE="https://apps.kde.org/utilities https://utils.kde.org"
-SRC_URI=""
 
 LICENSE="metapackage"
 SLOT="5"
@@ -15,26 +12,26 @@ IUSE="7zip cups floppy gpg lrz rar +webengine"
 
 RDEPEND="
 	>=app-cdr/dolphin-plugins-mountiso-${PV}:${SLOT}
-	$(add_kdeapps_dep ark)
-	$(add_kdeapps_dep filelight)
-	$(add_kdeapps_dep kate)
-	$(add_kdeapps_dep kbackup)
-	$(add_kdeapps_dep kcalc)
-	$(add_kdeapps_dep kcharselect)
-	$(add_kdeapps_dep kdebugsettings)
-	$(add_kdeapps_dep kdf)
-	$(add_kdeapps_dep kteatime)
-	$(add_kdeapps_dep ktimer)
-	$(add_kdeapps_dep kwalletmanager)
-	$(add_kdeapps_dep sweeper)
-	$(add_kdeapps_dep yakuake)
+	>=kde-apps/ark-${PV}:${SLOT}
+	>=kde-apps/filelight-${PV}:${SLOT}
+	>=kde-apps/kate-${PV}:${SLOT}
+	>=kde-apps/kbackup-${PV}:${SLOT}
+	>=kde-apps/kcalc-${PV}:${SLOT}
+	>=kde-apps/kcharselect-${PV}:${SLOT}
+	>=kde-apps/kdebugsettings-${PV}:${SLOT}
+	>=kde-apps/kdf-${PV}:${SLOT}
+	>=kde-apps/kteatime-${PV}:${SLOT}
+	>=kde-apps/ktimer-${PV}:${SLOT}
+	>=kde-apps/kwalletmanager-${PV}:${SLOT}
+	>=kde-apps/sweeper-${PV}:${SLOT}
+	>=kde-apps/yakuake-${PV}:${SLOT}
 	>=kde-misc/markdownpart-${PV}:${SLOT}
 	>=sys-block/partitionmanager-${PV}:${SLOT}
 	>=sys-libs/kpmcore-${PV}:${SLOT}
-	cups? ( $(add_kdeapps_dep print-manager) )
-	floppy? ( $(add_kdeapps_dep kfloppy) )
-	gpg? ( $(add_kdeapps_dep kgpg) )
-	webengine? ( $(add_kdeapps_dep kimagemapeditor) )
+	cups? ( >=kde-apps/print-manager-${PV}:${SLOT} )
+	floppy? ( >=kde-apps/kfloppy-${PV}:${SLOT} )
+	gpg? ( >=kde-apps/kgpg-${PV}:${SLOT} )
+	webengine? ( >=kde-apps/kimagemapeditor-${PV}:${SLOT} )
 "
 # Optional runtime deps: kde-apps/ark
 RDEPEND="${RDEPEND}
