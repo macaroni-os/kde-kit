@@ -2,7 +2,7 @@
 
 EAPI=7
 
-KDE_HANDBOOK="forceoptional" # not optional until !kdelibs4support
+KDE_HANDBOOK="optional"
 inherit kde5
 
 DESCRIPTION="Locate KIO slave"
@@ -15,8 +15,8 @@ KEYWORDS="*"
 IUSE="debug"
 
 PATCHES=(
-	"${FILESDIR}/${P}-gcc-4.7.patch"
-	"${FILESDIR}/${P}-kf5port.patch"
+	"${FILESDIR}/${PN}-0.5.3-gcc-4.7.patch"
+	"${FILESDIR}/${PN}-0.6.0-kf5port.patch"
 )
 
 DEPEND="
@@ -26,7 +26,6 @@ DEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep kdelibs4support)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kiconthemes)
 	$(add_frameworks_dep kio)
