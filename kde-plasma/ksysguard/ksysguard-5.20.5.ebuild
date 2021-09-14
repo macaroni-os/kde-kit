@@ -36,7 +36,7 @@ DEPEND="
 	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep kxmlgui)
 	$(add_plasma_dep libksysguard)
-	lm-sensors? ( sys-apps/lm_sensors:= )
+	lm-sensors? ( sys-apps/lm-sensors:= )
 	network? (
 		dev-libs/libnl:3
 		net-libs/libpcap
