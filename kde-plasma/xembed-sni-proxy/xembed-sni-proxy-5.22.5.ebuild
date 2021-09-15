@@ -31,6 +31,8 @@ RDEPEND="${DEPEND}
 
 S="${S}/${PN}"
 
+PATCHES=( "${FILESDIR}/${PN}-5.20.80-standalone.patch" )
+
 src_prepare() {
 	kde5_src_prepare
 
