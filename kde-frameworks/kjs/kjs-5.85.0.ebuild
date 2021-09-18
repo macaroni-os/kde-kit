@@ -20,3 +20,11 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 DOCS=( src/README )
+
+src_configure() {
+	# FL-8765: KJS fails with -ffast-math, so we'll disable it explicitly.
+	append-flags "-fno-fast-math"
+
+	kde5_src_configure
+}
+
