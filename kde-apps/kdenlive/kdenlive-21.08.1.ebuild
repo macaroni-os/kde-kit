@@ -14,7 +14,7 @@ HOMEPAGE="https://kdenlive.org/en/"
 LICENSE="GPL-2"
 SLOT="5"
 KEYWORDS="*"
-IUSE="gles2-only semantic-desktop share v4l webengine"
+IUSE="gles2-only semantic-desktop share v4l"
 
 BDEPEND="
 	sys-devel/gettext
@@ -58,7 +58,6 @@ DEPEND="
 	semantic-desktop? ( $(add_frameworks_dep kfilemetadata) )
 	share? ( $(add_frameworks_dep purpose) )
 	v4l? ( media-libs/libv4l )
-	#webengine? ( $(add_qt_dep qtwebengine) )
 "
 RDEPEND="${DEPEND}
 	$(add_qt_dep qtquickcontrols)
@@ -72,7 +71,6 @@ src_configure() {
 		$(cmake-utils_use_find_package semantic-desktop KF5FileMetaData)
 		$(cmake-utils_use_find_package share KF5Purpose)
 		$(cmake-utils_use_find_package v4l LibV4L2)
-		#$(cmake-utils_use_find_package webengine Qt5WebEngineWidgets)
 	)
 
 	kde5_src_configure
