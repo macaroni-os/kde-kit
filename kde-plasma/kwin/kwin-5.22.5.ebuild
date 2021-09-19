@@ -106,6 +106,7 @@ src_prepare() {
 }
 
 src_configure() {
+	addpredict /dev
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package accessibility QAccessibilityClient)
 		$(cmake-utils_use_find_package caps Libcap)
