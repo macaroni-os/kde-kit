@@ -10,7 +10,8 @@ inherit kde5
 
 DESCRIPTION="Simple image scanning application based on libksane and KDE Frameworks"
 HOMEPAGE="https://apps.kde.org/en/skanlite"
-
+SRC_URI="https://invent.kde.org/graphics/skanlite/-/archive/v21.08.1/skanlite-v21.08.1.tar.gz"
+S=$WORKDIR/${PN}-v${PV}
 LICENSE="|| ( GPL-2 GPL-3 ) handbook? ( FDL-1.2+ )"
 SLOT="5"
 KEYWORDS="*"
