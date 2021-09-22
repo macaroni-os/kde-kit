@@ -27,6 +27,7 @@ DEPEND="
 	$(add_qt_dep qtgui gles2-only=)
 	$(add_qt_dep qtmultimedia)
 	$(add_qt_dep qtnetwork)
+	$(add_qt_dep qtnetworkauth)
 	$(add_qt_dep qtquickcontrols2)
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
@@ -54,7 +55,7 @@ DEPEND="
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
 	$(add_frameworks_dep solid)
-	>=media-libs/mlt-6.20.0[ffmpeg,frei0r,kdenlive(+),melt(+),qt5,sdl,xml]
+	media-libs/mlt[ffmpeg,frei0r,kdenlive(+),melt(+),qt5,sdl,xml]
 	semantic-desktop? ( $(add_frameworks_dep kfilemetadata) )
 	share? ( $(add_frameworks_dep purpose) )
 	v4l? ( media-libs/libv4l )
