@@ -27,7 +27,7 @@ DEPEND="
 	net-libs/libpcap
 	sys-libs/libcap
 	virtual/libudev:=
-	lm-sensors? ( sys-apps/lm-sensors:= )
+	lm-sensors? ( sys-apps/lm_sensors:= )
 	networkmanager? ( $(add_frameworks_dep networkmanager-qt) )
 "
 RDEPEND="${DEPEND}
