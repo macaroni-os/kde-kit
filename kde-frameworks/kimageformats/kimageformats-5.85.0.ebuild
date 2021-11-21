@@ -18,7 +18,7 @@ DEPEND="
 	avif? ( >=media-libs/libavif-0.8.2 )
 	eps? ( $(add_qt_dep qtprintsupport) )
 	openexr? (
-		media-libs/ilmbase:=
+		media-libs/imath:=
 		media-libs/openexr:=
 	)
 "
