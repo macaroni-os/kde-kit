@@ -36,4 +36,5 @@ RDEPEND="${DEPEND}
 	$(add_frameworks_dep kirigami)
 	$(add_frameworks_dep kitemmodels qml)
 	$(add_frameworks_dep kquickcharts)
+	$(add_plasma_dep ksystemstats)
 "
