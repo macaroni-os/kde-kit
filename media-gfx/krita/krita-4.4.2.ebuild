@@ -68,7 +68,10 @@ RDEPEND="${PYTHON_DEPS}
 	jpeg? ( virtual/jpeg:0 )
 	heif? ( media-libs/libheif:= )
 	openexr? (
-		media-libs/ilmbase:=
+		|| (
+			media-libs/ilmbase:=
+			media-libs/imath:=
+		)
 		media-libs/openexr
 	)
 	pdf? ( app-text/poppler[qt5] )
