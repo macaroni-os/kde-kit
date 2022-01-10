@@ -38,6 +38,7 @@ RDEPEND="${PYTHON_DEPS}
 	$(add_qt_dep qtgui)=[-gles2-only]
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtprintsupport)
+	$(add_qt_dep qtsql)
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtx11extras)
