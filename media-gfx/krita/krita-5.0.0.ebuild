@@ -70,7 +70,7 @@ RDEPEND="${PYTHON_DEPS}
 	openexr? (
 		|| (
 			media-libs/ilmbase:=
-			media-libs/imath:=
+			dev-libs/imath:=
 		)
 		media-libs/openexr
 	)
@@ -88,7 +88,6 @@ RESTRICT+=" test"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.3.1-tests-optional.patch
-	"${WORKDIR}"/${PN}-4.2.9-patchset/${PN}-4.2.9-ecm-findopenexr.patch
 )
 
 pkg_setup() {
