@@ -1,74 +1,63 @@
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
-KDE_HANDBOOK="forceoptional"
-KDE_TEST="forceoptional"
-inherit kde5
+KDE_LINGUAS="ast bs ca ca@valencia cs da de el en_GB es et fa fi fr ga gl
+hu ia ja kk lt mr nds nl pl pt pt_BR sk sl sv tr ug uk zh_CN zh_TW"
+SQL_REQUIRED="always"
+inherit kde4-base
 
 DESCRIPTION="Open-source speech recognition program for replacing mouse and keyboard"
-HOMEPAGE="https://simon-listens.org/"
-SRC_URI="mirror://kde/unstable/${PN}/${PV}/${P}.tar.xz"
+HOMEPAGE="http://simon-listens.org/"
+SRC_URI="mirror://kde/unstable/simon/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="*"
-IUSE="libsamplerate opencv pim sphinx"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+IUSE="libsamplerate opencv sphinx"
 
-DEPEND="
-	$(add_frameworks_dep karchive)
-	$(add_frameworks_dep kcmutils)
-	$(add_frameworks_dep kcompletion)
-	$(add_frameworks_dep kconfig)
-	$(add_frameworks_dep kconfigwidgets)
-	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep kcrash)
-	$(add_frameworks_dep kdbusaddons)
-	$(add_frameworks_dep kdelibs4support)
-	$(add_frameworks_dep kguiaddons)
-	$(add_frameworks_dep khtml)
-	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep kiconthemes)
-	$(add_frameworks_dep kio)
-	$(add_frameworks_dep kparts)
-	$(add_frameworks_dep ktexteditor)
-	$(add_frameworks_dep kwidgetsaddons)
-	$(add_frameworks_dep kxmlgui)
-	$(add_kdeapps_dep okular)
-	$(add_qt_dep qtconcurrent)
-	$(add_qt_dep qtdbus)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtnetwork)
-	$(add_qt_dep qtsql)
-	$(add_qt_dep qtwidgets)
-	$(add_qt_dep qtxml)
-	$(add_qt_dep qtx11extras)
+RDEPEND="
 	media-libs/alsa-lib
-	media-libs/libqaccessibilityclient:5
 	x11-libs/libX11
 	x11-libs/libXtst
-	x11-libs/qwt:6=
+	x11-libs/qwt:6[qt4(+)]
+	libsamplerate? ( media-libs/libsamplerate )
+	opencv? ( media-libs/opencv )
+	sphinx? (
+		>=app-accessibility/pocketsphinx-0.8
+		>=app-accessibility/sphinxbase-0.8
+		>=app-accessibility/SphinxTrain-1
+	)
+	!sphinx? ( app-accessibility/julius )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	sys-devel/bison
+	sys-devel/flex
+	virtual/pkgconfig
+"
+
+PATCHES=( "${FILESDIR}"/${PN}-0.4.1-libdir.patch )
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package pim KF5CalendarCore)
-		$(cmake-utils_use_find_package pim KF5Akonadi)
+		-DSIMON_LIB_INSTALL_DIR=/usr/$(get_libdir)
+		-DWITH_KdepimLibs=OFF
+		-DUSE_PLASMA=OFF
 		-DWITH_LibSampleRate=$(usex libsamplerate)
 		-DWITH_OpenCV=$(usex opencv)
 		-DBackendType=$(usex sphinx "both" "jhtk")
 		$(cmake-utils_use_find_package sphinx Sphinxbase)
 		$(cmake-utils_use_find_package sphinx Pocketsphinx)
-		-DQWT_INCLUDE_DIR=/usr/include/qwt6
-		-DQWT_LIBRARY=/usr/$(get_libdir)/libqwt6-qt5.so
 	)
 
-	kde5_src_configure
+	kde4-base_src_configure
 }
 
 pkg_postinst() {
-	kde5_pkg_postinst
+	kde4-base_pkg_postinst
 
-	elog "Optional dependency:"
+	elog "Optional dependencies:"
+	elog "  kde-apps/jovie (support for Jovie TTS system)"
 	use sphinx && elog "  app-accessibility/julius (alternative backend)"
 }

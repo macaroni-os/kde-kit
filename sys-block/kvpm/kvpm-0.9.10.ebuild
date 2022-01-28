@@ -1,3 +1,4 @@
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,12 +8,12 @@ KDE_HANDBOOK="forceoptional"
 inherit kde5
 
 DESCRIPTION="KDE frontend for Linux LVM2 and GNU parted"
-HOMEPAGE="https://sourceforge.net/projects/kvpm/"
+HOMEPAGE="http://kvpm.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="5"
-KEYWORDS="*"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
