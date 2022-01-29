@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-KDE_GCC_MINIMAL="5.1"
+FRAMEWORKS_MINIMAL=5.60.0
+QT_MINIMAL=5.12.3
 inherit kde5
 
 DESCRIPTION="Folder synchronization and backup tool based on KDE Frameworks"
@@ -11,9 +11,16 @@ HOMEPAGE="https://www.linux-apps.com/p/1127677/"
 SRC_URI="https://dl.opendesktop.org/api/files/download/id/1485353737/${P}.tar.xz"
 
 LICENSE="GPL-3"
-KEYWORDS="amd64 ~arm x86"
+SLOT="5"
+KEYWORDS="*"
 
-RDEPEND="
+BDEPEND="
+	sys-devel/gettext
+"
+DEPEND="
+	$(add_qt_dep qtconcurrent)
+	$(add_qt_dep qtgui)
+	$(add_qt_dep qtwidgets)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
@@ -24,10 +31,5 @@ RDEPEND="
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep kxmlgui)
-	$(add_qt_dep qtconcurrent)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtwidgets)
 "
-DEPEND="${RDEPEND}
-	sys-devel/gettext
-"
+RDEPEND="${DEPEND}"
