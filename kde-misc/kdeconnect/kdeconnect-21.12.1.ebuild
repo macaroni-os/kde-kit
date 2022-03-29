@@ -25,6 +25,7 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtmultimedia)
 	$(add_qt_dep qtnetwork)
+	$(add_qt_dep qtwayland)
 	$(add_qt_dep qtwidgets)
 	$(add_frameworks_dep kcmutils)
 	$(add_frameworks_dep kconfig)
@@ -41,6 +42,7 @@ DEPEND="
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep plasma)
 	$(add_frameworks_dep solid)
+	$(add_frameworks_dep qqc2-desktop-style)
 	bluetooth? ( $(add_qt_dep qtbluetooth) )
 	X? (
 		$(add_qt_dep qtx11extras)
