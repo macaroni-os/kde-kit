@@ -39,7 +39,9 @@ DEPEND="
 	$(add_frameworks_dep kpeople)
 	$(add_frameworks_dep kservice)
 	$(add_frameworks_dep kwidgetsaddons)
+	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep plasma)
+	$(add_frameworks_dep qqc2-desktop-style)
 	$(add_frameworks_dep solid)
 	bluetooth? ( $(add_qt_dep qtbluetooth) )
 	X? (
@@ -49,7 +51,11 @@ DEPEND="
 		x11-libs/libXtst
 	)
 	pulseaudio? ( media-libs/pulseaudio-qt )
-	wayland? ( $(add_frameworks_dep kwayland) )
+	wayland? (
+		>=dev-libs/wayland-1.15.0
+		$(add_qt_dep qtwayland)
+		$(add_frameworks_dep kwayland)
+	)
 "
 RDEPEND="${DEPEND}
 	dev-libs/kpeoplevcard
