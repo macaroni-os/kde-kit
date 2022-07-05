@@ -1,7 +1,7 @@
 Licensing
 =========
 
-This file documents the licensing information for kde-kit 5.23-testing.
+This file documents the licensing information for kde-kit next-5.24-release.
 
 The contents of this kit are free software; you can redistribute and/or modify
 it under the the terms of GNU General Public License version 2 as published by
