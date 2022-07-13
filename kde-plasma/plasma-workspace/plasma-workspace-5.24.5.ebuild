@@ -127,6 +127,7 @@ RDEPEND="${COMMON_DEPEND}
 	$(add_qt_dep qtquickcontrols widgets)
 	$(add_qt_dep qtquickcontrols2)
 	kde-apps/kio-extras:5
+	$(add_frameworks_dep kdesu)
 	$(add_frameworks_dep kirigami)
 	$(add_frameworks_dep kquickcharts)
 	$(add_plasma_dep milou)
