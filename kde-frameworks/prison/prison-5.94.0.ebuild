@@ -23,6 +23,8 @@ DEPEND="${RDEPEND}
 	test? ( $(add_qt_dep qtwidgets) )
 "
 
+PATCHES=( "${FILESDIR}/${P}-zxing-cpp-1.4.0.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package qml Qt5Quick)
