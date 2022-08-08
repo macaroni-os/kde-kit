@@ -26,7 +26,6 @@ DEPEND="
 	$(add_kdeapps_dep akonadi-contacts)
 	$(add_kdeapps_dep akonadi-mime)
 	$(add_kdeapps_dep grantleetheme)
-	$(add_kdeapps_dep kalarmcal)
 	$(add_kdeapps_dep kcalutils)
 	$(add_kdeapps_dep kidentitymanagement)
 	$(add_kdeapps_dep kmailtransport)

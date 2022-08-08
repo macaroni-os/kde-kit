@@ -38,7 +38,6 @@ RDEPEND="
 	$(add_kdeapps_dep akonadi-mime)
 	$(add_kdeapps_dep akonadi-notes)
 	$(add_kdeapps_dep grantleetheme)
-	$(add_kdeapps_dep kalarmcal)
 	$(add_kdeapps_dep kcalutils)
 	$(add_kdeapps_dep kidentitymanagement)
 	$(add_kdeapps_dep kimap)
