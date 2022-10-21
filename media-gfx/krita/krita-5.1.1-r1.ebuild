@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3+ )
 KFMIN=5.82.0
 QTMIN=5.15.2
 VIRTUALX_REQUIRED="test"
-inherit cmake python-single-r1
+inherit cmake python-single-r1 xdg-utils
 
 SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 KEYWORDS="*"
@@ -84,10 +84,17 @@ BDEPEND="
 	sys-devel/gettext
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-4.3.1-tests-optional.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.3.1-tests-optional.patch
+	"${FILESDIR}"/${P}-add_missing_header_qbuffer.patch
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
+}
+
+src_prepare() {
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -114,12 +121,22 @@ src_configure() {
 		$(cmake_use_find_package qtmedia Qt5Multimedia)
 		$(cmake_use_find_package raw LibRaw)
 	)
+# WebP support can only be enabled after media-libs/libwebp 
+# is upgraded to >=1.2.0.
+#
 #		$(cmake_use_find_package webp WebP)
-
-	# allow the ebuild to override what we set here
-	mycmakeargs=("${cmakeargs[@]}" "${mycmakeargs[@]}")
 
 	cmake_src_configure
 }
 
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+	xdg_icon_cache_update
+}
 
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+	xdg_icon_cache_update
+}
