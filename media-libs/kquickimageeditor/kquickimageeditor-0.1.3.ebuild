@@ -15,8 +15,6 @@ LICENSE="LGPL-2.1+"
 SLOT="5"
 KEYWORDS="*"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.1.2-no-werror.patch )
-
 DEPEND="
 	$(add_qt_dep qtdeclarative)
 "
