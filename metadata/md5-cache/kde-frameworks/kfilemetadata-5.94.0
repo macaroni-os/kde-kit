@@ -1,4 +1,4 @@
-BDEPEND=test? ( || ( dev-lang/python:3.10 dev-lang/python:3.8 dev-lang/python:3.9 dev-lang/python:3.7 ) ) dev-util/ninja >=dev-util/cmake-3.9.6 >=kde-frameworks/extra-cmake-modules-5.94:5 doc? ( >=dev-qt/qthelp-5.15.1:5 >=app-doc/doxygen-1.8.13-r1 )
+BDEPEND=test? ( || ( dev-lang/python:3.8 dev-lang/python:3.9 dev-lang/python:3.7 dev-lang/python:3.10 ) ) dev-util/ninja >=dev-util/cmake-3.9.6 >=kde-frameworks/extra-cmake-modules-5.94:5 doc? ( >=dev-qt/qthelp-5.15.1:5 >=app-doc/doxygen-1.8.13-r1 )
 DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare setup test unpack
 DEPEND=>=dev-qt/qtxml-5.15.1:5 >=kde-frameworks/kcoreaddons-5.94:5 >=kde-frameworks/ki18n-5.94:5 epub? ( app-text/ebook-tools ) exif? ( media-gfx/exiv2:= ) ffmpeg? ( media-video/ffmpeg:0= ) office? ( >=kde-frameworks/karchive-5.94:5 ) pdf? ( app-text/poppler[qt5] ) taglib? ( media-libs/taglib ) kernel_linux? ( sys-apps/attr ) dev-util/desktop-file-utils x11-misc/shared-mime-info test? ( >=dev-qt/qttest-5.15.1:5 ) >=dev-qt/qtcore-5.15.1:5 doc? ( >=dev-qt/qt-docs-5.15.1:5 ) dev-util/desktop-file-utils
 DESCRIPTION=Library for extracting file metadata
