@@ -3,17 +3,20 @@
 EAPI=7
 
 KDE_HANDBOOK="forceoptional"
-FRAMEWORKS_MINIMAL=5.74.0
-QT_MINIMAL=5.15.1
+KDE_TEST="forceoptional"
+KFMIN=5.88.0
+QTMIN=5.15.2
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
-DESCRIPTION="Network-enabled task manager and system monitor"
+DESCRIPTION="Network-enabled resource usage monitor"
+HOMEPAGE="https://apps.kde.org/ksysguard/ https://userbase.kde.org/KSysGuard"
+SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="5"
 KEYWORDS="*"
-IUSE="lm-sensors +network networkmanager"
+IUSE="lm-sensors"
 
 DEPEND="
 	$(add_qt_dep qtdbus)
@@ -27,7 +30,6 @@ DEPEND="
 	$(add_frameworks_dep kdbusaddons)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kiconthemes)
-	$(add_frameworks_dep kinit)
 	$(add_frameworks_dep kio)
 	$(add_frameworks_dep kitemviews)
 	$(add_frameworks_dep knewstuff)
@@ -35,24 +37,19 @@ DEPEND="
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep kxmlgui)
-	$(add_plasma_dep libksysguard)
+	>=kde-plasma/libksysguard-5.22.0:5
 	lm-sensors? ( sys-apps/lm_sensors:= )
-	network? (
-		dev-libs/libnl:3
-		net-libs/libpcap
-		sys-libs/libcap
-	)
-	networkmanager? ( $(add_frameworks_dep networkmanager-qt) )
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-add-StartupWMClass-to-desktop-file.patch
+	"${FILESDIR}"/${P}-port-to-QtQuickDialogWrapper.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package lm-sensors Sensors)
-		$(cmake-utils_use_find_package networkmanager KF5NetworkManagerQt)
-		$(cmake-utils_use_find_package network libpcap)
-		$(cmake-utils_use_find_package network NL)
+		$(cmake_use_find_package lm-sensors Sensors)
 	)
-
 	kde5_src_configure
 }
