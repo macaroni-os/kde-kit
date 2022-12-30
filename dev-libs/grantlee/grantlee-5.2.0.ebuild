@@ -7,7 +7,7 @@ inherit cmake virtualx
 
 DESCRIPTION="C++ string template engine based on the Django template system"
 HOMEPAGE="https://github.com/steveire/grantlee"
-SRC_URI="http://downloads.grantlee.org/${P}.tar.gz"
+SRC_URI="https://github.com/steveire/grantlee/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
