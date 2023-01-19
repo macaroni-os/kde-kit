@@ -1,13 +1,14 @@
+BDEPEND=sys-devel/gettext dev-util/ninja >=dev-util/cmake-3.9.6 >=kde-frameworks/extra-cmake-modules-5.60.0:5
 DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare setup test unpack
-DEPEND=>=kde-frameworks/kauth-5.37.0:5 >=kde-frameworks/kcmutils-5.37.0:5 >=kde-frameworks/kconfig-5.37.0:5 >=kde-frameworks/kconfigwidgets-5.37.0:5 >=kde-frameworks/kcoreaddons-5.37.0:5 >=kde-frameworks/kdbusaddons-5.37.0:5 >=kde-frameworks/ki18n-5.37.0:5 >=kde-frameworks/knotifications-5.37.0:5 >=kde-frameworks/kwidgetsaddons-5.37.0:5 >=dev-qt/qtdbus-5.7.1:5 >=dev-qt/qtgui-5.7.1:5 >=dev-qt/qtwidgets-5.7.1:5 net-libs/libmnl sys-devel/gettext sys-devel/make >=dev-util/cmake-3.7.2 >=sys-apps/sed-4 dev-util/desktop-file-utils x11-misc/shared-mime-info >=kde-frameworks/extra-cmake-modules-5.37.0:5 >=dev-qt/qtcore-5.7.1:5 dev-util/desktop-file-utils app-arch/xz-utils
+DEPEND=>=dev-qt/qtdbus-5.12.3:5 >=dev-qt/qtgui-5.12.3:5 >=dev-qt/qtwidgets-5.12.3:5 >=kde-frameworks/kauth-5.60.0:5 >=kde-frameworks/kcmutils-5.60.0:5 >=kde-frameworks/kconfig-5.60.0:5 >=kde-frameworks/kconfigwidgets-5.60.0:5 >=kde-frameworks/kcoreaddons-5.60.0:5 >=kde-frameworks/kdbusaddons-5.60.0:5 >=kde-frameworks/ki18n-5.60.0:5 >=kde-frameworks/knotifications-5.60.0:5 >=kde-frameworks/kwidgetsaddons-5.60.0:5 net-libs/libmnl dev-util/desktop-file-utils x11-misc/shared-mime-info >=dev-qt/qtcore-5.12.3:5 dev-util/desktop-file-utils
 DESCRIPTION=Function key (FN) monitoring for Toshiba laptops
-EAPI=6
+EAPI=7
 HOMEPAGE=http://ktoshiba.sourceforge.net/
 IUSE=debug
-KEYWORDS=~amd64
+KEYWORDS=*
 LICENSE=GPL-2
-RDEPEND=>=kde-frameworks/kauth-5.37.0:5 >=kde-frameworks/kcmutils-5.37.0:5 >=kde-frameworks/kconfig-5.37.0:5 >=kde-frameworks/kconfigwidgets-5.37.0:5 >=kde-frameworks/kcoreaddons-5.37.0:5 >=kde-frameworks/kdbusaddons-5.37.0:5 >=kde-frameworks/ki18n-5.37.0:5 >=kde-frameworks/knotifications-5.37.0:5 >=kde-frameworks/kwidgetsaddons-5.37.0:5 >=dev-qt/qtdbus-5.7.1:5 >=dev-qt/qtgui-5.7.1:5 >=dev-qt/qtwidgets-5.7.1:5 net-libs/libmnl >=kde-frameworks/kf-env-4 >=dev-qt/qtcore-5.7.1:5
+RDEPEND=>=dev-qt/qtdbus-5.12.3:5 >=dev-qt/qtgui-5.12.3:5 >=dev-qt/qtwidgets-5.12.3:5 >=kde-frameworks/kauth-5.60.0:5 >=kde-frameworks/kcmutils-5.60.0:5 >=kde-frameworks/kconfig-5.60.0:5 >=kde-frameworks/kconfigwidgets-5.60.0:5 >=kde-frameworks/kcoreaddons-5.60.0:5 >=kde-frameworks/kdbusaddons-5.60.0:5 >=kde-frameworks/ki18n-5.60.0:5 >=kde-frameworks/knotifications-5.60.0:5 >=kde-frameworks/kwidgetsaddons-5.60.0:5 net-libs/libmnl >=kde-frameworks/kf-env-4 || ( >=kde-frameworks/breeze-icons-5.60.0:5 kde-frameworks/oxygen-icons:* ) >=dev-qt/qtcore-5.12.3:5
 SLOT=5
 SRC_URI=http://prdownloads.sourceforge.net/ktoshiba/ktoshiba-5.3.1.tar.xz
-_eclasses_=cmake-utils	f9fb12e2dbe2e0c9c17f030bae85eb02	epatch	8233751dc5105a6ae8fcd86ce2bb0247	epunt-cxx	f8073339d152f56626493f43d8ba4691	estack	5ac2a138d0b33354b764d84f9e835db8	eutils	e7491451996e8b54c3caeb713285b0fb	flag-o-matic	2274fcc1e7ef6affaff5bcd636275417	gnome2-utils	4d211d7614f303710fca59db6ec12c88	kde5	186c36517327615304bdc71c5f2bf6f7	kde5-functions	48ad3d5429e273ff79fa3fef2572d679	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	multiprocessing	6f5991c7101863d0b29df63990ad852e	ninja-utils	ebb2eaddc6331c4fa000b8eb8f6fe074	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0	virtualx	171580f737f5aaf18fcb456548588066	xdg	6cd76cc914c1a759dee032778487b57f	xdg-utils	f2c8335407f0b935b0a96d4adf23ef25
-_md5_=6a9db043b0c2a5f7e2000f0cf98025f8
+_eclasses_=cmake-utils	77cd39e6009811bf97a59d91ffd5b54f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	d0939f99dd528dd0c5ec25284877bf5c	kde5	2fdeef30e575094b67b94f367f8b72cf	kde5-functions	2dbbfc21b2646d8a3418041b240656a9	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	virtualx	401b718cc14d43a5a7fbe062c4851ba5	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=cc34f684443faa5deb4165bc520b327b
