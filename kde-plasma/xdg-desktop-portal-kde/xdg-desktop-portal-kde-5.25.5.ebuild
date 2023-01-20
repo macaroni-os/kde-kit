@@ -21,7 +21,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtwayland)
 	$(add_qt_dep qtwidgets)
 	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep kconifig)
+	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kdeclarative)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kiconthemes)

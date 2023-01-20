@@ -37,7 +37,7 @@ RDEPEND="
 	>=kde-plasma/plasma-desktop-${PV}:${SLOT}
 	>=kde-plasma/plasma-integration-${PV}:${SLOT}
 	>=kde-plasma/plasma-workspace-${PV}:${SLOT}
-	>=kde-plasma/polkit-kde-agent-1-${PV}:${SLOT}
+	>=kde-plasma/polkit-kde-agent-${PV}:${SLOT}
 	>=kde-plasma/powerdevil-${PV}:${SLOT}
 	>=kde-plasma/systemsettings-${PV}:${SLOT}
 	sys-apps/dbus[elogind?]

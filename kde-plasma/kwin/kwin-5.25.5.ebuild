@@ -35,7 +35,7 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kcrash)
 	$(add_frameworks_dep kdbusaddons)
 	$(add_frameworks_dep kdeclarative)
-	$(add_frameworks_dep kglobalaccel X)
+	$(add_frameworks_dep kglobalaccel)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kidletime)
 	$(add_frameworks_dep kitemviews)
