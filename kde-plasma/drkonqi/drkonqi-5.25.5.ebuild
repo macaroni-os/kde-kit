@@ -28,7 +28,7 @@ RDEPEND="
 	$(add_frameworks_dep kidletime)
 	$(add_frameworks_dep kio)
 	$(add_frameworks_dep kirigami)
-	$(add_frameworks_dep kitemodels qml)
+	$(add_frameworks_dep kitemmodels qml)
 	$(add_frameworks_dep kjobwidgets)
 	$(add_frameworks_dep knotifications)
 	$(add_frameworks_dep kservice)
