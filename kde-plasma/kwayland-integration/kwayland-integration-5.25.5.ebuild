@@ -30,7 +30,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	$(add_qt_dep qtwaylandscanner)
 	virtual/pkgconfig
 "
 

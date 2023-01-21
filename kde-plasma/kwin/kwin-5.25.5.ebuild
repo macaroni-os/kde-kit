@@ -21,7 +21,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtconcurrent)
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtdeclarative)
-	$(add_qt_dep qtgui egl,gles2-only,libinput)
+	$(add_qt_dep qtgui egl,gles2-only=,libinput)
 	$(add_qt_dep qtwayland)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtx11extras)
