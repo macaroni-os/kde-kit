@@ -7,6 +7,7 @@ QT_MINIMAL=5.15.2
 inherit kde5
 
 DESCRIPTION="DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module"
+SRC_URI="https://download.kde.org/stable/release-service/22.08.1/src/kio-zeroconf-22.08.1.tar.xz"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="*"
@@ -21,3 +22,5 @@ DEPEND="
 	$(add_frameworks_dep kio)
 "
 RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/kio-zeroconf-${PV}"
