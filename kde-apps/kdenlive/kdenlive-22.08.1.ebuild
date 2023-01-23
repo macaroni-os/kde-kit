@@ -4,8 +4,8 @@ EAPI=7
 
 KDE_HANDBOOK="optional"
 KDE_TEST="true"
-FRAMEWORKS_MINIMAL=5.75.0
-QT_MINIMAL=5.15.1
+FRAMEWORKS_MINIMAL=5.98.0
+QT_MINIMAL=5.15.2
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
@@ -55,7 +55,7 @@ DEPEND="
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
 	$(add_frameworks_dep solid)
-	>=media-libs/mlt[ffmpeg,frei0r,kdenlive(+),melt(+),qt5,sdl,xml]
+	>=media-libs/mlt-7.8.0[ffmpeg,frei0r,kdenlive(+),melt(+),qt5,sdl,xml]
 	semantic-desktop? ( $(add_frameworks_dep kfilemetadata) )
 	share? ( $(add_frameworks_dep purpose) )
 	v4l? ( media-libs/libv4l )
