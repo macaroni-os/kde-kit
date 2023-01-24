@@ -7,7 +7,7 @@ KDE_HANDBOOK="forceoptional"
 KDE_TEST="forceoptional"
 LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3+ )
-FRAMEWORKS_MINIMAL=5.84.0
+FRAMEWORKS_MINIMAL=5.98.0
 QT_MINIMAL=5.15.2
 inherit eutils kde5 lua-single python-single-r1
 

@@ -2,7 +2,7 @@
 
 EAPI=7
 
-FRAMEWORKS_MINIMAL=5.75.0
+FRAMEWORKS_MINIMAL=5.98.0
 inherit kde5
 
 DESCRIPTION="KWallet extension for signond"

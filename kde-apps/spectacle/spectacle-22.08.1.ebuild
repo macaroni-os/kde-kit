@@ -4,7 +4,7 @@ EAPI=7
 
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="forceoptional"
-FRAMEWORKS_MINIMAL=5.88.0
+FRAMEWORKS_MINIMAL=5.98.0
 QT_MINIMAL=5.15.2
 inherit kde5
 

@@ -4,7 +4,7 @@ EAPI=7
 
 KDE_HANDBOOK="forceoptional"
 PYTHON_COMPAT=( python3+ )
-FRAMEWORKS_MINIMAL=5.75.0
+FRAMEWORKS_MINIMAL=5.98.0
 QT_MINIMAL=5.15.1
 inherit eutils kde5 python-single-r1
 

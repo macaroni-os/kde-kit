@@ -3,7 +3,7 @@
 EAPI=7
 
 KDE_AUTODEPS=false
-FRAMEWORKS_MINIMAL=5.89.0
+FRAMEWORKS_MINIMAL=5.98.0
 inherit kde5
 
 DESCRIPTION="Plasma Specific Protocols for Wayland"

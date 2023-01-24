@@ -3,7 +3,7 @@
 EAPI=7
 
 KDE_HANDBOOK="forceoptional" # not optional until !kdelibs4support
-FRAMEWORKS_MINIMAL=5.82.0
+FRAMEWORKS_MINIMAL=5.98.0
 QT_MINIMAL=5.15.2
 inherit kde5
 

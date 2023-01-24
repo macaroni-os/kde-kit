@@ -3,7 +3,7 @@
 EAPI=7
 
 KDE_TEST="true"
-FRAMEWORKS_MINIMAL=5.75.0
+FRAMEWORKS_MINIMAL=5.98.0
 inherit kde5
 
 DESCRIPTION="Libary for handling mail messages and newsgroup articles"

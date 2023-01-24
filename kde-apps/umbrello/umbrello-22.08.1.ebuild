@@ -5,7 +5,7 @@ EAPI=7
 KDE_HANDBOOK="forceoptional"
 KDE_QTHELP="false" # TODO: figure out install error
 KDE_TEST="forceoptional"
-FRAMEWORKS_MINIMAL=5.75.0
+FRAMEWORKS_MINIMAL=5.98.0
 QT_MINIMAL=5.15.1
 VIRTUALX_REQUIRED="test"
 inherit kde5
