@@ -3,13 +3,13 @@
 EAPI=7
 
 KMNAME="kate"
-KDE_HANDBOOK="optional"
+KDE_HANDBOOK="false"
 FRAMEWORKS_MINIMAL=5.98.0
 QT_MINIMAL=5.15.2
-inherit flag-o-matic kde5
+inherit kde5
 
-DESCRIPTION="Simple text editor based on KDE Frameworks"
-HOMEPAGE="https://apps.kde.org/en/kwrite"
+DESCRIPTION="Shared library common to Kate and Kwrite"
+HOMEPAGE="https://apps.kde.org/en/kwrite https://apps.kde.org/en/kwrite"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
@@ -33,7 +33,6 @@ DEPEND="
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
 	activities? ( $(add_frameworks_dep kactivities) )
-	=kde-apps/kateprivate-${PV}
 "
 RDEPEND="${DEPEND}"
 
@@ -49,16 +48,13 @@ src_configure() {
 		$(cmake-utils_use_find_package activities KF5Activities)
 		-DBUILD_addons=FALSE
 		-DBUILD_kate=FALSE
+		-DBUILD_kwrite=FALSE
 	)
-	use handbook && mycmakeargs+=( -DBUILD_katepart=FALSE )
-
-	append-libs -lkateprivate
 
 	kde5_src_configure
 }
 
 src_install() {
 	kde5_src_install
-
-	rm -v "${ED}"/usr/$(get_libdir)/libkateprivate.so.* || die
+	rm -r ${ED}/usr/share || die
 }

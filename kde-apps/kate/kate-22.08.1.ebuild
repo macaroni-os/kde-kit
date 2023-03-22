@@ -7,7 +7,7 @@ KDE_TEST="true"
 FRAMEWORKS_MINIMAL=5.98.0
 QT_MINIMAL=5.15.1
 VIRTUALX_REQUIRED="test"
-inherit eutils kde5
+inherit flag-o-matic eutils kde5
 
 DESCRIPTION="Multi-document editor with network transparency, Plasma integration and more"
 HOMEPAGE="https://kate-editor.org/ https://apps.kde.org/en/kate"
@@ -56,6 +56,7 @@ DEPEND="
 		$(add_frameworks_dep kwallet)
 	)
 	telemetry? ( dev-libs/kuserfeedback:5 )
+	=kde-apps/kateprivate-${PV}
 "
 RDEPEND="${DEPEND}"
 
@@ -80,6 +81,8 @@ src_configure() {
 		$(cmake-utils_use_find_package telemetry KUserFeedback)
 	)
 
+	append-libs -lkateprivate
+
 	kde5_src_configure
 }
 
@@ -90,6 +93,12 @@ src_test() {
 	)
 
 	kde5_src_test
+}
+
+src_install() {
+	kde5_src_install
+
+	rm -v "${ED}"/usr/$(get_libdir)/libkateprivate.so.* || die
 }
 
 pkg_postinst() {
