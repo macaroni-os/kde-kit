@@ -34,7 +34,10 @@ DEPEND="
 	$(add_frameworks_dep kxmlgui)
 	activities? ( $(add_frameworks_dep kactivities) )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!<=kde-apps/kate-22.08.1
+	!<=kde-apps/kwrite-22.08.1
+"
 
 src_prepare() {
 	kde5_src_prepare

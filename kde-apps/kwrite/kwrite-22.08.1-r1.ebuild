@@ -33,7 +33,7 @@ DEPEND="
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
 	activities? ( $(add_frameworks_dep kactivities) )
-	=kde-apps/kateprivate-${PV}
+	=kde-apps/kateprivate-${PVR}
 "
 RDEPEND="${DEPEND}"
 

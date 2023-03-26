@@ -56,8 +56,9 @@ DEPEND="
 		$(add_frameworks_dep kwallet)
 	)
 	telemetry? ( dev-libs/kuserfeedback:5 )
-	=kde-apps/kateprivate-${PV}
+	=kde-apps/kateprivate-${PVR}
 "
+
 RDEPEND="${DEPEND}"
 
 src_prepare() {
