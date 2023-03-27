@@ -55,6 +55,7 @@ DEPEND="
 	$(add_frameworks_dep kxmlgui)
 	$(add_frameworks_dep syntax-highlighting)
 	>=media-libs/phonon-4.11.0
+	>=app-crypt/gpgme-1.15.0[cxx,qt5]
 "
 RDEPEND="${DEPEND}"
 
