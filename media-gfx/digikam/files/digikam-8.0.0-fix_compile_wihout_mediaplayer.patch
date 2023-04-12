@@ -1,0 +1,38 @@
+diff --git a/core/dplugins/generic/view/slideshow/common/slideshowloader.cpp b/core/dplugins/generic/view/slideshow/common/slideshowloader.cpp
+index 904e22d..2270a03 100644
+--- a/core/dplugins/generic/view/slideshow/common/slideshowloader.cpp
++++ b/core/dplugins/generic/view/slideshow/common/slideshowloader.cpp
+@@ -177,7 +177,9 @@ SlideShowLoader::SlideShowLoader(SlideShowSettings* const settings)
+ 
+     d->errorView->installEventFilter(this);
+     d->imageView->installEventFilter(this);
++#ifdef HAVE_MEDIAPLAYER
+     d->videoView->installEventFilter(this);
++#endif
+     d->endView->installEventFilter(this);
+     d->osd->installEventFilter(this);
+ 
+diff --git a/core/utilities/setup/setup.cpp b/core/utilities/setup/setup.cpp
+index 5187cef..87df931 100644
+--- a/core/utilities/setup/setup.cpp
++++ b/core/utilities/setup/setup.cpp
+@@ -269,7 +269,9 @@ Setup::~Setup()
+     group.writeEntry(QLatin1String("Setup Page"),      (int)activePageIndex());
+     group.writeEntry(QLatin1String("Albumview Tab"),   (int)d->albumViewPage->activeTab());
+     group.writeEntry(QLatin1String("ToolTip Tab"),     (int)d->tooltipPage->activeTab());
++#ifdef HAVE_MEDIAPLAYER
+     group.writeEntry(QLatin1String("Video Tab"),       (int)d->videoPage->activeTab());
++#endif
+     group.writeEntry(QLatin1String("Metadata Tab"),    (int)d->metadataPage->activeTab());
+     group.writeEntry(QLatin1String("Metadata SubTab"), (int)d->metadataPage->activeSubTab());
+     group.writeEntry(QLatin1String("Editor Tab"),      (int)d->editorPage->activeTab());
+@@ -577,7 +579,9 @@ void Setup::showPage(Setup::Page page)
+         item = d->pageItem((Page)group.readEntry(QLatin1String("Setup Page"), (int)CollectionsPage));
+         d->albumViewPage->setActiveTab((SetupAlbumView::AlbumTab)group.readEntry(QLatin1String("AlbumView Tab"), (int)SetupAlbumView::IconView));
+         d->tooltipPage->setActiveTab((SetupToolTip::ToolTipTab)group.readEntry(QLatin1String("ToolTip Tab"), (int)SetupToolTip::IconItems));
++#ifdef HAVE_MEDIAPLAYER
+         d->videoPage->setActiveTab((SetupVideo::VideoTab)group.readEntry(QLatin1String("Video Tab"), (int)SetupVideo::Decoder));
++#endif
+         d->metadataPage->setActiveTab((SetupMetadata::MetadataTab)group.readEntry(QLatin1String("Metadata Tab"), (int)SetupMetadata::Behavior));
+         d->metadataPage->setActiveSubTab((SetupMetadata::MetadataSubTab)group.readEntry(QLatin1String("Metadata SubTab"), (int)SetupMetadata::ExifViewer));
+         d->editorPage->setActiveTab((SetupEditor::EditorTab)group.readEntry(QLatin1String("Editor Tab"), (int)SetupEditor::EditorWindow));
