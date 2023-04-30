@@ -4,7 +4,7 @@ EAPI=7
 
 ECM_QTHELP="true"
 ECM_TEST="true" # build system adds autotests dir based on BUILD_TESTING value
-FRAMEWORKS_MINIMAL=5.98.0
+FRAMEWORKS_MINIMAL=5.60.0
 QT_MINIMAL=5.12.3
 inherit kde5
 

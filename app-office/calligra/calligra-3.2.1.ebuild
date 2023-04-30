@@ -5,7 +5,7 @@ EAPI=7
 CHECKREQS_DISK_BUILD="4G"
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="forceoptional"
-FRAMEWORKS_MINIMAL=5.98.0
+FRAMEWORKS_MINIMAL=5.74.0
 QT_MINIMAL=5.15.1
 inherit check-reqs kde5
 

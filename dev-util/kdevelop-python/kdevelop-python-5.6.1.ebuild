@@ -5,7 +5,7 @@ EAPI=7
 KDE_TEST="forceoptional"
 KMNAME="kdev-python"
 PYTHON_COMPAT=( python3+ )
-FRAMEWORKS_MINIMAL=5.98.0
+FRAMEWORKS_MINIMAL=5.74.0
 QT_MINIMAL=5.15.1
 inherit kde5 python-single-r1
 
