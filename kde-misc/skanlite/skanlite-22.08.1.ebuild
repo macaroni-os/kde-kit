@@ -7,7 +7,7 @@ KDE_TEST="forceoptional"
 FRAMEWORKS_MINIMAL=5.98.0
 QT_MINIMAL=5.15.2
 inherit kde5
-SRC_URI="https://invent.kde.org/graphics/skanlite/-/archive/v21.08.1/skanlite-v21.08.1.tar.gz"
+SRC_URI="https://invent.kde.org/graphics/skanlite/-/archive/v${PV}/skanlite-v${PV}.tar.gz"
 DESCRIPTION="Simple image scanning application based on libksane and KDE Frameworks"
 HOMEPAGE="https://apps.kde.org/en/skanlite"
 S=$WORKDIR/${PN}-v${PV}
