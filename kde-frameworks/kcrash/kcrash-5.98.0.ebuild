@@ -25,6 +25,7 @@ RDEPEND="
 	x11-libs/libX11
 "
 DEPEND="${RDEPEND}
+	$(add_qt_dep qttest)
 	x11-base/xorg-proto
 	test? ( $(add_qt_dep qtwidgets) )
 "
