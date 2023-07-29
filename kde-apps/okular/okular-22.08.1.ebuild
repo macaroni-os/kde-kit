@@ -74,6 +74,12 @@ PATCHES=(
 	"${FILESDIR}/${PN}-20.08.2-hide-mobile-app.patch" # avoid same-name entry
 )
 
+src_prepare() {
+	kde5_src_prepare
+
+	sed -i -e 's/set(CMAKE_CXX_STANDARD 14)/set(CMAKE_CXX_STANDARD 17)/g' CMakeLists.txt || die
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DOKULAR_UI=$(usex qml "both" "desktop")
