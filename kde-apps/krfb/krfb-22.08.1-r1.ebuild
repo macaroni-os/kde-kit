@@ -13,6 +13,7 @@ LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="*"
 IUSE="screencast wayland"
+REQUIRED_USE="screencast? ( wayland )"
 
 DEPEND="
 	$(add_qt_dep qtdbus)
@@ -63,7 +64,7 @@ src_prepare() {
 
 	# TODO: try to get a build switch upstreamed
 	if ! use screencast; then
-		sed -e "s/^pkg_check_modules.*PipeWire/#&/" \
+		sed -e "s/^.*pkg_check_modules.*PipeWire/#&/" \
 			-i CMakeLists.txt || die
 	fi
 }
