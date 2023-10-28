@@ -10,10 +10,10 @@ inherit kde5
 DESCRIPTION="Plasma framework"
 LICENSE="LGPL-2+"
 KEYWORDS="*"
-IUSE="gles2-only wayland X"
+IUSE="gles2-only man wayland"
 
 BDEPEND="
-	$(add_frameworks_dep kdoctools)
+	man? ( $(add_frameworks_dep kdoctools) )
 "
 RDEPEND="
 	$(add_qt_dep qtdbus)
@@ -25,7 +25,7 @@ RDEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_frameworks_dep kactivities)
 	$(add_frameworks_dep karchive)
-	$(add_frameworks_dep kconfig)
+	$(add_frameworks_dep kconfig qml)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep kdeclarative)
@@ -46,14 +46,12 @@ RDEPEND="
 		$(add_frameworks_dep kwayland)
 		media-libs/mesa[egl]
 	)
-	X? (
-		$(add_qt_dep qtx11extras)
-		x11-libs/libX11
-		x11-libs/libxcb
-	)
+	$(add_qt_dep qtx11extras)
+	x11-libs/libX11
+	x11-libs/libxcb
 "
 DEPEND="${RDEPEND}
-	X? ( x11-base/xorg-proto )
+	x11-base/xorg-proto
 "
 
 RESTRICT+=" test"
@@ -61,10 +59,9 @@ RESTRICT+=" test"
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package !gles2-only OpenGL)
+		$(cmake_use_find_package man KF5DocTools)
 		$(cmake-utils_use_find_package wayland EGL)
 		$(cmake-utils_use_find_package wayland KF5Wayland)
-		$(cmake-utils_use_find_package X X11)
-		$(cmake-utils_use_find_package X XCB)
 	)
 
 	kde5_src_configure
