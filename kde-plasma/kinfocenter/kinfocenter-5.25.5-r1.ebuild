@@ -81,6 +81,7 @@ src_install() {
 	doins "${FILESDIR}"/kcm-about-distrorc
 
 	insinto /usr/share/${PN}
+	doins "${DISTDIR}"/flogo-small.png
 }
 
 pkg_postinst() {
