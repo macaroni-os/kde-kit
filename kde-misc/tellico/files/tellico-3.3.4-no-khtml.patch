@@ -1,0 +1,931 @@
+From 2bb2335b79be4527fe4af0d0bced2a38575ee358 Mon Sep 17 00:00:00 2001
+From: Robby Stephenson <robby@periapsis.org>
+Date: Fri, 27 Nov 2020 20:30:42 -0500
+Subject: [PATCH] Use QWebEngine by default rather than KHTML
+
+The cmake flag USE_KHTML may be used to build with KHTML rather than
+QWebEngine as in previous versions.
+
+(cherry picked from commit da201402b47a5bfd7e5921486aa30d2811fa6af8)
+---
+ CMakeLists.txt              |  16 +++++-
+ src/CMakeLists.txt          |   8 ++-
+ src/charts/CMakeLists.txt   |  15 +++++
+ src/charts/groupsummary.cpp |  31 ++++++++++
+ src/charts/groupsummary.h   |  50 +++++++++++++++++
+ src/configdialog.cpp        |   1 -
+ src/entryview.cpp           | 109 ++++++++++++++++++++++++++++++++----
+ src/entryview.h             |  36 ++++++++++--
+ src/fetchdialog.cpp         |  11 ++--
+ src/gui/CMakeLists.txt      |  10 +++-
+ src/gui/previewdialog.cpp   |  12 ++--
+ src/mainwindow.cpp          |  50 ++++++++++++++---
+ src/reportdialog.cpp        |  62 +++++++++++++++-----
+ src/reportdialog.h          |   8 +++
+ xslt/welcome.html           |   3 +-
+ 15 files changed, 369 insertions(+), 53 deletions(-)
+ create mode 100644 src/charts/CMakeLists.txt
+ create mode 100644 src/charts/groupsummary.cpp
+ create mode 100644 src/charts/groupsummary.h
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b4e94ba4..e6128e71 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -40,6 +40,7 @@ include(KDECMakeSettings)
+ option(ENABLE_CDTEXT       "Enable cdtext" TRUE)
+ option(ENABLE_WEBCAM       "Enable support for webcams" FALSE)
+ option(BUILD_FETCHER_TESTS "Build tests which verify data sources" FALSE)
++option(USE_KHTML           "Build with KHTML rather than QWebEngine" FALSE)
+ 
+ include(CheckSymbolExists)
+ check_symbol_exists(strlwr "string.h" HAVE_STRLWR)
+@@ -69,12 +70,25 @@ find_package(KF5 REQUIRED COMPONENTS
+     JobWidgets
+     KIO
+     Solid
++    Sonnet
++    TextWidgets
+     Wallet
+     WidgetsAddons
+     WindowSystem
+     XmlGui
+ )
+-find_package(KF5KHtml REQUIRED NO_MODULE)
++if(NOT USE_KHTML)
++  find_package(Qt5 ${QT_MIN_VERSION} CONFIG OPTIONAL_COMPONENTS WebEngineWidgets)
++  set_package_properties(Qt5WebEngineWidgets PROPERTIES
++    DESCRIPTION "Building with QWebEngine is preferrable to KHTML"
++    TYPE OPTIONAL)
++endif()
++if(USE_KHTML OR NOT Qt5WebEngineWidgets_FOUND)
++  set(USE_KHTML ON)
++  find_package(KF5KHtml REQUIRED NO_MODULE)
++  set_package_properties(KF5Html PROPERTIES
++    DESCRIPTION "Building with QWebEngine is preferrable to KHTML")
++endif()
+ 
+ include(MacroBoolTo01)
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 04f12359..a78f5971 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -106,7 +106,6 @@ TARGET_LINK_LIBRARIES(tellico
+     Qt5::Widgets
+     Qt5::DBus
+     KF5::Crash
+-    KF5::KHtml
+     KF5::KIOCore
+     KF5::KIOFileWidgets
+     KF5::WindowSystem
+@@ -115,6 +114,13 @@ TARGET_LINK_LIBRARIES(tellico
+     ${LIBXSLT_EXSLT_LIBRARIES}
+     )
+ 
++IF(USE_KHTML)
++  TARGET_LINK_LIBRARIES(tellico KF5::KHtml)
++  ADD_DEFINITIONS(-DUSE_KHTML=${USE_KHTML})
++ELSE()
++  TARGET_LINK_LIBRARIES(tellico Qt5::WebEngineWidgets)
++ENDIF()
++
+ IF( KF5NewStuff_FOUND )
+   TARGET_LINK_LIBRARIES(tellico KF5::NewStuff)
+ ENDIF( KF5NewStuff_FOUND )
+diff --git a/src/charts/CMakeLists.txt b/src/charts/CMakeLists.txt
+new file mode 100644
+index 00000000..e2bd0ce5
+--- /dev/null
++++ b/src/charts/CMakeLists.txt
+@@ -0,0 +1,15 @@
++########### next target ###############
++
++SET(charts_STAT_SRCS
++    groupsummary.cpp
++   )
++
++add_library(charts STATIC ${charts_STAT_SRCS})
++
++TARGET_LINK_LIBRARIES(charts
++    Qt5::Core
++    Qt5::Widgets
++    Qt5::Gui
++    Qt5::Charts
++    KF5::I18n
++)
+diff --git a/src/charts/groupsummary.cpp b/src/charts/groupsummary.cpp
+new file mode 100644
+index 00000000..6a56c961
+--- /dev/null
++++ b/src/charts/groupsummary.cpp
+@@ -0,0 +1,31 @@
++/***************************************************************************
++    Copyright (C) 2020 Robby Stephenson <robby@periapsis.org>
++ ***************************************************************************/
++
++/***************************************************************************
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or         *
++ *   modify it under the terms of the GNU General Public License as        *
++ *   published by the Free Software Foundation; either version 2 of        *
++ *   the License or (at your option) version 3 or any later version        *
++ *   accepted by the membership of KDE e.V. (or its successor approved     *
++ *   by the membership of KDE e.V.), which shall act as a proxy            *
++ *   defined in Section 14 of version 3 of the license.                    *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
++ *                                                                         *
++ ***************************************************************************/
++
++#include "groupsummary.h"
++
++using Tellico::Charts::GroupSummary;
++
++GroupSummary::GroupSummary(QWidget* parent_)
++  : QWidget(parent_) {
++}
+diff --git a/src/charts/groupsummary.h b/src/charts/groupsummary.h
+new file mode 100644
+index 00000000..7b4c0d8b
+--- /dev/null
++++ b/src/charts/groupsummary.h
+@@ -0,0 +1,50 @@
++/***************************************************************************
++    Copyright (C) 2020 Robby Stephenson <robby@periapsis.org>
++ ***************************************************************************/
++
++/***************************************************************************
++ *                                                                         *
++ *   This program is free software; you can redistribute it and/or         *
++ *   modify it under the terms of the GNU General Public License as        *
++ *   published by the Free Software Foundation; either version 2 of        *
++ *   the License or (at your option) version 3 or any later version        *
++ *   accepted by the membership of KDE e.V. (or its successor approved     *
++ *   by the membership of KDE e.V.), which shall act as a proxy            *
++ *   defined in Section 14 of version 3 of the license.                    *
++ *                                                                         *
++ *   This program is distributed in the hope that it will be useful,       *
++ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
++ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
++ *   GNU General Public License for more details.                          *
++ *                                                                         *
++ *   You should have received a copy of the GNU General Public License     *
++ *   along with this program.  If not, see <http://www.gnu.org/licenses/>. *
++ *                                                                         *
++ ***************************************************************************/
++
++#ifndef TELLICO_CHARTS_GROUPSUMMARY_H
++#define TELLICO_CHARTS_GROUPSUMMARY_H
++
++#include <QWidget>
++#include <QList>
++
++class QChartView;
++
++namespace Tellico {
++  namespace Charts {
++
++class GroupSummary : public QWidget {
++Q_OBJECT
++
++public:
++  explicit GroupSummary(QWidget* parent = nullptr);
++  ~GroupSummary() Q_DECL_OVERRIDE {};
++
++private:
++  QList<QChartView*> m_charts;
++};
++
++  } // end namespace
++} //end namespace
++
++#endif
+diff --git a/src/configdialog.cpp b/src/configdialog.cpp
+index 4946cff9..55cfa146 100644
+--- a/src/configdialog.cpp
++++ b/src/configdialog.cpp
+@@ -48,7 +48,6 @@
+ #include <KLocalizedString>
+ #include <KConfig>
+ #include <KAcceleratorManager>
+-#include <KHTMLView>
+ #include <KColorCombo>
+ #include <KHelpClient>
+ #include <KRecentDirs>
+diff --git a/src/entryview.cpp b/src/entryview.cpp
+index d05a788c..bbec19aa 100644
+--- a/src/entryview.cpp
++++ b/src/entryview.cpp
+@@ -1,5 +1,5 @@
+ /***************************************************************************
+-    Copyright (C) 2003-2009 Robby Stephenson <robby@periapsis.org>
++    Copyright (C) 2003-2020 Robby Stephenson <robby@periapsis.org>
+  ***************************************************************************/
+ 
+ /***************************************************************************
+@@ -40,8 +40,6 @@
+ #include "tellico_debug.h"
+ 
+ #include <KMessageBox>
+-#include <KHTMLView>
+-#include <dom/dom_element.h>
+ #include <KLocalizedString>
+ 
+ #include <QFile>
+@@ -52,7 +50,16 @@
+ #include <QApplication>
+ #include <QDesktopServices>
+ 
++#ifdef USE_KHTML
++#include <dom/dom_element.h>
++#else
++#include <QWebEnginePage>
++#include <QWebEngineSettings>
++#endif
++
+ using Tellico::EntryView;
++
++#ifdef USE_KHTML
+ using Tellico::EntryViewWidget;
+ 
+ EntryViewWidget::EntryViewWidget(EntryView* part, QWidget* parent)
+@@ -89,6 +96,50 @@ EntryView::EntryView(QWidget* parent_) : KHTMLPart(new EntryViewWidget(this, par
+   connect(browserExtension(), &KParts::BrowserExtension::openUrlRequestDelayed,
+           this, &EntryView::slotOpenURL);
+ }
++#else
++using Tellico::EntryViewPage;
++
++EntryViewPage::EntryViewPage(QWidget* parent)
++    : QWebEnginePage(parent) {
++  settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, false);
++  settings()->setAttribute(QWebEngineSettings::PluginsEnabled, false);
++  settings()->setAttribute(QWebEngineSettings::LocalContentCanAccessRemoteUrls, true);
++  settings()->setAttribute(QWebEngineSettings::LocalContentCanAccessFileUrls, true);
++}
++
++bool EntryViewPage::acceptNavigationRequest(const QUrl& url_, QWebEnginePage::NavigationType type_, bool isMainFrame_) {
++  Q_UNUSED(isMainFrame_);
++
++  if(url_.scheme() == QLatin1String("tc")) {
++    // handle this internally
++    emit signalTellicoAction(url_);
++    return false;
++  }
++
++  if(type_ == QWebEnginePage::NavigationTypeLinkClicked) {
++    const QUrl u = Kernel::self()->URL().resolved(url_);
++    QDesktopServices::openUrl(u);
++    return false;
++  }
++
++  return true;
++}
++
++EntryView::EntryView(QWidget* parent_) : QWebEngineView(parent_),
++    m_handler(nullptr), m_tempFile(nullptr), m_useGradientImages(true), m_checkCommonFile(true) {
++  EntryViewPage* page = new EntryViewPage(this);
++  setPage(page);
++
++  connect(page, &EntryViewPage::signalTellicoAction,
++          this, &EntryView::signalTellicoAction);
++
++  setAcceptDrops(true);
++  DropHandler* drophandler = new DropHandler(this);
++  installEventFilter(drophandler);
++
++  clear(); // needed for initial layout
++}
++#endif
+ 
+ EntryView::~EntryView() {
+   delete m_handler;
+@@ -101,12 +152,22 @@ void EntryView::clear() {
+   m_entry = nullptr;
+ 
+   // just clear the view
++#ifdef USE_KHTML
+   begin();
+   if(!m_textToShow.isEmpty()) {
+     write(m_textToShow);
+   }
+   end();
+   view()->layout(); // I need this because some of the margins and widths may get messed up
++#else
++  setUrl(QUrl());
++  if(!m_textToShow.isEmpty()) {
++    // the welcome page references local images, which won't load when passing HTML directly
++    // see https://bugreports.qt.io/browse/QTBUG-55902#comment-335945
++    // passing "disable-web-security" to QApplication is another option
++    page()->setHtml(m_textToShow, QUrl(QStringLiteral("file://")));
++  }
++#endif
+ }
+ 
+ void EntryView::showEntries(Tellico::Data::EntryList entries_) {
+@@ -137,11 +198,9 @@ void EntryView::showEntry(Tellico::Data::EntryPtr entry_) {
+ 
+   m_entry = entry_;
+ 
+-  // by setting the xslt file as the URL, any images referenced in the xslt "theme" can be found
+-  // by simply using a relative path in the xslt file
+-  QUrl u = QUrl::fromLocalFile(m_xsltFile);
+-  begin(u);
+-
++#ifdef USE_KHTML
++  begin(QUrl::fromLocalFile(m_xsltFile));
++#endif
+   Export::TellicoXMLExporter exporter(entry_->collection());
+   exporter.setEntries(Data::EntryList() << entry_);
+   long opt = exporter.options();
+@@ -198,17 +257,26 @@ void EntryView::showEntry(Tellico::Data::EntryPtr entry_) {
+ #endif
+ 
+ //  myDebug() << html;
++#ifdef USE_KHTML
+   write(html);
+   end();
+-  // not need anymore?
+   view()->layout(); // I need this because some of the margins and widths may get messed up
++#else
++  // by setting the xslt file as the URL, any images referenced in the xslt "theme" can be found
++  // by simply using a relative path in the xslt file
++  page()->setHtml(html, QUrl::fromLocalFile(m_xsltFile));
++#endif
+ }
+ 
+ void EntryView::showText(const QString& text_) {
+   m_textToShow = text_;
++#ifdef USE_KHTML
+   begin();
+   write(text_);
+   end();
++#else
++  clear(); // shows the default text
++#endif
+ }
+ 
+ void EntryView::setXSLTFile(const QString& file_) {
+@@ -234,7 +302,11 @@ void EntryView::setXSLTFile(const QString& file_) {
+         str += QLatin1Char(' ');
+         str += i18n("Please check your installation.");
+         str += QLatin1String("</qt>");
++#ifdef USE_KHTML
+         KMessageBox::error(view(), str);
++#else
++        KMessageBox::error(this, str);
++#endif
+         clear();
+         return;
+       }
+@@ -304,9 +376,12 @@ void EntryView::setXSLTFile(const QString& file_) {
+ void EntryView::slotRefresh() {
+   setXSLTFile(m_xsltFile);
+   showEntry(m_entry);
++#ifdef USE_KHTML
+   view()->repaint();
++#endif
+ }
+ 
++#ifdef USE_KHTML
+ // do some contortions in case the url is relative
+ // need to interpret it relative to document URL instead of xslt file
+ // the current node under the mouse would be the text node inside
+@@ -314,7 +389,7 @@ void EntryView::slotRefresh() {
+ void EntryView::slotOpenURL(const QUrl& url_) {
+   if(url_.scheme() == QLatin1String("tc")) {
+     // handle this internally
+-    emit signalAction(url_);
++    emit signalTellicoAction(url_);
+     return;
+   }
+ 
+@@ -332,14 +407,20 @@ void EntryView::slotOpenURL(const QUrl& url_) {
+   // open the url
+   QDesktopServices::openUrl(u);
+ }
++#endif
+ 
+ void EntryView::slotReloadEntry() {
+   // this slot should only be connected in setXSLTFile()
+   // must disconnect the signal first, otherwise, get an infinite loop
++#ifdef USE_KHTML
+   void (EntryView::* completed)() = &EntryView::completed;
+   disconnect(this, completed, this, &EntryView::slotReloadEntry);
+   closeUrl(); // this is needed to stop everything, for some reason
+   view()->setUpdatesEnabled(true);
++#else
++  disconnect(this, &EntryView::loadFinished, this, &EntryView::slotReloadEntry);
++  setUpdatesEnabled(true);
++#endif
+ 
+   if(m_entry) {
+     showEntry(m_entry);
+@@ -410,13 +491,19 @@ void EntryView::resetColors() {
+   stream << s;
+   stream.flush();
+ 
++#ifdef USE_KHTML
+   KParts::OpenUrlArguments args = arguments();
+   args.setReload(true); // tell the cache to reload images
+   setArguments(args);
+ 
+-  // don't flicker
+   view()->setUpdatesEnabled(false);
+   openUrl(QUrl::fromLocalFile(m_tempFile->fileName()));
+   void (EntryView::* completed)() = &EntryView::completed;
+   connect(this, completed, this, &EntryView::slotReloadEntry);
++#else
++  // don't flicker
++  setUpdatesEnabled(false);
++  load(QUrl::fromLocalFile(m_tempFile->fileName()));
++  connect(this, &EntryView::loadFinished, this, &EntryView::slotReloadEntry);
++#endif
+ }
+diff --git a/src/entryview.h b/src/entryview.h
+index a9a8c969..b99ea870 100644
+--- a/src/entryview.h
++++ b/src/entryview.h
+@@ -1,5 +1,5 @@
+ /***************************************************************************
+-    Copyright (C) 2003-2009 Robby Stephenson <robby@periapsis.org>
++    Copyright (C) 2003-2020 Robby Stephenson <robby@periapsis.org>
+  ***************************************************************************/
+ 
+ /***************************************************************************
+@@ -27,10 +27,14 @@
+ 
+ #include "datavectors.h"
+ 
++#ifdef USE_KHTML
+ #include <KHTMLPart>
+ #include <KHTMLView>
+-
++#else
++#include <QWebEngineView>
++#include <QWebEnginePage>
+ #include <QPointer>
++#endif
+ 
+ class QTemporaryFile;
+ 
+@@ -42,7 +46,13 @@ namespace Tellico {
+ /**
+  * @author Robby Stephenson
+  */
+-class EntryView : public KHTMLPart {
++class EntryView : public
++#ifdef USE_KHTML
++  KHTMLPart {
++#else
++  QWebEngineView {
++#endif
++
+ Q_OBJECT
+ 
+ public:
+@@ -81,7 +91,7 @@ public:
+   void resetView();
+ 
+ Q_SIGNALS:
+-  void signalAction(const QUrl& url);
++  void signalTellicoAction(const QUrl& url);
+ 
+ public Q_SLOTS:
+   /**
+@@ -91,12 +101,14 @@ public Q_SLOTS:
+   void showEntries(Tellico::Data::EntryList entries);
+ 
+ private Q_SLOTS:
++#ifdef USE_KHTML
+   /**
+    * Open a URL.
+    *
+    * @param url The URL to open
+    */
+   void slotOpenURL(const QUrl& url);
++#endif
+   void slotReloadEntry();
+ 
+ private:
+@@ -112,8 +124,7 @@ private:
+   bool m_checkCommonFile;
+ };
+ 
+-// stupid naming on my part, I need to subclass the view to
+-// add a slot. EntryView is really a part though
++#ifdef USE_KHTML
+ class EntryViewWidget : public KHTMLView {
+ Q_OBJECT
+ public:
+@@ -125,6 +136,19 @@ public Q_SLOTS:
+ protected:
+   void changeEvent(QEvent* event) Q_DECL_OVERRIDE;
+ };
++#else
++class EntryViewPage : public QWebEnginePage {
++Q_OBJECT
++public:
++  EntryViewPage(QWidget* parent);
++
++Q_SIGNALS:
++  void signalTellicoAction(const QUrl& url);
++
++protected:
++  virtual bool acceptNavigationRequest(const QUrl& url, QWebEnginePage::NavigationType type, bool isMainFrame) Q_DECL_OVERRIDE;
++};
++#endif
+ 
+ } //end namespace
+ #endif
+diff --git a/src/fetchdialog.cpp b/src/fetchdialog.cpp
+index 4a7f0501..7e86f638 100644
+--- a/src/fetchdialog.cpp
++++ b/src/fetchdialog.cpp
+@@ -1,5 +1,5 @@
+ /***************************************************************************
+-    Copyright (C) 2003-2011 Robby Stephenson <robby@periapsis.org>
++    Copyright (C) 2003-2020 Robby Stephenson <robby@periapsis.org>
+  ***************************************************************************/
+ 
+ /***************************************************************************
+@@ -50,7 +50,6 @@
+ #endif
+ 
+ #include <KLocalizedString>
+-#include <KHTMLView>
+ #include <KSharedConfig>
+ #include <KAcceleratorManager>
+ #include <KTextEdit>
+@@ -268,8 +267,12 @@ FetchDialog::FetchDialog(QWidget* parent_)
+   // set the xslt file AFTER setting the gradient image option
+   m_entryView->setXSLTFile(QStringLiteral("Compact.xsl"));
+   m_entryView->addXSLTStringParam("skip-fields", "id,mdate,cdate");
+-  m_entryView->view()->setWhatsThis(i18n("An entry may be shown here before adding it to the "
+-                                         "current collection by selecting it in the list above"));
++  m_entryView->
++#ifdef USE_KHTML
++               view()->
++#endif
++               setWhatsThis(i18n("An entry may be shown here before adding it to the "
++                                 "current collection by selecting it in the list above"));
+ 
+   QWidget* box3 = new QWidget(mainWidget);
+   QHBoxLayout* box3HBoxLayout = new QHBoxLayout(box3);
+diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
+index 2fa5d2e6..814d7cbb 100644
+--- a/src/gui/CMakeLists.txt
++++ b/src/gui/CMakeLists.txt
+@@ -47,12 +47,20 @@ TARGET_LINK_LIBRARIES(gui
+     Qt5::Gui
+     KF5::KIOCore
+     KF5::KIOFileWidgets
+-    KF5::KHtml
+     KF5::SonnetCore
+     KF5::SonnetUi
+     KF5::XmlGui
++    KF5::I18n
++    KF5::TextWidgets
+ )
+ 
++IF(USE_KHTML)
++  TARGET_LINK_LIBRARIES(gui KF5::KHtml)
++  ADD_DEFINITIONS(-DUSE_KHTML=${USE_KHTML})
++ELSE()
++  TARGET_LINK_LIBRARIES(gui Qt5::WebEngineWidgets)
++ENDIF()
++
+ IF( KF5Sane_FOUND )
+   TARGET_LINK_LIBRARIES(gui KF5::Sane)
+ ENDIF( KF5Sane_FOUND )
+diff --git a/src/gui/previewdialog.cpp b/src/gui/previewdialog.cpp
+index 5e711944..afba314c 100644
+--- a/src/gui/previewdialog.cpp
++++ b/src/gui/previewdialog.cpp
+@@ -28,7 +28,6 @@
+ #include "../images/imagefactory.h" // for StyleOptions
+ 
+ #include <KLocalizedString>
+-#include <KHTMLView>
+ 
+ #include <QTemporaryDir>
+ #include <QDialogButtonBox>
+@@ -46,11 +45,12 @@ PreviewDialog::PreviewDialog(QWidget* parent_)
+   QVBoxLayout* mainLayout = new QVBoxLayout;
+   setLayout(mainLayout);
+ 
+-  QWidget* mainWidget = new QWidget(this);
+-  mainLayout->addWidget(mainWidget);
+-
+-  m_view = new EntryView(mainWidget);
++  m_view = new EntryView(this);
++#ifdef USE_KHTML
+   mainLayout->addWidget(m_view->view());
++#else
++  mainLayout->addWidget(m_view);
++#endif
+ 
+   QDialogButtonBox* buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok);
+   QPushButton* okButton = buttonBox->button(QDialogButtonBox::Ok);
+@@ -59,7 +59,7 @@ PreviewDialog::PreviewDialog(QWidget* parent_)
+   connect(buttonBox, &QDialogButtonBox::accepted, this, &QDialog::accept);
+   mainLayout->addWidget(buttonBox);
+ 
+-  resize(QSize(600, 500));
++  resize(QSize(800, 600));
+ 
+   m_tempDir->setAutoRemove(true);
+ }
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index 051afc9a..a5af9505 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -82,7 +82,6 @@
+ #include <KStandardAction>
+ #include <KWindowSystem>
+ #include <KWindowConfig>
+-#include <KHTMLView>
+ #include <KMessageBox>
+ #include <KTipDialog>
+ #include <KRecentDocument>
+@@ -110,6 +109,17 @@
+ #include <QFileDialog>
+ #include <QMetaMethod>
+ 
++#ifdef USE_KHTML
++#include <KHTMLPart>
++#include <KHTMLView>
++#else
++#include <QWebEngineView>
++#include <QWebEnginePage>
++#include <QWebEngineSettings>
++#include <QPrinter>
++#include <QPrintDialog>
++#endif
++
+ #include <unistd.h>
+ 
+ namespace {
+@@ -320,6 +330,7 @@ void MainWindow::initActions() {
+   action = KStandardAction::saveAs(this, SLOT(slotFileSaveAs()), actionCollection());
+   action->setToolTip(i18n("Save the document as a different file..."));
+   action = KStandardAction::print(this, SLOT(slotFilePrint()), actionCollection());
++#ifdef USE_KHTML
+   {
+     KHTMLPart w;
+     // KHTMLPart printing was broken in KDE until KHTML 5.16
+@@ -331,6 +342,7 @@ void MainWindow::initActions() {
+       action->setEnabled(false);
+     }
+   }
++#endif
+ 
+   action->setToolTip(i18n("Print the contents of the document..."));
+   action = KStandardAction::quit(this, SLOT(slotFileQuit()), actionCollection());
+@@ -750,15 +762,20 @@ void MainWindow::initView() {
+   ImageFactory::init();
+ 
+   m_entryView = new EntryView(this);
+-  connect(m_entryView, &EntryView::signalAction,
++  connect(m_entryView, &EntryView::signalTellicoAction,
+           this, &MainWindow::slotURLAction);
+-  m_entryView->view()->setWhatsThis(i18n("<qt>The <i>Entry View</i> shows a formatted view of the entry's contents.</qt>"));
+ 
+   // trick to make sure the group views always extend along the entire left or right side
+   // using QMainWindow::setCorner does not seem to work
+   // https://wiki.qt.io/Technical_FAQ#Is_it_possible_for_either_the_left_or_right_dock_areas_to_have_full_height_of_their_side_rather_than_having_the_bottom_take_the_full_width.3F
+   m_dummyWindow = new QMainWindow(this);
++#ifdef USE_KHTML
++  m_entryView->view()->setWhatsThis(i18n("<qt>The <i>Entry View</i> shows a formatted view of the entry's contents.</qt>"));
+   m_dummyWindow->setCentralWidget(m_entryView->view());
++#else
++  m_entryView->setWhatsThis(i18n("<qt>The <i>Entry View</i> shows a formatted view of the entry's contents.</qt>"));
++  m_dummyWindow->setCentralWidget(m_entryView);
++#endif
+   m_dummyWindow->setWindowFlags(Qt::Widget);
+   setCentralWidget(m_dummyWindow);
+ 
+@@ -1634,6 +1651,7 @@ void MainWindow::slotHideReportDialog() {
+ }
+ 
+ void MainWindow::doPrint(const QString& html_) {
++#ifdef USE_KHTML
+   KHTMLPart w;
+ 
+   // KHTMLPart printing was broken in KDE until KHTML 5.16
+@@ -1653,12 +1671,28 @@ void MainWindow::doPrint(const QString& html_) {
+   w.begin(Data::Document::self()->URL());
+   w.write(html_);
+   w.end();
+-
+-// the problem with doing my own layout is that the text gets truncated, both at the
+-// top and at the bottom. Even adding the overlap parameter, there were problems.
+-// KHTMLView takes care of that with a truncatedAt() parameter, but that's hidden in
+-// the khtml::render_root class. So for now, just use the KHTMLView::print() method.
+   w.view()->print();
++#else
++  QWebEngineView* view = new QWebEngineView(this);
++  QWebEngineSettings* settings = view->page()->settings();
++  settings->setAttribute(QWebEngineSettings::JavascriptEnabled, false);
++  settings->setAttribute(QWebEngineSettings::PluginsEnabled, false);
++  settings->setAttribute(QWebEngineSettings::LocalContentCanAccessRemoteUrls, true);
++  settings->setAttribute(QWebEngineSettings::LocalContentCanAccessFileUrls, true);
++
++  view->setHtml(html_, Data::Document::self()->URL());
++
++  QPrinter printer;
++  printer.setResolution(300);
++  QPointer<QPrintDialog> dialog = new QPrintDialog(&printer, this);
++  if(dialog->exec() != QDialog::Accepted) {
++    return;
++  }
++  QEventLoop loop;
++  GUI::CursorSaver cs(Qt::WaitCursor);
++  view->page()->print(&printer, [&](bool) { loop.quit(); });
++  loop.exec();
++#endif
+ }
+ 
+ void MainWindow::XSLTError() {
+diff --git a/src/reportdialog.cpp b/src/reportdialog.cpp
+index 0bdb7d48..f468e1c2 100644
+--- a/src/reportdialog.cpp
++++ b/src/reportdialog.cpp
+@@ -1,5 +1,5 @@
+ /***************************************************************************
+-    Copyright (C) 2005-2009 Robby Stephenson <robby@periapsis.org>
++    Copyright (C) 2005-2020 Robby Stephenson <robby@periapsis.org>
+  ***************************************************************************/
+ 
+ /***************************************************************************
+@@ -38,8 +38,6 @@
+ #include "config/tellico_config.h"
+ 
+ #include <KLocalizedString>
+-#include <KHTMLPart>
+-#include <KHTMLView>
+ #include <KStandardGuiItem>
+ #include <KWindowConfig>
+ #include <KConfigGroup>
+@@ -55,6 +53,17 @@
+ #include <QFileDialog>
+ #include <QDialogButtonBox>
+ 
++#ifdef USE_KHTML
++#include <KHTMLPart>
++#include <KHTMLView>
++#else
++#include <QPrinter>
++#include <QPrintDialog>
++#include <QWebEngineView>
++#include <QWebEnginePage>
++#include <QWebEngineSettings>
++#endif
++
+ namespace {
+   static const int REPORT_MIN_WIDTH = 600;
+   static const int REPORT_MIN_HEIGHT = 420;
+@@ -116,6 +125,15 @@ ReportDialog::ReportDialog(QWidget* parent_)
+   hlay->addWidget(pb3);
+   connect(pb3, &QAbstractButton::clicked, this, &ReportDialog::slotPrint);
+ 
++  QColor color = palette().color(QPalette::Link);
++  QString text = QString::fromLatin1("<html><style>p{font-family:sans-serif;font-weight:bold;width:50%;"
++                                     "margin:20% auto auto auto;text-align:center;"
++                                     "color:%1;}</style><body><p>").arg(color.name())
++               + i18n("Select a report template and click <em>Generate</em>.") + QLatin1Char(' ')
++               + i18n("Some reports may take several seconds to generate for large collections.")
++               + QLatin1String("</p></body></html>");
++
++#ifdef USE_KHTML
+   m_HTMLPart = new KHTMLPart(mainWidget);
+   m_HTMLPart->setJScriptEnabled(true);
+   m_HTMLPart->setJavaEnabled(false);
+@@ -123,16 +141,20 @@ ReportDialog::ReportDialog(QWidget* parent_)
+   m_HTMLPart->setPluginsEnabled(false);
+   topLayout->addWidget(m_HTMLPart->view());
+ 
+-  QColor color = palette().color(QPalette::Link);
+-  QString text = QString::fromLatin1("<html><style>p{font-weight:bold;width:50%;"
+-                                     "margin:20% auto auto auto;text-align:center;"
+-                                     "color:%1;}</style><body><p>").arg(color.name())
+-               + i18n("Select a report template and click <em>Generate</em>.") + QLatin1Char(' ')
+-               + i18n("Some reports may take several seconds to generate for large collections.")
+-               + QLatin1String("</p></body></html>");
+   m_HTMLPart->begin();
+   m_HTMLPart->write(text);
+   m_HTMLPart->end();
++#else
++  m_webView = new QWebEngineView(mainWidget);
++  QWebEngineSettings* settings = m_webView->page()->settings();
++  settings->setAttribute(QWebEngineSettings::JavascriptEnabled, true);
++  settings->setAttribute(QWebEngineSettings::PluginsEnabled, false);
++  settings->setAttribute(QWebEngineSettings::LocalContentCanAccessRemoteUrls, true);
++  settings->setAttribute(QWebEngineSettings::LocalContentCanAccessFileUrls, true);
++  topLayout->addWidget(m_webView);
++
++  m_webView->setHtml(text);
++#endif
+ 
+   QDialogButtonBox* buttonBox = new QDialogButtonBox(QDialogButtonBox::Close);
+   mainLayout->addWidget(buttonBox);
+@@ -201,8 +223,13 @@ void ReportDialog::slotRefresh() {
+   // by setting the xslt file as the URL, any images referenced in the xslt "theme" can be found
+   // by simply using a relative path in the xslt file
+   QUrl u = QUrl::fromLocalFile(m_xsltFile);
++#ifdef USE_KHTML
+   m_HTMLPart->begin(u);
+   m_HTMLPart->write(m_exporter->text());
++  m_HTMLPart->end();
++#else
++  m_webView->setHtml(m_exporter->text(), u);
++#endif
+ #if 0
+   myDebug() << "Remove debug from reportdialog.cpp";
+   QFile f(QLatin1String("/tmp/test.html"));
+@@ -212,14 +239,23 @@ void ReportDialog::slotRefresh() {
+   }
+   f.close();
+ #endif
+-  m_HTMLPart->end();
+-  // is this needed?
+-//  view()->layout();
+ }
+ 
+ // actually the print button
+ void ReportDialog::slotPrint() {
++#ifdef USE_KHTML
+   m_HTMLPart->view()->print();
++#else
++  QPrinter printer;
++  printer.setResolution(300);
++  QPointer<QPrintDialog> dialog = new QPrintDialog(&printer, this);
++  if(dialog->exec() == QDialog::Accepted) {
++    QEventLoop loop;
++    GUI::CursorSaver cs(Qt::WaitCursor);
++    m_webView->page()->print(&printer, [&](bool) { loop.quit(); });
++    loop.exec();
++  }
++#endif
+ }
+ 
+ void ReportDialog::slotSaveAs() {
+diff --git a/src/reportdialog.h b/src/reportdialog.h
+index 5fbe7c17..033f2ca7 100644
+--- a/src/reportdialog.h
++++ b/src/reportdialog.h
+@@ -27,7 +27,11 @@
+ 
+ #include <QDialog>
+ 
++#ifdef USE_KHTML
+ class KHTMLPart;
++#else
++class QWebEngineView;
++#endif
+ 
+ namespace Tellico {
+   namespace Export {
+@@ -65,7 +69,11 @@ private Q_SLOTS:
+   void slotUpdateSize();
+ 
+ private:
++#ifdef USE_KHTML
+   KHTMLPart* m_HTMLPart;
++#else
++  QWebEngineView* m_webView;
++#endif
+   GUI::ComboBox* m_templateCombo;
+   Export::HTMLExporter* m_exporter;
+   QString m_xsltFile;
+diff --git a/xslt/welcome.html b/xslt/welcome.html
+index 27bcd83c..10528047 100644
+--- a/xslt/welcome.html
++++ b/xslt/welcome.html
+@@ -10,6 +10,7 @@
+     background-color: $BGCOLOR$;
+     background-image: url($IMGDIR$gradient_bg.png);
+     background-repeat: repeat;
++    font-family: sans-serif;
+   }
+   h1 {
+     margin: 0px;
+@@ -33,7 +34,7 @@
+     padding-right: 1%;
+   }
+   div.category {
+-    padding: 0px 0px 0px 4px;
++    padding: 0px 4px 0px 4px;
+     margin: 8px;
+     border: 1px solid #181818;
+     text-align: center;
+-- 
+2.29.2
+
