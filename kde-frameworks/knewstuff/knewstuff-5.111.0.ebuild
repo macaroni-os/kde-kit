@@ -12,6 +12,7 @@ KEYWORDS="*"
 IUSE=""
 
 DEPEND="
+	$(add_qt_dep designer)
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtnetwork)
