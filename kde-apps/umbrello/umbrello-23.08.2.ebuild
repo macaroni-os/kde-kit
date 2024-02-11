@@ -49,9 +49,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-20.08.3-gentoo-docbundledir.patch # fix hardcoded path
-)
+src_prepare() {
+	kde5_src_prepare
+	sed -i 's@doc/HTML@help@' umbrello/umlappprivate.cpp || die
+}
 
 src_configure() {
 	local mycmakeargs=(

@@ -12,6 +12,7 @@ IUSE=""
 DEPEND="
 	app-arch/bzip2
 	app-arch/xz-utils
+	dev-qt/linguist-tools:5
 	sys-libs/zlib
 "
 RDEPEND="${DEPEND}
