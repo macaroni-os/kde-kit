@@ -45,6 +45,7 @@ COMMON_DEPEND="
 	pam? ( sys-libs/pam )
 "
 DEPEND="${COMMON_DEPEND}
+	$(add_plasma_dep libkscreen)
 	x11-base/xorg-proto
 "
 RDEPEND="${COMMON_DEPEND}
