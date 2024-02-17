@@ -13,7 +13,7 @@ DESCRIPTION="Network-enabled task manager and system monitor"
 LICENSE="GPL-2+"
 SLOT="5"
 KEYWORDS="*"
-IUSE="lm-sensors +network networkmanager"
+IUSE="lm-sensors networkmanager"
 
 DEPEND="
 	$(add_qt_dep qtdbus)
@@ -36,23 +36,39 @@ DEPEND="
 	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep kxmlgui)
 	$(add_plasma_dep libksysguard)
+	$(add_plasma_dep libksysguard)
 	lm-sensors? ( sys-apps/lm-sensors:= )
-	network? (
-		dev-libs/libnl:3
-		net-libs/libpcap
-		sys-libs/libcap
-	)
+	dev-libs/libnl:3
+	net-libs/libpcap
+	sys-libs/libcap
 	networkmanager? ( $(add_frameworks_dep networkmanager-qt) )
 "
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	# Fix memcpy error
+	sed -i '/^#include <iostream>/a #include <cstring>\n' plugins/process/network/helper/ConnectionMapping.cpp || die
+
+	kde5_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package lm-sensors Sensors)
 		$(cmake-utils_use_find_package networkmanager KF5NetworkManagerQt)
-		$(cmake-utils_use_find_package network libpcap)
-		$(cmake-utils_use_find_package network NL)
 	)
 
 	kde5_src_configure
+}
+
+src_install() {
+	kde5_src_install
+
+	rm \
+			"${ED}"/usr/bin/kstatsviewer \
+			"${ED}"/usr/bin/ksystemstats \
+			"${ED}"/usr/share/dbus-1/services/org.kde.ksystemstats.service \
+			"${ED}"/usr/lib64/libexec/ksysguard/ksgrd_network_helper \
+			"${ED}"/usr/lib64/qt5/plugins/ksysguard/process/ksysguard_plugin_network.so \
+			"${ED}"/usr/lib64/qt5/plugins/ksysguard/process/ksysguard_plugin_nvidia.so || die
 }
