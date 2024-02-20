@@ -13,7 +13,7 @@ DESCRIPTION="Flexible, composited Window Manager for windowing systems on Linux"
 LICENSE="GPL-2+"
 SLOT="5"
 KEYWORDS="*"
-IUSE="accessibility caps gles2-only multimedia screencast"
+IUSE="accessibility caps gles2-only multimedia screencast wayland"
 
 COMMON_DEPEND="
 	>=dev-libs/libinput-1.19
@@ -85,6 +85,9 @@ RDEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kirigami)
 	$(add_frameworks_dep kitemmodels qml)
 	sys-apps/hwdata
+	wayland? (
+	|| ( x11-base/xorg-server[wayland] x11-base/xwayland )
+	)
 	x11-base/xorg-server
 	multimedia? ( $(add_qt_dep qtmultimedia gstreamer,qml) )
 "
