@@ -7,7 +7,7 @@ inherit cmake
 DESCRIPTION="LXQt Build Tools"
 HOMEPAGE="https://lxqt.github.io/"
 
-SRC_URI="https://github.com/lxqt/lxqt-build-tools/releases/download/0.13.0/lxqt-build-tools-0.13.0.tar.xz -> lxqt-build-tools-0.13.0.tar.xz"
+SRC_URI="https://github.com/lxqt/lxqt-build-tools/releases/download/2.0.0/lxqt-build-tools-2.0.0.tar.xz -> lxqt-build-tools-2.0.0.tar.xz"
 KEYWORDS="*"
 
 LICENSE="BSD"

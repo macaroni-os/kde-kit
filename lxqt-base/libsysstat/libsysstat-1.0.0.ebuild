@@ -4,16 +4,18 @@ EAPI=7
 
 inherit cmake
 
-DESCRIPTION="LXQt Themes"
+DESCRIPTION="Qt GUI for System Statistics"
 HOMEPAGE="https://lxqt.github.io/"
 
-SRC_URI="https://github.com/lxqt/lxqt-themes/releases/download/1.3.0/lxqt-themes-1.3.0.tar.xz -> lxqt-themes-1.3.0.tar.xz"
+SRC_URI="https://github.com/lxqt/libsysstat/releases/download/1.0.0/libsysstat-1.0.0.tar.xz -> libsysstat-1.0.0.tar.xz"
 KEYWORDS="*"
 
-LICENSE="LGPL-2.1+"
+LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 
 BDEPEND="dev-util/lxqt-build-tools"
+DEPEND="dev-qt/qtcore:5"
+RDEPEND="${DEPEND}"
 
 post_src_unpack() {
 	if [ ! -d "${S}" ]; then
