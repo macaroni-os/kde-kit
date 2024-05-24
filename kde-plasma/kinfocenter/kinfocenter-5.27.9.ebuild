@@ -55,6 +55,11 @@ RDEPEND="${DEPEND}
 	$(add_frameworks_dep kirigami)
 	$(add_plasma_dep kde-cli-tools)
 	$(add_plasma_dep systemsettings)
+	app-misc/wayland-utils
+	app-text/aha
+	dev-util/clinfo
+	dev-util/vulkan-tools
+	x11-apps/mesa-progs[egl]
 "
 
 src_configure() {

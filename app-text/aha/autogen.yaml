@@ -1,0 +1,7 @@
+aha_rule:
+  generator: github-1
+  packages:
+    - aha:
+        github:
+          user: theZiz
+          query: tags
