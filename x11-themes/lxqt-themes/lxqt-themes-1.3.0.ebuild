@@ -7,7 +7,7 @@ inherit cmake
 DESCRIPTION="LXQt Themes"
 HOMEPAGE="https://lxqt.github.io/"
 
-SRC_URI="https://github.com/lxqt/lxqt-themes/releases/download/2.0.0/lxqt-themes-2.0.0.tar.xz -> lxqt-themes-2.0.0.tar.xz"
+SRC_URI="https://github.com/lxqt/lxqt-themes/releases/download/1.3.0/lxqt-themes-1.3.0.tar.xz -> lxqt-themes-1.3.0.tar.xz"
 KEYWORDS="*"
 
 LICENSE="LGPL-2.1+"
