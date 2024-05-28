@@ -60,6 +60,7 @@ RDEPEND="${DEPEND}
 	dev-util/clinfo
 	dev-util/vulkan-tools
 	x11-apps/mesa-progs[egl]
+	sys-apps/fwupd
 "
 
 src_configure() {
