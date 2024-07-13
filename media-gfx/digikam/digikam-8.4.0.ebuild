@@ -7,7 +7,7 @@ QTMIN=5.15.2
 inherit kde5 toolchain-funcs
 
 
-SRC_URI="https://invent.kde.org/graphics/digikam/-/archive/v8.3.0/digikam-v8.3.0.tar.gz -> digikam-v8.3.0.tar.gz"
+SRC_URI="https://invent.kde.org/graphics/digikam/-/archive/v8.4.0/digikam-v8.4.0.tar.gz -> digikam-v8.4.0.tar.gz"
 KEYWORDS=""
 S=${WORKDIR}/${PN}-v${PV}
 
