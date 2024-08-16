@@ -22,7 +22,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtprintsupport)
 	$(add_qt_dep qtsql 'sqlite')
 	$(add_qt_dep qtwebchannel)
-	$(add_qt_dep qtwebengine 'widgets')
+	$(add_qt_dep qtwebengine)
 	$(add_qt_dep qtwidgets)
 	$(add_frameworks_dep karchive)
 	virtual/libintl

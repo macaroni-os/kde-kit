@@ -26,7 +26,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qthelp)
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qttest)
-	$(add_qt_dep qtwebengine widgets)
+	$(add_qt_dep qtwebengine)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	>=dev-util/astyle-3.1:=

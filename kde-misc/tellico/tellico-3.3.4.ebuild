@@ -26,7 +26,7 @@ RDEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtnetwork)
-	$(add_qt_dep qtwebengine widgets)
+	$(add_qt_dep qtwebengine)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	$(add_frameworks_dep karchive)

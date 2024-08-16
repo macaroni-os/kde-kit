@@ -45,7 +45,7 @@ DEPEND="
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
 	virtual/tex-base
-	webengine? ( $(add_qt_dep qtwebengine widgets) )
+	webengine? ( $(add_qt_dep qtwebengine) )
 	zotero? (
 		app-crypt/qca[qt5(+)]
 		dev-libs/qoauth:5

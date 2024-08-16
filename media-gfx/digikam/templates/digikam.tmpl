@@ -8,7 +8,7 @@ inherit kde5 toolchain-funcs
 
 
 SRC_URI="{{artifacts[0].src_uri}}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 S=${WORKDIR}/${PN}-v${PV}
 
 DESCRIPTION="Digital photo management application"
@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtnetworkauth-${QTMIN}:5
 	>=dev-qt/qtprintsupport-${QTMIN}:5
 	>=dev-qt/qtsql-${QTMIN}:5[mysql?]
-	>=dev-qt/qtwebengine-${QTMIN}:5[widgets]
+	>=dev-qt/qtwebengine-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
 	>=dev-qt/qtxmlpatterns-${QTMIN}:5
