@@ -7,7 +7,7 @@ inherit cmake
 DESCRIPTION="Qt GUI for System Statistics"
 HOMEPAGE="https://lxqt.github.io/"
 
-SRC_URI="https://github.com/lxqt/libsysstat/releases/download/1.0.0/libsysstat-1.0.0.tar.xz -> libsysstat-1.0.0.tar.xz"
+SRC_URI="https://github.com/lxqt/libsysstat/releases/download/1.1.0/libsysstat-1.1.0.tar.xz -> libsysstat-1.1.0.tar.xz"
 KEYWORDS="*"
 
 LICENSE="GPL-2+ LGPL-2.1+"
