@@ -2,6 +2,7 @@ app-admin
 app-crypt
 app-misc
 dev-libs
+dev-util
 kde-apps
 kde-frameworks
 kde-misc
@@ -10,3 +11,6 @@ lxde-base
 lxqt-base
 media-gfx
 media-libs
+net-irc
+net-libs
+net-p2p
