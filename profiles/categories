@@ -14,4 +14,9 @@ media-libs
 net-irc
 net-libs
 net-p2p
+sys-auth
+sys-libs
+x11-libs
+x11-misc
+x11-terms
 x11-themes
