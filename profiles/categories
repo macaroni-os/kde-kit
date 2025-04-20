@@ -1,11 +1,14 @@
 app-admin
 app-crypt
+app-misc
 dev-libs
 dev-util
 kde-apps
 kde-frameworks
 kde-misc
 kde-plasma
+lxde-base
+lxqt-base
 media-gfx
 media-libs
 net-irc
@@ -16,3 +19,4 @@ sys-libs
 x11-libs
 x11-misc
 x11-terms
+x11-themes
