@@ -30,7 +30,4 @@ src_configure() {
 	)
 
 	kde5_src_configure
-	# Zxing using exceptions. So we need to drop
-	# -fno-exceptions flag.
-	sed -i -e 's|-fno-exceptions||g' ${WORKDIR}/${P}_build/build.ninja || die
 }
