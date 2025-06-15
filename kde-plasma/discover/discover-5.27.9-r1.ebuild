@@ -53,10 +53,6 @@ RDEPEND="${DEPEND}
 	$(add_frameworks_dep kirigami)
 "
 
-PATCHES=(
-	"${FILESDIR}"/discover-fwupd.patch
-)
-
 src_prepare() {
 	kde5_src_prepare
 	# we don't need it with PackageKitBackend off
