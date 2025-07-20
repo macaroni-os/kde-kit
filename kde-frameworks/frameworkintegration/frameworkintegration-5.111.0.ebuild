@@ -22,7 +22,6 @@ RDEPEND="
 	$(add_frameworks_dep knewstuff)
 	$(add_frameworks_dep knotifications)
 	appstream? (
-		app-admin/packagekit-qt
 		dev-libs/appstream[qt5]
 	)
 	X? (
