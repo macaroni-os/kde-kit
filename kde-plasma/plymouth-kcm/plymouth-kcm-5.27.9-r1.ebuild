@@ -35,3 +35,4 @@ RDEPEND="${DEPEND}
 	$(add_plasma_dep kde-cli-tools)
 "
 
+DOCS=( CONTRIBUTORS )
