@@ -14,7 +14,7 @@ SRC_URI="https://github.com/lxde/libfm/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux"
 LICENSE="GPL-2"
 SLOT="0/5.2.1" #copy ABI_VERSION because it seems upstream change it randomly
-IUSE=""
+IUSE="prefix"
 
 RDEPEND=">=dev-libs/glib-2.18:2"
 DEPEND="${RDEPEND}
@@ -71,16 +71,6 @@ src_install() {
 	# symlink to it.
 	if [[ -h ${D}/usr/include/${MY_PN} || -d ${D}/usr/include/${MY_PN} ]]; then
 		rm -r "${D}"/usr/include/${MY_PN}
-	fi
-}
-
-pkg_preinst() {
-	# Resolve the symlink mess. Bug #439570
-	[[ -d "${ROOT}"/usr/include/${MY_PN} ]] && \
-		rm -rf "${ROOT}"/usr/include/${MY_PN}
-	if [[ -d "${D}"/usr/include/${MY_PN}-1.0 ]]; then
-		cd "${D}"/usr/include
-		ln -s --force ${MY_PN}-1.0 ${MY_PN}
 	fi
 }
 
