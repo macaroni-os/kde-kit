@@ -1,0 +1,12 @@
+diff --git a/plugins/impex/tiff/kis_tiff_import.cc b/plugins/impex/tiff/kis_tiff_import.cc
+index 86cd841..30bc62e 100644
+--- a/plugins/impex/tiff/kis_tiff_import.cc
++++ b/plugins/impex/tiff/kis_tiff_import.cc
+@@ -11,6 +11,7 @@
+ #include <QPair>
+ #include <QSharedPointer>
+ #include <QStack>
++#include <QBuffer>
+ 
+ #include <array>
+ 
