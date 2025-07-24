@@ -12,7 +12,7 @@ DESCRIPTION="Plugin-based system monitoring daemon"
 LICENSE="LGPL-3+"
 SLOT="5"
 KEYWORDS="*"
-IUSE="lm-sensors networkmanager"
+IUSE="lm_sensors networkmanager"
 
 DEPEND="
 	dev-libs/libnl
@@ -27,7 +27,7 @@ DEPEND="
 	net-libs/libpcap
 	sys-libs/libcap
 	virtual/libudev:=
-	lm-sensors? ( sys-apps/lm_sensors:= )
+	lm_sensors? ( sys-apps/lm_sensors:= )
 	networkmanager? ( $(add_frameworks_dep networkmanager-qt) )
 "
 RDEPEND="${DEPEND}
@@ -36,7 +36,7 @@ RDEPEND="${DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_find_package lm-sensors Sensors)
+		$(cmake_use_find_package lm_sensors Sensors)
 		$(cmake_use_find_package networkmanager KF5NetworkManagerQt)
 	)
 	kde5_src_configure

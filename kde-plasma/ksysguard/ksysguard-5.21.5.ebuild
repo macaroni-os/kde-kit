@@ -13,7 +13,7 @@ DESCRIPTION="Network-enabled task manager and system monitor"
 LICENSE="GPL-2+"
 SLOT="5"
 KEYWORDS="*"
-IUSE="lm-sensors networkmanager"
+IUSE="lm_sensors networkmanager"
 
 DEPEND="
 	$(add_qt_dep qtdbus)
@@ -37,7 +37,7 @@ DEPEND="
 	$(add_frameworks_dep kxmlgui)
 	$(add_plasma_dep libksysguard)
 	$(add_plasma_dep libksysguard)
-	lm-sensors? ( sys-apps/lm-sensors:= )
+	lm_sensors? ( sys-apps/lm_sensors:= )
 	dev-libs/libnl:3
 	net-libs/libpcap
 	sys-libs/libcap
@@ -54,7 +54,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package lm-sensors Sensors)
+		$(cmake-utils_use_find_package lm_sensors Sensors)
 		$(cmake-utils_use_find_package networkmanager KF5NetworkManagerQt)
 	)
 
