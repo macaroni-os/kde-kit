@@ -40,7 +40,6 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	$(add_kdeapps_dep kaccounts-providers)
-	net-im/telepathy-connection-managers
 "
 
 src_configure() {
