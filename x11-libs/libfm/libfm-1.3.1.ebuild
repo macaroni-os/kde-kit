@@ -38,7 +38,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.40
 	virtual/pkgconfig
 	sys-devel/gettext
-	dev-util/glib-utils"
+"
 
 S="${WORKDIR}"/${MY_P}
 
