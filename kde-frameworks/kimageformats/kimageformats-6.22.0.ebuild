@@ -1,0 +1,46 @@
+# Distributed under the terms of the GNU General Public License v2
+# Autogen by MARK Devkit
+
+EAPI=7
+inherit kde6
+
+DESCRIPTION="Framework providing additional format plugins for Qt's image I/O system"
+HOMEPAGE="https://invent.kde.org/frameworks/"
+SRC_URI="https://download.kde.org/stable/frameworks/6.22/kimageformats-6.22.0.tar.xz -> kimageformats-6.22.0.tar.xz"
+SLOT="6"
+KEYWORDS="*"
+IUSE="avif eps heif jpeg2k jpegxl openexr raw"
+RDEPEND="dev-qt/qtbase:6[gui]
+	kde-frameworks/karchive:6
+	avif? ( >=media-libs/libavif-0.8.2:= )
+	eps? ( dev-qt/qtbase:6 )
+	heif? ( >=media-libs/libheif-1.19.7:= )
+	jpeg2k? ( media-libs/openjpeg:= )
+	jpegxl? ( >=media-libs/libjxl-0.9.4:= )
+	openexr? ( >=media-libs/openexr-3:= )
+	raw? ( media-libs/libraw:= )
+	
+"
+DEPEND="${RDEPEND}
+	test? (
+	    dev-qt/qtimageformats:6
+	    heif? ( media-libs/libheif[x265] )
+	)
+	
+"
+src_configure() {
+	  local mycmakeargs=(
+	      -DKIMAGEFORMATS_JXR=OFF # TODO: check if ready upstream
+	      $(cmake_use_find_package avif libavif)
+	      $(cmake_use_find_package eps Qt6PrintSupport)
+	      -DKIMAGEFORMATS_HEIF=$(usex heif)
+	      -DKIMAGEFORMATS_JP2=$(usex jpeg2k)
+	      -DKIMAGEFORMATS_JXL=$(usex jpegxl)
+	      $(cmake_use_find_package openexr OpenEXR)
+	      $(cmake_use_find_package raw LibRaw)
+	  )
+	  kde6_src_configure
+}
+
+
+# vim: filetype=ebuild
