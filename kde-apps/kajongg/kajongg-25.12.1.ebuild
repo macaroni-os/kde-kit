@@ -2,7 +2,8 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+PYTHON_COMPAT=( python3+ )
+inherit kde6 python-single-r1 xdg
 
 DESCRIPTION="Classical Mah Jongg for four players"
 HOMEPAGE="https://apps.kde.org/kajongg/"
