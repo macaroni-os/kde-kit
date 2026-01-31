@@ -13,7 +13,7 @@ IUSE="+firmware flatpak telemetry webengine"
 BDEPEND="kde-frameworks/kcmutils:6
 	
 "
-RDEPEND=">=dev-libs/appstream-1.0.4:=[qt6]
+RDEPEND=">=dev-libs/appstream-1.0.4:=[qt]
 	dev-libs/kirigami-addons:6
 	dev-libs/qcoro
 	dev-qt/qtbase:6[gui]
