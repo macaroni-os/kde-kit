@@ -104,7 +104,7 @@ DEPEND="${RDEPEND}
 	sys-apps/dbus
 	sys-libs/zlib
 	virtual/libudev:=
-	appstream? ( >=dev-libs/appstream-1[qt6] )
+	appstream? ( >=dev-libs/appstream-1[qt] )
 	calendar? ( kde-frameworks/kholidays:6 )
 	ksysguard? ( kde-plasma/libksysguard:6 )
 	policykit? ( sys-libs/libxcrypt:= )
