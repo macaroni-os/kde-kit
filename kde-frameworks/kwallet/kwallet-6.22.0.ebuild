@@ -26,7 +26,7 @@ DEPEND=">=app-crypt/qca-2.3.9:2[qt6(+)]
 	kde-frameworks/kservice:6
 	kde-frameworks/kwidgetsaddons:6
 	kde-frameworks/kwindowsystem:6[X?]
-	gpg? ( dev-libs/qgpgme:= )
+	gpg? ( app-crypt/gpgme:= )
 	runtime? ( app-crypt/libsecret )
 	
 "
