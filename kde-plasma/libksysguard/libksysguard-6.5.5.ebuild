@@ -31,6 +31,7 @@ RDEPEND="dev-qt/qtbase:6[gui]
 	sys-libs/libcap
 	sys-libs/zlib
 	virtual/libudev:=
+	sys-apps/lm-sensors:=
 	webengine? ( dev-qt/qtwebengine:6 )
 	X? (
 	    dev-qt/qtbase:6[X]
