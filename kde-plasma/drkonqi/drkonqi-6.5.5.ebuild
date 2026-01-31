@@ -18,8 +18,8 @@ RDEPEND="dev-libs/elfutils[utils]
 	    dev-python/pygdbmi[${PYTHON_USEDEP}]
 	')
 	|| (
-	    >=dev-debug/gdb-12
-	    llvm-core/lldb
+		sys-devel/gdb
+		dev-util/lldb
 	)
 	
 "
