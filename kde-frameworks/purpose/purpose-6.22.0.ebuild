@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 	kde-frameworks/knotifications:6
 	kde-frameworks/kservice:6
 	kde-frameworks/prison:6[qml]
-	bluetooth? ( dev-qt/qtconnectivity:6[bluetooth] )
+	bluetooth? ( dev-qt/qtconnectivity:6 )
 	kaccounts? (
 	    kde-apps/kaccounts-integration:6
 	    net-libs/accounts-qt:=[qt6(+)]
