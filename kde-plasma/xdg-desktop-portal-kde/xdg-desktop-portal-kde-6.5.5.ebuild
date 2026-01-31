@@ -15,7 +15,7 @@ BDEPEND="dev-qt/qtbase:6[wayland]
 	|| ( >=dev-qt/qtbase-6.10:6[wayland] <dev-qt/qtwayland-6.10:6 )
 	
 "
-RDEPEND="kde-misc/kio-fuse:6
+RDEPEND="kde-misc/kio-fuse
 	sys-apps/xdg-desktop-portal
 	|| ( >=dev-qt/qtbase-6.10:6[wayland] <dev-qt/qtwayland-6.10:6 )
 	
