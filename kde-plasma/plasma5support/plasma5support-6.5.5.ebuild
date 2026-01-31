@@ -20,6 +20,7 @@ DEPEND="${RDEPEND}
 	kde-frameworks/kcoreaddons:6
 	kde-frameworks/kguiaddons:6
 	kde-frameworks/ki18n:6
+	kde-frameworks/kio:6
 	kde-frameworks/knotifications:6
 	kde-frameworks/kservice:6
 	
