@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit cmake xdg
 
 DESCRIPTION="KIO plugins present a filesystem-like view of arbitrary data"
 HOMEPAGE="https://invent.kde.org/network/kio-extras"
@@ -10,7 +10,6 @@ SRC_URI="https://download.kde.org/stable/release-service/25.12.1/src/kio-extras-
 SLOT="6"
 KEYWORDS="*"
 IUSE="activities ios +man mtp nfs +libproxy openexr phonon samba +sftp taglib X"
-RESTRICT="test"
 BDEPEND="man? ( dev-util/gperf )
 	
 "
@@ -19,9 +18,6 @@ RDEPEND="!kde-apps/kio-extras:5[-kf6compat(-)]
 	!<kde-frameworks/kio-5.116.0-r2:5
 	!kde-frameworks/kio-trash-desktop-file:5
 	kde-frameworks/kded:6
-	
-"
-DEPEND="${RDEPEND}
 	dev-libs/qcoro
 	dev-qt/qt5compat:6
 	dev-qt/qtbase:6[gui]
@@ -44,37 +40,59 @@ DEPEND="${RDEPEND}
 	kde-frameworks/solid:6
 	kde-frameworks/syntax-highlighting:6
 	activities? (
-	dev-qt/qtbase:6[sql]
-	kde-plasma/plasma-activities:6
-	kde-plasma/plasma-activities-stats:6
+	  dev-qt/qtbase:6[sql]
+	  kde-plasma/plasma-activities:6
+	  kde-plasma/plasma-activities-stats:6
 	)
 	ios? (
-	app-pda/libimobiledevice:=
-	app-pda/libplist:=
+	  app-pda/libimobiledevice:=
+	  app-pda/libplist:=
 	)
 	libproxy? (
-	kde-frameworks/knotifications:6
-	net-libs/libproxy
+	  kde-frameworks/knotifications:6
+	  net-libs/libproxy
 	)
 	mtp? ( >=media-libs/libmtp-1.1.16:= )
 	nfs? ( net-libs/libtirpc:= )
 	openexr? ( media-libs/openexr:= )
 	phonon? ( >=media-libs/phonon-4.12.0[qt6(+)] )
 	samba? (
-	net-fs/samba[client]
-	>=net-libs/kdsoap-2.2.0:=[qt6(+)]
-	>=net-libs/kdsoap-ws-discovery-client-0.3.0
+	  net-fs/samba[client]
+	  >=net-libs/kdsoap-2.2.0:=[qt6(+)]
+	  >=net-libs/kdsoap-ws-discovery-client-0.3.0
 	)
 	sftp? ( net-libs/libssh:=[sftp] )
 	taglib? ( >=media-libs/taglib-1.11.1:= )
 	X? (
-	x11-libs/libX11
-	x11-libs/libXcursor
+	  x11-libs/libX11
+	  x11-libs/libXcursor
 	)
 	
 "
-src_prepare() {
-	  kde6_src_prepare
+DEPEND="${RDEPEND}
+"
+src_configure() {
+	local mycmakeargs=(
+	  -DBUILD_ACTIVITIES=$(usex activities)
+	  $(cmake_use_find_package ios IMobileDevice)
+	  $(cmake_use_find_package ios PList)
+	  -DWITH_LIBPROXY=$(usex libproxy)
+	  $(cmake_use_find_package man Gperf)
+	  $(cmake_use_find_package mtp Libmtp)
+	  $(cmake_use_find_package nfs TIRPC)
+	  $(cmake_use_find_package openexr OpenEXR)
+	  $(cmake_use_find_package samba Samba)
+	  $(cmake_use_find_package sftp libssh)
+	  $(cmake_use_find_package taglib Taglib)
+	  -DWITHOUT_X11=$(usex !X)
+	)
+	cmake_src_configure
+}
+pkg_postinst() {
+	use samba && xdg_pkg_postinst
+}
+pkg_postrm() {
+	use samba && xdg_pkg_postrm
 }
 
 
