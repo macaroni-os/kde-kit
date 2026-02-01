@@ -2,6 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
+FILECAPS=( cap_sys_nice usr/bin/kwin_wayland )
 inherit kde6 fcaps xdg
 
 DESCRIPTION="Flexible, composited Window Manager for windowing systems on Linux"
@@ -9,6 +10,9 @@ HOMEPAGE="https://invent.kde.org/plasma/"
 SRC_URI="https://download.kde.org/stable/plasma/6.5.5/kwin-6.5.5.tar.xz -> kwin-6.5.5.tar.xz"
 SLOT="6"
 KEYWORDS="*"
+PATCHES=(
+	"${FILESDIR}/kwin-6.5.5-gcc12-ranges-to-compat.patch"
+)
 IUSE="accessibility gles2-only lock screencast +shortcuts systemd X"
 BDEPEND=">=dev-libs/plasma-wayland-protocols-1.18.0
 	>=dev-libs/wayland-protocols-1.45
@@ -100,7 +104,6 @@ src_prepare() {
 	      sed -e "s/^pkg_check_modules.*libsystemd/#&/" -i CMakeLists.txt || die
 	  fi
 }
-
 src_configure() {
 	  local mycmakeargs=(
 	      $(cmake_use_find_package accessibility QAccessibilityClient6)
@@ -110,7 +113,6 @@ src_configure() {
 	  )
 	  kde6_src_configure
 }
-FILECAPS=( cap_sys_nice usr/bin/kwin_wayland )
 pkg_postinst() {
 	  xdg_pkg_postinst
 	  fcaps_pkg_postinst
