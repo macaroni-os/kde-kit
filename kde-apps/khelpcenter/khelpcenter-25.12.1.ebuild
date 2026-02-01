@@ -12,7 +12,7 @@ KEYWORDS="*"
 RDEPEND="dev-libs/libxml2:=
 	dev-libs/xapian:=
 	dev-qt/qtbase:6[gui]
-	dev-qt/qtwebengine:6[widgets]
+	dev-qt/qtwebengine:6
 	kde-frameworks/karchive:6
 	kde-frameworks/kbookmarks:6
 	kde-frameworks/kcodecs:6

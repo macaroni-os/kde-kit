@@ -12,7 +12,7 @@ KEYWORDS="*"
 IUSE="activities speech telemetry"
 RDEPEND=">=dev-libs/ktextaddons-1.6.0:6[speech?]
 	dev-qt/qtbase:6[gui]
-	dev-qt/qtwebengine:6[widgets]
+	dev-qt/qtwebengine:6
 	kde-apps/grantleetheme:6=
 	kde-apps/kontactinterface:6=
 	kde-apps/libkdepim:6=

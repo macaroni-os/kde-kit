@@ -18,7 +18,7 @@ DEPEND="${RDEPEND}
 	dev-qt/qt5compat:6
 	dev-qt/qtdeclarative:6
 	dev-qt/qtsvg:6
-	dev-qt/qtwebengine:6[widgets]
+	dev-qt/qtwebengine:6
 	kde-apps/analitza:6
 	kde-frameworks/kconfig:6
 	kde-frameworks/kconfigwidgets:6

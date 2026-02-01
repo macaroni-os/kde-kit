@@ -16,7 +16,7 @@ RDEPEND="dev-cpp/gpgmepp:=
 	>=dev-libs/openssl-3.0.0:=
 	>=dev-libs/ktextaddons-1.6.0:6[speech?]
 	dev-qt/qtbase:6[gui]
-	dev-qt/qtwebengine:6[widgets]
+	dev-qt/qtwebengine:6
 	kde-apps/akonadi:6=
 	kde-apps/akonadi-contacts:6=
 	kde-apps/akonadi-mime:6=

@@ -11,7 +11,7 @@ SLOT="6"
 KEYWORDS="*"
 RDEPEND=">=dev-libs/ktextaddons-1.6.0:6
 	dev-qt/qtbase:6[gui]
-	dev-qt/qtwebengine:6[widgets]
+	dev-qt/qtwebengine:6
 	kde-apps/akonadi-contacts:6=
 	kde-apps/grantleetheme:6=
 	kde-apps/kmime:6=

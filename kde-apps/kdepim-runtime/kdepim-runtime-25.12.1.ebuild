@@ -17,7 +17,7 @@ RDEPEND=">=app-crypt/qca-2.3.7:2[qt6(+)]
 	>=dev-libs/ktextaddons-1.6.0:6
 	dev-qt/qtbase:6[gui]
 	dev-qt/qtnetworkauth:6
-	dev-qt/qtwebengine:6[widgets]
+	dev-qt/qtwebengine:6
 	kde-apps/akonadi:6=
 	kde-apps/akonadi-calendar:6=
 	kde-apps/akonadi-contacts:6=
@@ -62,7 +62,7 @@ DEPEND="${RDEPEND}
 	>=dev-libs/ktextaddons-1.6.0:6
 	dev-qt/qtbase:6[gui]
 	dev-qt/qtnetworkauth:6
-	dev-qt/qtwebengine:6[widgets]
+	dev-qt/qtwebengine:6
 	kde-apps/akonadi:6=
 	kde-apps/akonadi-calendar:6=
 	kde-apps/akonadi-contacts:6=

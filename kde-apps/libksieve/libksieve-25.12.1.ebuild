@@ -14,7 +14,7 @@ RESTRICT="test"
 RDEPEND="dev-libs/cyrus-sasl:2
 	>=dev-libs/ktextaddons-1.6.0:6[speech?]
 	dev-qt/qtbase:6[gui]
-	dev-qt/qtwebengine:6[widgets]
+	dev-qt/qtwebengine:6
 	kde-apps/kidentitymanagement:6=
 	kde-apps/kmime:6=
 	kde-apps/libkdepim:6=
@@ -38,7 +38,7 @@ DEPEND="${RDEPEND}
 	dev-libs/cyrus-sasl:2
 	>=dev-libs/ktextaddons-1.6.0:6[speech?]
 	dev-qt/qtbase:6[gui]
-	dev-qt/qtwebengine:6[widgets]
+	dev-qt/qtwebengine:6
 	kde-apps/kidentitymanagement:6=
 	kde-apps/kmime:6=
 	kde-apps/libkdepim:6=

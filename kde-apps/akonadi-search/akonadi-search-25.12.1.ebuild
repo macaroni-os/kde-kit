@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 	kde-frameworks/kitemmodels:6
 	kde-frameworks/krunner:6
 	kde-frameworks/ktextwidgets:6
-	webengine? ( dev-qt/qtwebengine:6[widgets] )
+	webengine? ( dev-qt/qtwebengine:6 )
 	
 "
 src_prepare() {

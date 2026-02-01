@@ -20,7 +20,7 @@ RDEPEND="julia? ( dev-lang/julia )
 DEPEND="${RDEPEND}
 	dev-qt/qtbase:6[gui,printsupport]
 	dev-qt/qtsvg:6
-	dev-qt/qtwebengine:6[widgets]
+	dev-qt/qtwebengine:6
 	kde-frameworks/karchive:6
 	kde-frameworks/kcompletion:6
 	kde-frameworks/kconfig:6

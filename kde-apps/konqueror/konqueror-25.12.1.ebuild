@@ -17,7 +17,7 @@ RDEPEND="!<kde-apps/kio-extras-23.08.5-r100:5
 "
 DEPEND="${RDEPEND}
 	dev-qt/qtbase:6=[gui,X]
-	dev-qt/qtwebengine:6[widgets]
+	dev-qt/qtwebengine:6
 	kde-frameworks/karchive:6
 	kde-frameworks/kbookmarks:6
 	kde-frameworks/kcmutils:6

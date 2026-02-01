@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 	>=dev-libs/libgpg-error-1.36
 	>=dev-libs/qtkeychain-0.14.2:=[qt6(+)]
 	dev-qt/qtbase:6[gui]
-	dev-qt/qtwebengine:6[widgets]
+	dev-qt/qtwebengine:6
 	kde-apps/akonadi:6=
 	kde-apps/akonadi-contacts:6=
 	kde-apps/akonadi-mime:6=

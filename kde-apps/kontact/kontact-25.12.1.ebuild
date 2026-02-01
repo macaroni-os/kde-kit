@@ -15,7 +15,7 @@ RDEPEND="kde-apps/kmail:6
 "
 DEPEND="${RDEPEND}
 	dev-qt/qtbase:6[gui]
-	dev-qt/qtwebengine:6[widgets]
+	dev-qt/qtwebengine:6
 	kde-apps/grantleetheme:6=
 	kde-apps/kontactinterface:6=
 	kde-apps/libkdepim:6=

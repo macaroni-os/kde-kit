@@ -51,7 +51,7 @@ DEPEND="${RDEPEND}
 	shapefile? ( sci-libs/shapelib:= )
 	webengine? (
 	dev-qt/qtwebchannel:6
-	dev-qt/qtwebengine:6[widgets]
+	dev-qt/qtwebengine:6
 	)
 	
 "

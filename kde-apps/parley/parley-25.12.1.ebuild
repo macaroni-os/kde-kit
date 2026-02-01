@@ -35,7 +35,7 @@ DEPEND="${RDEPEND}
 	kde-frameworks/kwidgetsaddons:6
 	kde-frameworks/kxmlgui:6
 	kde-frameworks/sonnet:6
-	webengine? ( dev-qt/qtwebengine:6[widgets] )
+	webengine? ( dev-qt/qtwebengine:6 )
 	
 "
 src_prepare() {

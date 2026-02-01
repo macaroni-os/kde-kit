@@ -18,7 +18,7 @@ RDEPEND="dev-cpp/gpgmepp:=
 	dev-libs/qgpgme:=
 	>=dev-libs/ktextaddons-1.6.0:6
 	dev-qt/qtbase:6[gui]
-	dev-qt/qtwebengine:6[widgets]
+	dev-qt/qtwebengine:6
 	kde-apps/akonadi:6=
 	kde-apps/akonadi-calendar:6=
 	kde-apps/akonadi-contacts:6=
@@ -75,7 +75,7 @@ DEPEND="${RDEPEND}
 	dev-libs/qgpgme:=
 	>=dev-libs/ktextaddons-1.6.0:6
 	dev-qt/qtbase:6[gui]
-	dev-qt/qtwebengine:6[widgets]
+	dev-qt/qtwebengine:6
 	kde-apps/akonadi:6=
 	kde-apps/akonadi-calendar:6=
 	kde-apps/akonadi-contacts:6=
