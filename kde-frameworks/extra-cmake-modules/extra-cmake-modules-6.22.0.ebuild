@@ -22,13 +22,10 @@ BDEPEND="doc? (
 	
 "
 RDEPEND="app-arch/libarchive[bzip2]
+	!kde-frameworks/extra-cmake-modules:5
 	
 "
-DEPEND="test? (
-	    dev-qt/qtbase:0[gui]
-	    dev-qt/qtdeclarative:0
-	)
-	
+DEPEND="${RDEPEND}
 "
 python_check_deps() {
 	  python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]"
