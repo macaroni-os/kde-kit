@@ -16,6 +16,7 @@ net-libs
 net-p2p
 sys-auth
 sys-libs
+virtual
 x11-libs
 x11-misc
 x11-terms
