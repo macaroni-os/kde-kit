@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit cmake
 
 DESCRIPTION="Friendly onboarding wizard for Plasma"
 HOMEPAGE="https://invent.kde.org/plasma/"
@@ -10,10 +10,8 @@ SRC_URI="https://download.kde.org/stable/plasma/6.5.5/plasma-welcome-6.5.5.tar.x
 LICENSE="GPL-2+"
 SLOT="6"
 KEYWORDS="*"
-RDEPEND=">=dev-libs/kirigami-addons-1.2.0
-	dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
-	dev-qt/qtsvg:6
+RDEPEND="virtual/kde-seed[gui,declarative,svg]
+	>=dev-libs/kirigami-addons-1.2.0
 	kde-frameworks/kconfig:6
 	kde-frameworks/kconfigwidgets:6
 	kde-frameworks/kcoreaddons:6
@@ -31,11 +29,6 @@ RDEPEND=">=dev-libs/kirigami-addons-1.2.0
 	
 "
 DEPEND="${RDEPEND}
-	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
 
 # vim: filetype=ebuild

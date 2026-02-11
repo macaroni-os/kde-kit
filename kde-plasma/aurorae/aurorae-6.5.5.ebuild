@@ -2,22 +2,17 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6
+inherit cmake
 
 DESCRIPTION="Themeable window decoration for KWin"
 HOMEPAGE="https://invent.kde.org/plasma/"
 SRC_URI="https://download.kde.org/stable/plasma/6.5.5/aurorae-6.5.5.tar.xz -> aurorae-6.5.5.tar.xz"
 SLOT="6"
 KEYWORDS="*"
-RDEPEND="!<kde-plasma/kwin-6.3.2
+RDEPEND="virtual/kde-seed[gui,declarative]
+	dev-qt/qttools:6
 	kde-frameworks/kirigami:6
 	kde-frameworks/ksvg:6
-	
-"
-DEPEND="${RDEPEND}
-	dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
-	dev-qt/qttools:6
 	kde-frameworks/kcmutils:6
 	kde-frameworks/kcolorscheme:6
 	kde-frameworks/kconfig:6
@@ -28,9 +23,7 @@ DEPEND="${RDEPEND}
 	kde-plasma/kdecoration:6
 	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
+DEPEND="${RDEPEND}
+"
 
 # vim: filetype=ebuild

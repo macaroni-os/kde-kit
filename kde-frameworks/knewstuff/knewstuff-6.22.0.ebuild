@@ -2,21 +2,18 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6
+inherit cmake
 
 DESCRIPTION="Framework for downloading and sharing additional application data"
 HOMEPAGE="https://invent.kde.org/frameworks/"
 SRC_URI="https://download.kde.org/stable/frameworks/6.22/knewstuff-6.22.0.tar.xz -> knewstuff-6.22.0.tar.xz"
+LICENSE="GPL-2"
 SLOT="6"
 KEYWORDS="*"
 IUSE="opds"
-RDEPEND="kde-frameworks/kcmutils:6
+RDEPEND="virtual/kde-seed[gui,declarative]
+	kde-frameworks/kcmutils:6
 	kde-frameworks/kirigami:6
-	
-"
-DEPEND="${RDEPEND}
-	dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
 	kde-frameworks/attica:6
 	kde-frameworks/karchive:6
 	kde-frameworks/kconfig:6
@@ -27,11 +24,13 @@ DEPEND="${RDEPEND}
 	opds? ( kde-frameworks/syndication:6 )
 	
 "
+DEPEND="${RDEPEND}
+"
 src_configure() {
-	  local mycmakeargs=(
-	      $(cmake_use_find_package opds KF6Syndication)
-	  )
-	   kde6_src_configure
+	local mycmakeargs=(
+	  $(cmake_use_find_package opds KF6Syndication)
+	)
+	cmake_src_configure
 }
 
 

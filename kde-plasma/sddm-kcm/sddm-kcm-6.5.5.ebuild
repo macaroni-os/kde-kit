@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit cmake
 
 DESCRIPTION="KDE Plasma control module for SDDM"
 HOMEPAGE="https://invent.kde.org/plasma/sddm-kcm"
@@ -13,17 +13,11 @@ KEYWORDS="*"
 BDEPEND="kde-frameworks/kcmutils:6
 	
 "
-RDEPEND="kde-frameworks/kirigami:6
+RDEPEND="virtual/kde-seed[gui,declarative]
+	kde-frameworks/kirigami:6
 	kde-frameworks/kitemmodels:6
-	x11-misc/sddm
-	
-"
-DEPEND="${RDEPEND}
-	dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
 	kde-frameworks/karchive:6
 	kde-frameworks/kauth:6
-	kde-frameworks/kcmutils:6
 	kde-frameworks/kconfig:6
 	kde-frameworks/kcoreaddons:6
 	kde-frameworks/ki18n:6
@@ -31,11 +25,10 @@ DEPEND="${RDEPEND}
 	kde-frameworks/knewstuff:6
 	kde-frameworks/kservice:6
 	kde-frameworks/kwidgetsaddons:6
+	x11-misc/sddm
 	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
+DEPEND="${RDEPEND}
+"
 
 # vim: filetype=ebuild

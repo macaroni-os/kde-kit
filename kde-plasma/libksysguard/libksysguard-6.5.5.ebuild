@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6
+inherit cmake
 
 DESCRIPTION="Task management and system monitoring library"
 HOMEPAGE="https://invent.kde.org/plasma/"
@@ -10,8 +10,7 @@ SRC_URI="https://download.kde.org/stable/plasma/6.5.5/libksysguard-6.5.5.tar.xz 
 SLOT="6"
 KEYWORDS="*"
 IUSE="webengine X"
-RDEPEND="dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
+RDEPEND="virtual/kde-seed[gui,declarative,X?]
 	kde-frameworks/kauth:6
 	kde-frameworks/kcompletion:6
 	kde-frameworks/kconfig:6
@@ -34,26 +33,20 @@ RDEPEND="dev-qt/qtbase:6[gui]
 	sys-apps/lm-sensors:=
 	webengine? ( dev-qt/qtwebengine:6 )
 	X? (
-	    dev-qt/qtbase:6[X]
 	    x11-libs/libX11
 	    x11-libs/libXres
 	)
 	
 "
 DEPEND="${RDEPEND}
-	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
 src_configure() {
-	  local mycmakeargs=(
-	      $(cmake_use_find_package webengine Qt6WebEngineWidgets)
-	      $(cmake_use_find_package X X11)
-	      $(cmake_use_find_package X XRes)
-	  )
-	  kde6_src_configure
+	local mycmakeargs=(
+	  $(cmake_use_find_package webengine Qt6WebEngineWidgets)
+	  $(cmake_use_find_package X X11)
+	  $(cmake_use_find_package X XRes)
+	)
+	cmake_src_configure
 }
 
 

@@ -2,11 +2,12 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6
+inherit cmake
 
 DESCRIPTION="Tools to generate documentation in various formats from DocBook files"
 HOMEPAGE="https://invent.kde.org/frameworks/"
 SRC_URI="https://download.kde.org/stable/frameworks/6.22/kdoctools-6.22.0.tar.xz -> kdoctools-6.22.0.tar.xz"
+LICENSE="GPL-2"
 SLOT="6"
 KEYWORDS="*"
 IUSE="nls"
@@ -24,22 +25,12 @@ RDEPEND="app-text/docbook-xml-dtd:4.5
 	
 "
 DEPEND="${RDEPEND}
-	
 "
-CMAKE_SKIP_TESTS=(
-	  # bug 665622
-	  kdoctools_install
-)
-
-src_prepare() {
-	  kde6_src_prepare
-}
-
 src_configure() {
-	  local mycmakeargs=(
-	      $(cmake_use_find_package nls KF6I18n)
-	  )
-	   kde6_src_configure
+	local mycmakeargs=(
+	    $(cmake_use_find_package nls KF6I18n)
+	)
+	cmake_src_configure
 }
 
 

@@ -2,21 +2,16 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit cmake xdg
 
 DESCRIPTION="Qt Platform Theme integration plugins for the Plasma workspaces"
 HOMEPAGE="https://invent.kde.org/plasma/"
 SRC_URI="https://download.kde.org/stable/plasma/6.5.5/plasma-integration-6.5.5.tar.xz -> plasma-integration-6.5.5.tar.xz"
 SLOT="6"
 KEYWORDS="*"
-IUSE="qt5"
-RDEPEND="kde-frameworks/qqc2-desktop-style:6
-	
-"
-DEPEND="${RDEPEND}
-	dev-qt/qtbase:6[gui,wayland,X]
-	dev-qt/qtdeclarative:6
-	dev-qt/qtwayland:6
+IUSE="qt5 wayland"
+RDEPEND="virtual/kde-seed[declarative,gui,wayland?,X]
+	kde-frameworks/qqc2-desktop-style:6
 	kde-frameworks/kcolorscheme:6
 	kde-frameworks/kconfig:6
 	kde-frameworks/kconfigwidgets:6
@@ -59,16 +54,17 @@ DEPEND="${RDEPEND}
 	)
 	
 "
+DEPEND="${RDEPEND}
+"
 src_prepare() {
-	  kde6_src_prepare
+	cmake_src_prepare
 }
-
 src_configure() {
-	  local mycmakeargs=(
-	      -DBUILD_QT6=ON
-	      -DBUILD_QT5=$(usex qt5)
-	  )
-	  kde6_src_configure
+	local mycmakeargs=(
+	  -DBUILD_QT6=ON
+	  -DBUILD_QT5=$(usex qt5)
+	)
+	cmake_src_configure
 }
 
 

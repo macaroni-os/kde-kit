@@ -10,9 +10,13 @@ SRC_URI="https://download.kde.org/stable/plasma/6.5.5/plasma-workspace-wallpaper
 LICENSE="GPL-2"
 SLOT="6"
 KEYWORDS="*"
-BDEPEND="dev-qt/qtbase:6
-	kde-frameworks/extra-cmake-modules:0
+BDEPEND="kde-frameworks/extra-cmake-modules
 	
+"
+RDEPEND="virtual/kde-seed
+	
+"
+DEPEND="${RDEPEND}
 "
 
 # vim: filetype=ebuild

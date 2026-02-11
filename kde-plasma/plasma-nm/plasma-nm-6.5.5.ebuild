@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit cmake
 
 DESCRIPTION="KDE Plasma applet for NetworkManager"
 HOMEPAGE="https://invent.kde.org/plasma/"
@@ -14,16 +14,10 @@ BDEPEND="kde-frameworks/kcmutils:6
 	virtual/pkgconfig
 	
 "
-RDEPEND="kde-frameworks/kdeclarative:6
+RDEPEND="virtual/kde-seed[gui,declarative]
+	kde-frameworks/kdeclarative:6
 	kde-frameworks/kirigami:6
 	kde-frameworks/kquickcharts:6
-	
-"
-DEPEND="${RDEPEND}
-	>=app-crypt/qca-2.3.7:2[qt6(+)]
-	dev-libs/qcoro[dbus]
-	dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
 	kde-frameworks/kcolorscheme:6
 	kde-frameworks/kcompletion:6
 	kde-frameworks/kconfig:6
@@ -45,6 +39,8 @@ DEPEND="${RDEPEND}
 	kde-plasma/libplasma:6
 	net-misc/mobile-broadband-provider-info
 	net-misc/networkmanager[teamd=]
+	>=app-crypt/qca-2.3.7:2[qt6(+)]
+	dev-libs/qcoro[dbus]
 	openconnect? (
 	    dev-qt/qtwebengine:6
 	    net-vpn/networkmanager-openconnect
@@ -52,15 +48,13 @@ DEPEND="${RDEPEND}
 	)
 	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
+DEPEND="${RDEPEND}
+"
 src_configure() {
-	  local mycmakeargs=(
-	      -DBUILD_OPENCONNECT=$(usex openconnect)
-	  )
-	  kde6_src_configure
+	local mycmakeargs=(
+	  -DBUILD_OPENCONNECT=$(usex openconnect)
+	)
+	cmake_src_configure
 }
 
 

@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit cmake flag-o-matic xdg
 
 DESCRIPTION="Plasma applet and services for creating encrypted vaults"
 HOMEPAGE="https://invent.kde.org/plasma/"
@@ -11,16 +11,12 @@ LICENSE="LGPL-3"
 SLOT="6"
 KEYWORDS="*"
 IUSE="networkmanager"
-RDEPEND="|| (
+RDEPEND="virtual/kde-seed[gui,declarative]
+	|| (
 	    >=app-crypt/gocryptfs-1.8
 	    >=sys-fs/cryfs-0.9.9
 	    >=sys-fs/encfs-1.9.2
 	)
-	
-"
-DEPEND="${RDEPEND}
-	dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
 	kde-frameworks/kcodecs:6
 	kde-frameworks/kconfig:6
 	kde-frameworks/kconfigwidgets:6
@@ -37,39 +33,38 @@ DEPEND="${RDEPEND}
 	networkmanager? ( kde-frameworks/networkmanager-qt:6 )
 	
 "
+DEPEND="${RDEPEND}
+"
 src_prepare() {
-	  kde6_src_prepare
+	cmake_src_prepare
 }
-
 src_configure() {
-	  # ODR violations (bug #909446, kde#471836)
-	  filter-lto
-	   local mycmakeargs=(
-	      $(cmake_use_find_package networkmanager KF6NetworkManagerQt)
-	  )
-	   kde6_src_configure
+	filter-lto
+	local mycmakeargs=(
+	  $(cmake_use_find_package networkmanager KF6NetworkManagerQt)
+	)
+	cmake_src_configure
 }
-
 pkg_postinst() {
-	  xdg_pkg_postinst
-	   local has_deprecated_backend
-	  dropping_backend() {
-	      if has_version ${2}; then
-	          elog "${CATEGORY}/${PN} will drop support for ${1} in the future."
-	          elog "Migrate away from any ${2} vaults before that happens."
-	          elog
-	          has_deprecated_backend=1
-	      fi
-	  }
-	   dropping_backend CryFS sys-fs/cryfs
-	  dropping_backend EncFS sys-fs/encfs
-	   if [[ has_deprecated_backend ]]; then
-	      elog "The only supported backend going forward will be app-crypt/gocryptfs."
-	      elog
-	      elog "See also:"
-	      elog "https://invent.kde.org/plasma/plasma-vault/-/merge_requests/57"
-	      elog "https://invent.kde.org/plasma/plasma-vault/-/merge_requests/62"
-	  fi
+	xdg_pkg_postinst
+	local has_deprecated_backend
+	dropping_backend() {
+	    if has_version ${2}; then
+	        elog "${CATEGORY}/${PN} will drop support for ${1} in the future."
+	        elog "Migrate away from any ${2} vaults before that happens."
+	        elog
+	        has_deprecated_backend=1
+	    fi
+	}
+	dropping_backend CryFS sys-fs/cryfs
+	dropping_backend EncFS sys-fs/encfs
+	if [[ has_deprecated_backend ]]; then
+	    elog "The only supported backend going forward will be app-crypt/gocryptfs."
+	    elog
+	    elog "See also:"
+	    elog "https://invent.kde.org/plasma/plasma-vault/-/merge_requests/57"
+	    elog "https://invent.kde.org/plasma/plasma-vault/-/merge_requests/62"
+	fi
 }
 
 

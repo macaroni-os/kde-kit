@@ -13,13 +13,9 @@ KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~x86"
 BDEPEND="kde-frameworks/kcmutils:6
 	
 "
-RDEPEND="kde-frameworks/kcmutils:6
+RDEPEND="virtual/kde-seed[gui,declarative]
+	kde-frameworks/kcmutils:6
 	kde-frameworks/kirigami:6
-	
-"
-DEPEND="${RDEPEND}
-	dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
 	kde-frameworks/karchive:6
 	kde-frameworks/kauth:6
 	kde-frameworks/kconfig:6
@@ -31,9 +27,7 @@ DEPEND="${RDEPEND}
 	sys-boot/plymouth
 	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
+DEPEND="${RDEPEND}
+"
 
 # vim: filetype=ebuild

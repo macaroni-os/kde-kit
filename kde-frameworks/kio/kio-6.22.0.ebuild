@@ -2,21 +2,17 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit cmake xdg
 
 DESCRIPTION="Framework providing transparent file and data management"
 HOMEPAGE="https://invent.kde.org/frameworks/"
 SRC_URI="https://download.kde.org/stable/frameworks/6.22/kio-6.22.0.tar.xz -> kio-6.22.0.tar.xz"
+LICENSE="GPL-2"
 SLOT="6"
 KEYWORDS="*"
 IUSE="acl handbook +kwallet wayland X"
-RDEPEND="dev-qt/qtbase:6[libproxy]
+RDEPEND="virtual/kde-seed[declarative,gui,libproxy,wayland?,X?]
 	sys-power/switcheroo-control
-	
-"
-DEPEND="${RDEPEND}
-	dev-qt/qtbase:6[gui,X?]
-	dev-qt/qtdeclarative:6
 	kde-frameworks/kauth:6
 	kde-frameworks/kbookmarks:6
 	kde-frameworks/kcodecs:6
@@ -48,24 +44,21 @@ DEPEND="${RDEPEND}
 	    kde-frameworks/kdoctools:6
 	)
 	kwallet? ( kde-frameworks/kwallet:6 )
-	X? ( dev-qt/qtbase:6[gui] )
 	
+"
+DEPEND="${RDEPEND}
 "
 PDEPEND="kde-frameworks/kded:6
 	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
 src_configure() {
-	  local mycmakeargs=(
-	      $(cmake_use_find_package acl ACL)
-	      $(cmake_use_find_package kwallet KF6Wallet)
-	      -DWITH_WAYLAND=$(usex wayland)
-	      -DWITH_X11=$(usex X)
-	  )
-	   kde6_src_configure
+	local mycmakeargs=(
+	  $(cmake_use_find_package acl ACL)
+	  $(cmake_use_find_package kwallet KF6Wallet)
+	  -DWITH_WAYLAND=$(usex wayland)
+	  -DWITH_X11=$(usex X)
+	)
+	cmake_src_configure
 }
 
 

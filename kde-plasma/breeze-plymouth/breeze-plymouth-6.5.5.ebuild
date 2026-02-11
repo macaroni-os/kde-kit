@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6
+inherit cmake
 
 DESCRIPTION="Breeze theme for Plymouth"
 HOMEPAGE="https://invent.kde.org/plasma/"
@@ -13,18 +13,13 @@ RDEPEND="sys-boot/plymouth
 	
 "
 DEPEND="${RDEPEND}
-	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
 src_configure() {
-	  local mycmakeargs=(
-	      -DDISTRO_NAME="Macaroni Linux"
-	      -DDISTRO_VERSION=
-	  )
-	  kde6_src_configure
+	local mycmakeargs=(
+	  -DDISTRO_NAME="MacaroniOS Linux"
+	  -DDISTRO_VERSION=
+	)
+	cmake_src_configure
 }
 
 

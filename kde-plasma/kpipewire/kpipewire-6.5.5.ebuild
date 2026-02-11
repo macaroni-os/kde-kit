@@ -2,19 +2,15 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit cmake
 
 DESCRIPTION="Components relating to Flatpak pipewire use in Plasma"
 HOMEPAGE="https://invent.kde.org/plasma/"
 SRC_URI="https://download.kde.org/stable/plasma/6.5.5/kpipewire-6.5.5.tar.xz -> kpipewire-6.5.5.tar.xz"
 SLOT="6"
 KEYWORDS="*"
-RDEPEND="kde-frameworks/kirigami:6
-	
-"
-DEPEND="${RDEPEND}
-	dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
+RDEPEND="virtual/kde-seed[gui,declarative]
+	kde-frameworks/kirigami:6
 	kde-frameworks/kcoreaddons:6
 	kde-frameworks/ki18n:6
 	media-libs/libepoxy
@@ -26,9 +22,7 @@ DEPEND="${RDEPEND}
 	x11-libs/libva
 	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
+DEPEND="${RDEPEND}
+"
 
 # vim: filetype=ebuild

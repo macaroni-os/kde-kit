@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit cmake
 
 DESCRIPTION="Monitor calibration tool for KDE"
 HOMEPAGE="https://invent.kde.org/plasma/"
@@ -12,7 +12,7 @@ KEYWORDS="*"
 BDEPEND="kde-frameworks/kcmutils:6
 	
 "
-RDEPEND="dev-qt/qtbase:6[gui]
+RDEPEND="virtual/kde-seed[gui]
 	kde-frameworks/kconfig:6
 	kde-frameworks/kconfigwidgets:6
 	kde-frameworks/kcoreaddons:6
@@ -23,11 +23,6 @@ RDEPEND="dev-qt/qtbase:6[gui]
 	
 "
 DEPEND="${RDEPEND}
-	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
 
 # vim: filetype=ebuild

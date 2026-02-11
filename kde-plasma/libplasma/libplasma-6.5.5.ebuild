@@ -2,22 +2,15 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6
+inherit cmake
 
 DESCRIPTION="Plasma library and runtime components based upon KF6 and Qt6"
 HOMEPAGE="https://invent.kde.org/plasma/"
 SRC_URI="https://download.kde.org/stable/plasma/6.5.5/libplasma-6.5.5.tar.xz -> libplasma-6.5.5.tar.xz"
 SLOT="6"
 KEYWORDS="*"
-IUSE="gles2-only"
-RDEPEND="!${CATEGORY}/${PN}:5[-kf6compat(-)]
-	
-"
-DEPEND="${RDEPEND}
-	dev-qt/qtbase:6[gles2-only=,gui,X]
-	dev-qt/qtdeclarative:6
-	dev-qt/qtsvg:6
-	>=dev-libs/wayland-1.15.0
+IUSE="gles2-only wayland"
+RDEPEND="virtual/kde-seed[gui,X,svg,declarative,gles-only?,wayland?]
 	kde-frameworks/karchive:6
 	kde-frameworks/kcolorscheme:6
 	kde-frameworks/kconfig:6[qml]
@@ -40,15 +33,13 @@ DEPEND="${RDEPEND}
 	!gles2-only? ( media-libs/libglvnd[X] )
 	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
+DEPEND="${RDEPEND}
+"
 src_configure() {
-	  local mycmakeargs=(
-	      $(cmake_use_find_package !gles2-only OpenGL)
-	  )
-	  kde6_src_configure
+	local mycmakeargs=(
+	  $(cmake_use_find_package !gles2-only OpenGL)
+	)
+	cmake_src_configure
 }
 
 

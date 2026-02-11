@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit cmake
 
 DESCRIPTION="Useful applications for Plasma development"
 HOMEPAGE="https://invent.kde.org/plasma/"
@@ -10,13 +10,8 @@ SRC_URI="https://download.kde.org/stable/plasma/6.5.5/plasma-sdk-6.5.5.tar.xz ->
 LICENSE="GPL-2"
 SLOT="6"
 KEYWORDS="*"
-RDEPEND="dev-qt/qt5compat:6[qml]
-	kde-frameworks/kirigami:6
-	
-"
-DEPEND="${RDEPEND}
-	dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
+RDEPEND="virtual/kde-seed[gui,declarative]
+	dev-qt/qt5compat:6[qml]
 	kde-frameworks/karchive:6
 	kde-frameworks/kcompletion:6
 	kde-frameworks/kconfig:6
@@ -34,11 +29,10 @@ DEPEND="${RDEPEND}
 	kde-frameworks/kwidgetsaddons:6
 	kde-plasma/libplasma:6
 	kde-plasma/plasma5support:6
+	kde-frameworks/kirigami:6
 	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
+DEPEND="${RDEPEND}
+"
 
 # vim: filetype=ebuild

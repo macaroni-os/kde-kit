@@ -2,21 +2,21 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6
+inherit cmake
 
 DESCRIPTION="Framework for manipulating strings using various encodings"
 HOMEPAGE="https://invent.kde.org/frameworks/"
 SRC_URI="https://download.kde.org/stable/frameworks/6.22/kcodecs-6.22.0.tar.xz -> kcodecs-6.22.0.tar.xz"
+LICENSE="GPL-2"
 SLOT="6"
 KEYWORDS="*"
 BDEPEND="dev-qt/qttools:6[linguist]
 	
 "
-CMAKE_SKIP_TESTS=(
-	  # bug 938317
-	  rfc2047test
-	  kemailaddresstest
-)
-
+RDEPEND="virtual/kde-seed
+	
+"
+DEPEND="${RDEPEND}
+"
 
 # vim: filetype=ebuild

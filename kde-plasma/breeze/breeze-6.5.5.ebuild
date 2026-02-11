@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit cmake xdg
 
 DESCRIPTION="Breeze visual style for the Plasma desktop"
 HOMEPAGE="https://invent.kde.org/plasma/"
@@ -10,13 +10,10 @@ SRC_URI="https://download.kde.org/stable/plasma/6.5.5/breeze-6.5.5.tar.xz -> bre
 SLOT="6"
 KEYWORDS="*"
 IUSE="qt5"
-BDEPEND="kde-frameworks/kcmutils:6
-	qt5? ( >=kde-frameworks/kcmutils-5.115.0:5 )
+BDEPEND="qt5? ( >=kde-frameworks/kcmutils-5.115.0:5 )
 	
 "
-RDEPEND="dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
-	dev-qt/qtsvg:6
+RDEPEND="virtual/kde-seed[gui,declarative,svg]
 	kde-frameworks/frameworkintegration:6
 	kde-frameworks/kcmutils:6
 	kde-frameworks/kcolorscheme:6
@@ -29,6 +26,8 @@ RDEPEND="dev-qt/qtbase:6[gui]
 	kde-frameworks/kirigami:6
 	kde-frameworks/kwidgetsaddons:6
 	kde-frameworks/kwindowsystem:6[X]
+	kde-frameworks/knewstuff:6
+	kde-frameworks/kxmlgui:6
 	kde-plasma/kdecoration:6
 	qt5? (
 	    >=dev-qt/qtdbus-5.15.12:5
@@ -51,10 +50,6 @@ RDEPEND="dev-qt/qtbase:6[gui]
 	
 "
 DEPEND="${RDEPEND}
-	kde-frameworks/kcmutils:6
-	kde-frameworks/knewstuff:6
-	kde-frameworks/kxmlgui:6
-	dev-qt/qtbase:6
 	x11-base/xorg-proto
 	
 "
@@ -62,15 +57,14 @@ PDEPEND="kde-frameworks/breeze-icons:*
 	
 "
 src_prepare() {
-	  kde6_src_prepare
+	cmake_src_prepare
 }
-
 src_configure() {
-	  local mycmakeargs=(
-	      -DBUILD_QT6=ON
-	      -DBUILD_QT5=$(usex qt5)
-	  )
-	  kde6_src_configure
+	local mycmakeargs=(
+	  -DBUILD_QT6=ON
+	  -DBUILD_QT5=$(usex qt5)
+	)
+	cmake_src_configure
 }
 
 

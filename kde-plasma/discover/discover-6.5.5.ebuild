@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit cmake xdg
 
 DESCRIPTION="KDE Plasma resources management GUI"
 HOMEPAGE="https://invent.kde.org/plasma/"
@@ -10,14 +10,10 @@ SRC_URI="https://download.kde.org/stable/plasma/6.5.5/discover-6.5.5.tar.xz -> d
 SLOT="6"
 KEYWORDS="*"
 IUSE="+firmware flatpak telemetry webengine"
-BDEPEND="kde-frameworks/kcmutils:6
-	
-"
 RDEPEND=">=dev-libs/appstream-1.0.4:=[qt]
-	dev-libs/kirigami-addons:6
+	virtual/kde-seed[gui,declarative]
 	dev-libs/qcoro
-	dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
+	dev-libs/kirigami-addons:6
 	kde-frameworks/attica:6
 	kde-frameworks/kauth:6
 	kde-frameworks/kcmutils:6
@@ -45,44 +41,29 @@ RDEPEND=">=dev-libs/appstream-1.0.4:=[qt]
 	
 "
 DEPEND="${RDEPEND}
-	
 "
 src_prepare() {
-	  kde6_src_prepare
-	  # we don't need it with PackageKitBackend off
-	  ecm_punt_kf_module Archive
-	  # we don't do anything with this
-	  sed -e "s/^pkg_check_modules.*Markdown/#&/" \
-	      -e "s/^pkg_check_modules.*RpmOstree/#&/" \
-	      -e "s/^pkg_check_modules.*Ostree/#&/" \
-	      -i CMakeLists.txt || die
+	cmake_src_prepare
+	# we don't do anything with this
+	sed -e "s/^pkg_check_modules.*Markdown/#&/" \
+	    -e "s/^pkg_check_modules.*RpmOstree/#&/" \
+	    -e "s/^pkg_check_modules.*Ostree/#&/" \
+	    -i CMakeLists.txt || die
 }
-
 src_configure() {
-	  local mycmakeargs=(
-	      # TODO: Port PackageKit's portage back-end to python3
-	      -DCMAKE_DISABLE_FIND_PACKAGE_packagekitqt6=ON
-	      # Automated updates will not work for us
-	      # https://invent.kde.org/plasma/discover/-/merge_requests/142
-	      -DWITH_KCM=OFF
-	      -DBUILD_DummyBackend=OFF
-	      -DBUILD_FlatpakBackend=$(usex flatpak)
-	      -DBUILD_FwupdBackend=$(usex firmware)
-	      -DBUILD_RpmOstreeBackend=OFF
-	      -DBUILD_SnapBackend=OFF
-	      -DBUILD_SteamOSBackend=OFF
-	      $(cmake_use_find_package telemetry KF6UserFeedback)
-	      $(cmake_use_find_package webengine Qt6WebView)
-	  )
-	  kde6_src_configure
-}
-
-src_test() {
-	  # bug 686392: needs network connection
-	  local myctestargs=(
-	      -E "(knsbackendtest|flatpaktest)"
-	  )
-	  ecm_src_test
+	local mycmakeargs=(
+	  -DCMAKE_DISABLE_FIND_PACKAGE_packagekitqt6=ON
+	  -DWITH_KCM=OFF
+	  -DBUILD_DummyBackend=OFF
+	  -DBUILD_FlatpakBackend=$(usex flatpak)
+	  -DBUILD_FwupdBackend=$(usex firmware)
+	  -DBUILD_RpmOstreeBackend=OFF
+	  -DBUILD_SnapBackend=OFF
+	  -DBUILD_SteamOSBackend=OFF
+	  $(cmake_use_find_package telemetry KF6UserFeedback)
+	  $(cmake_use_find_package webengine Qt6WebView)
+	)
+	cmake_src_configure
 }
 
 
