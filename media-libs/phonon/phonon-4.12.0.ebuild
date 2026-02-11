@@ -18,7 +18,7 @@ BDEPEND="dev-libs/libpcre2:*
 	
 "
 RDEPEND="dev-qt/qt5compat:6
-	dev-qt/qtbase:[{ .Values.qt_slot }}[gui]
+	dev-qt/qtbase:[6[gui]
 	designer? ( dev-qt/qttools:6[designer] )
 	pulseaudio? (
 	  dev-libs/glib:2
