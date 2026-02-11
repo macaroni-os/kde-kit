@@ -7,7 +7,7 @@ DESCRIPTION="Meta package for KDE installation"
 SLOT="0"
 KEYWORDS="*"
 IUSE="wayland X declarative gui svg sql libproxy multimedia
-gles2-only vulkan libinput print-support
+gles2-only vulkan libinput cups
 "
 BDEPEND="kde-frameworks/extra-cmake-modules:*
 	
@@ -38,7 +38,7 @@ RDEPEND="!kde-frameworks/baloo:5
 	!kde-apps/kio-extras:5
 	!kde-apps/libkgapi:5
 	
-	>=dev-qt/qtbase-6.10:6[wayland?,X?,gui?,libproxy?,libinput?,sql?,gles2-only?,vulkan?,printsupport?]
+	>=dev-qt/qtbase-6.10:6[wayland?,X?,gui?,libproxy?,libinput?,sql?,gles2-only?,vulkan?,cups?]
 	declarative? ( dev-qt/qtdeclarative:6 )
 	svg? ( dev-qt/qtsvg:6 )
 	multimedia? ( dev-qt/qtmultimedia:6 )
