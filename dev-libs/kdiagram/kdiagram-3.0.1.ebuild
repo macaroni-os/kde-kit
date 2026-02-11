@@ -12,12 +12,12 @@ SLOT="6"
 KEYWORDS="*"
 IUSE="examples test"
 REQUIRED_USE="test? ( examples )"
-RDEPEND="${DEPEND}
-"
-DEPEND="dev-qt/qtbase:6[gui]
+RDEPEND="dev-qt/qtbase:6[gui]
 	dev-qt/qtsvg:6
 	dev-qt/qttools:6
 	
+"
+DEPEND="${RDEPEND}
 "
 
 # vim: filetype=ebuild

@@ -13,7 +13,7 @@ KEYWORDS="*"
 IUSE="botan debug doc examples gcrypt gpg logger nss pkcs11 +qt6 sasl softstore +ssl"
 BDEPEND="virtual/pkgconfig
 	doc? (
-	  app-text/doxygen[dot]
+	  app-doc/doxygen[dot]
 	  virtual/latex-base
 	)
 	

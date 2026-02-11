@@ -17,12 +17,12 @@ BDEPEND="dev-libs/libpcre2:*
 	virtual/pkgconfig
 	
 "
-RDEPEND="${DEPEND}
-"
-DEPEND="dev-qt/qtbase:6[gui]
+RDEPEND="dev-qt/qtbase:6[gui]
 	>=media-libs/phonon-4.12.0
 	media-video/vlc:=[dbus,ogg,vorbis(+)]
 	
+"
+DEPEND="${RDEPEND}
 "
 S="${WORKDIR}/phonon-backend-vlc-0.12.0"
 src_configure() {

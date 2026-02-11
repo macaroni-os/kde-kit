@@ -17,7 +17,13 @@ BDEPEND="dev-libs/libpcre2:*
 	virtual/pkgconfig
 	
 "
-RDEPEND="${DEPEND}
+RDEPEND="dev-qt/qt5compat:6
+	dev-qt/qtbase:[{ .Values.qt_slot }}[gui]
+	designer? ( dev-qt/qttools:6[designer] )
+	pulseaudio? (
+	  dev-libs/glib:2
+	  media-sound/pulseaudio[glib]
+	)
 	!media-libs/phonon-gstreamer
 	|| (
 	  kde-frameworks/breeze-icons:6
@@ -25,14 +31,7 @@ RDEPEND="${DEPEND}
 	)
 	
 "
-DEPEND="dev-qt/qt5compat:6
-	dev-qt/qtbase:6[gui]
-	designer? ( dev-qt/qttools:6[designer] )
-	pulseaudio? (
-	  dev-libs/glib:2
-	  media-sound/pulseaudio[glib]
-	)
-	
+DEPEND="${RDEPEND}
 "
 PDEPEND="vlc? ( >=media-libs/phonon-vlc-0.12.0 )
 	

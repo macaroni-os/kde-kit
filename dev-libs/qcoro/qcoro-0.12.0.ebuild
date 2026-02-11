@@ -11,16 +11,16 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="*"
 IUSE="dbus examples +network qml websockets"
-RDEPEND="dev-qt/qtbase:6
+RDEPEND="dev-qt/qtbase:
 	qml? (
-	  dev-qt/qtbase:6[gui]
-	  dev-qt/qtdeclarative:6
+	  dev-qt/qtbase:[gui]
+	  dev-qt/qtdeclarative:
 	)
-	websockets? ( dev-qt/qtwebsockets:6 )
+	websockets? ( dev-qt/qtwebsockets: )
 	
 "
 DEPEND="${RDEPEND}
-	examples? ( dev-qt/qtbase:6 )
+	examples? ( dev-qt/qtbase: )
 	
 "
 
