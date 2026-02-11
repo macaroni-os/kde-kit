@@ -13,7 +13,7 @@ IUSE="analitza julia lua postscript python qalculate R"
 BDEPEND="sys-devel/gettext
 	
 "
-RDEPEND="virtual/kde-seed[gui,printsupport,svg]
+RDEPEND="virtual/kde-seed[gui,cups,svg]
 	dev-qt/qtwebengine:6
 	julia? ( dev-lang/julia )
 	postscript? ( app-text/libspectre )
