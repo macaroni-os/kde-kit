@@ -10,7 +10,7 @@ SRC_URI="https://download.kde.org/stable/plasma/6.5.5/libplasma-6.5.5.tar.xz -> 
 SLOT="6"
 KEYWORDS="*"
 IUSE="gles2-only wayland"
-RDEPEND="virtual/kde-seed[gui,X,svg,declarative,gles-only?,wayland?]
+RDEPEND="virtual/kde-seed[gui,X,svg,declarative,gles2-only?,wayland?]
 	kde-frameworks/karchive:6
 	kde-frameworks/kcolorscheme:6
 	kde-frameworks/kconfig:6[qml]
