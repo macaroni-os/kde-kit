@@ -10,14 +10,14 @@ SRC_URI="https://download.kde.org/stable/frameworks/6.22/kauth-6.22.0.tar.xz -> 
 LICENSE="GPL-2"
 SLOT="6"
 KEYWORDS="*"
-IUSE="+policykit"
+IUSE="+policykit wayland"
 BDEPEND="dev-qt/qttools:6[linguist]
 	
 "
 RDEPEND="virtual/kde-seed[gui]
 	kde-frameworks/kcoreaddons:6
 	policykit? (
-	    kde-frameworks/kwindowsystem:6[wayland]
+	    kde-frameworks/kwindowsystem:6[wayland?]
 	    >=sys-auth/polkit-qt-0.175.0[qt6(+)]
 	)
 	
