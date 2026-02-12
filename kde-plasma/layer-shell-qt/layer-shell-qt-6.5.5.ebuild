@@ -10,8 +10,10 @@ SRC_URI="https://download.kde.org/stable/plasma/6.5.5/layer-shell-qt-6.5.5.tar.x
 SLOT="6"
 KEYWORDS="*"
 IUSE="wayland"
-BDEPEND=">=dev-libs/wayland-protocols-1.16
-	dev-util/wayland-scanner
+BDEPEND="wayland? (
+	  >=dev-libs/wayland-protocols-1.16
+	  dev-util/wayland-scanner
+	)
 	
 "
 RDEPEND="virtual/kde-seed[gui,wayland?]
