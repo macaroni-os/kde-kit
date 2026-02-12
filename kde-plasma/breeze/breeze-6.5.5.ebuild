@@ -35,17 +35,17 @@ RDEPEND="virtual/kde-seed[gui,declarative,svg]
 	    >=dev-qt/qtgui-5.15.12:5
 	    >=dev-qt/qtwidgets-5.15.12:5
 	    >=dev-qt/qtx11extras-5.15.12:5
-	    >=kde-frameworks/frameworkintegration-5.115.0:5
-	    >=kde-frameworks/kcmutils-5.115.0:5
-	    >=kde-frameworks/kconfig-5.115.0:5
-	    >=kde-frameworks/kconfigwidgets-5.115.0:5
+	    >=kde-frameworks/frameworkintegration-5.115.0:0
+	    >=kde-frameworks/kcmutils-5.115.0:0
+	    >=kde-frameworks/kconfig-5.115.0:0
+	    >=kde-frameworks/kconfigwidgets-5.115.0:0
 	    >=kde-frameworks/kcoreaddons-5.115.0:5
 	    >=kde-frameworks/kguiaddons-5.115.0:5
-	    >=kde-frameworks/ki18n-5.115.0:5
-	    >=kde-frameworks/kiconthemes-5.115.0:5
+	    >=kde-frameworks/ki18n-5.115.0:0
+	    >=kde-frameworks/kiconthemes-5.115.0:0
 	    >=kde-frameworks/kirigami-5.115.0:5
-	    >=kde-frameworks/kwidgetsaddons-5.115.0:5
-	    >=kde-frameworks/kwindowsystem-5.115.0:5
+	    >=kde-frameworks/kwidgetsaddons-5.115.0:0
+	    >=kde-frameworks/kwindowsystem-5.115.0:0
 	)
 	
 "
