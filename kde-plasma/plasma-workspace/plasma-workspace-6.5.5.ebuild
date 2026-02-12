@@ -11,7 +11,7 @@ SLOT="6"
 KEYWORDS="*"
 IUSE="appstream +calendar +fontconfig +ksysguard networkmanager +policykit
 screencast +semantic-desktop systemd telemetry test +wallpaper-metadata +X
-wayland
+wayland x11
 "
 BDEPEND="dev-libs/qcoro
 	kde-frameworks/kcmutils:6
@@ -77,7 +77,6 @@ RDEPEND="virtual/kde-seed[declarative,svg,gui,libinput,sql,wayland?,X?]
 	kde-frameworks/solid:6
 	kde-plasma/breeze:6
 	kde-plasma/kde-cli-tools:6
-	kde-plasma/kwin:6
 	kde-plasma/layer-shell-qt:6
 	kde-plasma/libkscreen:6
 	kde-plasma/libplasma:6
@@ -86,6 +85,10 @@ RDEPEND="virtual/kde-seed[declarative,svg,gui,libinput,sql,wayland?,X?]
 	kde-plasma/plasma5support:6
 	wayland? (
 	  kde-plasma/kwayland:6
+	  kde-plasma/kwin:6
+	)
+	x11? (
+	  kde-plasma/kwin-x11:6
 	)
 	sys-apps/dbus
 	x11-apps/xmessage
