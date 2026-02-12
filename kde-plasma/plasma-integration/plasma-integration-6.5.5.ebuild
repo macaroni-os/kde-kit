@@ -35,7 +35,6 @@ RDEPEND="virtual/kde-seed[declarative,gui,wayland?,X]
 	    >=dev-qt/qtdbus-5.15.12:5
 	    >=dev-qt/qtgui-5.15.12:5[X]
 	    >=dev-qt/qtquickcontrols2-5.15.12:5
-	    >=dev-qt/qtwayland-5.15.12:5
 	    >=dev-qt/qtwidgets-5.15.12:5
 	    >=dev-qt/qtx11extras-5.15.12:5
 	    >=kde-frameworks/kcolorscheme-5.115.0:5
@@ -51,6 +50,9 @@ RDEPEND="virtual/kde-seed[declarative,gui,wayland?,X]
 	    >=kde-frameworks/kwindowsystem-5.115.0:5[X]
 	    >=kde-frameworks/kxmlgui-5.115.0:5
 	    >=kde-plasma/breeze-${PV}:5[-kf6compat(-)]
+	    wayland? (
+	      >=dev-qt/qtwayland-5.15.12:5
+	    )
 	)
 	
 "
