@@ -22,7 +22,7 @@ RDEPEND="virtual/kde-seed[gui,declarative,wayland?]
 	kde-frameworks/kcrash:6
 	kde-frameworks/kglobalaccel:6
 	kde-frameworks/ki18n:6
-	kde-frameworks/kidletime:6[wayland]
+	kde-frameworks/kidletime:6[wayland?]
 	kde-frameworks/knotifications:6
 	kde-frameworks/kpackage:6
 	kde-frameworks/ksvg:6
