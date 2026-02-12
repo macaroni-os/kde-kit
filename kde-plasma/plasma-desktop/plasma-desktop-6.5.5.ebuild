@@ -10,14 +10,14 @@ SRC_URI="https://download.kde.org/stable/plasma/6.5.5/plasma-desktop-6.5.5.tar.x
 SLOT="6"
 KEYWORDS="*"
 IUSE="ibus input_devices_wacom scim screencast sdl +semantic-desktop
-webengine wayland
+webengine wayland x11
 "
 BDEPEND="dev-util/intltool
 	kde-frameworks/kcmutils:6
 	virtual/pkgconfig
 	x11-base/xorg-server
 	x11-drivers/xf86-input-libinput
-	input_devices_wacom? ( dev-util/wayland-scanner )
+	wayland? ( dev-util/wayland-scanner )
 	
 "
 RDEPEND="virtual/kde-seed[declarative,gui,sql,wayland?]
@@ -60,7 +60,6 @@ RDEPEND="virtual/kde-seed[declarative,gui,sql,wayland?]
 	kde-frameworks/kxmlgui:6
 	kde-frameworks/solid:6
 	kde-frameworks/sonnet:6
-	kde-plasma/kwin:6
 	kde-plasma/libksysguard:6
 	kde-plasma/libplasma:6
 	kde-plasma/plasma-activities:6
@@ -86,8 +85,14 @@ RDEPEND="virtual/kde-seed[declarative,gui,sql,wayland?]
 	    x11-libs/xcb-util-keysyms
 	)
 	input_devices_wacom? (
-	    dev-libs/wayland
 	    dev-libs/libwacom:=
+	)
+	wayland? (
+	    kde-plasma/kwin:6
+	    dev-libs/wayland
+	)
+	x11? (
+	    kde-plasma/kwin-x11:6
 	)
 	scim? ( app-i18n/scim )
 	sdl? ( media-libs/libsdl2[joystick] )
