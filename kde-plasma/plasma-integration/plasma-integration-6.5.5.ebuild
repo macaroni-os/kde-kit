@@ -23,7 +23,7 @@ RDEPEND="virtual/kde-seed[declarative,gui,wayland?,X]
 	kde-frameworks/knotifications:6
 	kde-frameworks/kstatusnotifieritem:6
 	kde-frameworks/kwidgetsaddons:6
-	kde-frameworks/kwindowsystem:6[wayland,X]
+	kde-frameworks/kwindowsystem:6[wayland?,X]
 	kde-frameworks/kxmlgui:6
 	kde-plasma/breeze:6
 	media-libs/fontconfig
