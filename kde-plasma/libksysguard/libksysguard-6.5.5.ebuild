@@ -30,7 +30,7 @@ RDEPEND="virtual/kde-seed[gui,declarative,X?]
 	sys-libs/libcap
 	sys-libs/zlib
 	virtual/libudev:=
-	sys-apps/lm-sensors:=
+	sys-apps/lm_sensors:=
 	webengine? ( dev-qt/qtwebengine:6 )
 	X? (
 	    x11-libs/libX11
