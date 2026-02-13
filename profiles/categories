@@ -1,8 +1,10 @@
 app-admin
+app-arch
 app-crypt
 app-misc
 dev-libs
 dev-util
+gui-libs
 kde-apps
 kde-frameworks
 kde-misc
