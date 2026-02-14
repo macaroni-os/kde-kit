@@ -2,24 +2,18 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit cmake
 
 DESCRIPTION="Screenshot capture utility"
 HOMEPAGE="https://invent.kde.org/plasma/"
 SRC_URI="https://download.kde.org/stable/plasma/6.5.5/spectacle-6.5.5.tar.xz -> spectacle-6.5.5.tar.xz"
 SLOT="6"
 KEYWORDS="*"
-IUSE="share"
-RDEPEND="dev-qt/qtimageformats:6
-	dev-qt/qtsvg:6
-	kde-frameworks/kimageformats:6
-	
-"
-DEPEND="${RDEPEND}
-	dev-libs/wayland
-	dev-qt/qtbase:6[gui,wayland,X]
-	dev-qt/qtdeclarative:6
+IUSE="share wayland"
+RDEPEND="virtual/kde-seed[gui,svg,multimedia,declarative,wayland?,X]
+	dev-qt/qtimageformats:6
 	dev-qt/qtmultimedia:6[qml]
+	kde-frameworks/kimageformats:6
 	kde-frameworks/kconfig:6
 	kde-frameworks/kconfigwidgets:6
 	kde-frameworks/kcoreaddons:6
@@ -48,15 +42,13 @@ DEPEND="${RDEPEND}
 	share? ( kde-frameworks/purpose:6 )
 	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
+DEPEND="${RDEPEND}
+"
 src_configure() {
-	  local mycmakeargs=(
-	      $(cmake_use_find_package share KF6Purpose)
-	  )
-	  kde6_src_configure
+	local mycmakeargs=(
+	  $(cmake_use_find_package share KF6Purpose)
+	)
+	cmake_src_configure
 }
 
 
