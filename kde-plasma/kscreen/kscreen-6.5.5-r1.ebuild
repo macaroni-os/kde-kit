@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit cmake
 
 DESCRIPTION="KDE Plasma screen management"
 HOMEPAGE="https://invent.kde.org/plasma/"
@@ -12,13 +12,8 @@ KEYWORDS="*"
 BDEPEND="kde-frameworks/kcmutils:6
 	
 "
-RDEPEND="kde-frameworks/kirigami:6
-	
-"
-DEPEND="${RDEPEND}
-	dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
-	dev-qt/qtsvg:6
+RDEPEND="virtual/kde-seed[gui,declarative,svg]
+	kde-frameworks/kirigami:6
 	kde-frameworks/kcmutils:6
 	kde-frameworks/kconfig:6
 	kde-frameworks/kconfigwidgets:6
@@ -34,9 +29,7 @@ DEPEND="${RDEPEND}
 	x11-libs/libxcb
 	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
+DEPEND="${RDEPEND}
+"
 
 # vim: filetype=ebuild
