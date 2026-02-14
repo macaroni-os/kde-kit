@@ -2,15 +2,15 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6
+inherit cmake
 
 DESCRIPTION="Address book API based on KDE Frameworks"
 HOMEPAGE="https://invent.kde.org/frameworks/"
 SRC_URI="https://download.kde.org/stable/frameworks/6.22/kcontacts-6.22.0.tar.xz -> kcontacts-6.22.0.tar.xz"
+LICENSE="GPL-2"
 SLOT="6"
 KEYWORDS="*"
-RDEPEND="dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
+RDEPEND="virtual/kde-seed[gui,declarative]
 	kde-frameworks/kcodecs:6
 	kde-frameworks/kconfig:6
 	kde-frameworks/kcoreaddons:6
@@ -18,14 +18,6 @@ RDEPEND="dev-qt/qtbase:6[gui]
 	
 "
 DEPEND="${RDEPEND}
-	
 "
-CMAKE_SKIP_TESTS=(
-	  # bug #566648 (access to /dev/dri/card0 denied)
-	  kcontacts-picturetest
-	  # bugs #712798, 838502, 953969 (again some Qt translations loading related err...)
-	  kcontacts-{address{,format},phonenumber}test
-)
-
 
 # vim: filetype=ebuild
