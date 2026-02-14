@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit cmake xdg
 
 DESCRIPTION="Oxygen visual style for the Plasma desktop"
 HOMEPAGE="https://invent.kde.org/plasma/"
@@ -10,13 +10,7 @@ SRC_URI="https://download.kde.org/stable/plasma/6.5.5/oxygen-6.5.5.tar.xz -> oxy
 SLOT="6"
 KEYWORDS="*"
 IUSE="qt5 X"
-RDEPEND="!<kde-plasma/libplasma-6.1.90:*[-kf6compat(-)]
-	dev-qt/qtsvg:6
-	
-"
-DEPEND="${RDEPEND}
-	dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
+RDEPEND="virtual/kde-seed[gui,declarative,svg,X?]
 	kde-frameworks/frameworkintegration:6
 	kde-frameworks/kcmutils:6
 	kde-frameworks/kcompletion:6
@@ -47,22 +41,22 @@ DEPEND="${RDEPEND}
 	    X? ( >=dev-qt/qtx11extras-5.15.12:5 )
 	)
 	X? (
-	    dev-qt/qtbase:6[gui]
 	    x11-libs/libxcb
 	)
 	
 "
+DEPEND="${RDEPEND}
+"
 src_prepare() {
-	  kde6_src_prepare
+	cmake_src_prepare
 }
-
 src_configure() {
-	  local mycmakeargs=(
-	      -DBUILD_QT6=ON
-	      -DBUILD_QT5=$(usex qt5)
-	      $(cmake_use_find_package X XCB)
-	  )
-	  kde6_src_configure
+	local mycmakeargs=(
+	  -DBUILD_QT6=ON
+	  -DBUILD_QT5=$(usex qt5)
+	  $(cmake_use_find_package X XCB)
+	)
+	cmake_src_configure
 }
 
 
