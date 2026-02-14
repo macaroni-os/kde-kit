@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6
+inherit cmake
 
 DESCRIPTION="Qt-style client and server library wrapper for Wayland libraries"
 HOMEPAGE="https://invent.kde.org/plasma/"
@@ -14,18 +14,11 @@ BDEPEND=">=dev-libs/plasma-wayland-protocols-1.18.0
 	dev-util/wayland-scanner
 	
 "
-RDEPEND=">=dev-libs/wayland-1.15.0
-	dev-qt/qtbase:6[gui,wayland]
-	dev-qt/qtwayland:6
+RDEPEND="virtual/kde-seed[gui,wayland]
 	media-libs/libepoxy
 	
 "
 DEPEND="${RDEPEND}
-	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
 
 # vim: filetype=ebuild
