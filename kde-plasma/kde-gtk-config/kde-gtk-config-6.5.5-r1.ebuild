@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit cmake
 
 DESCRIPTION="GTK+ theme configuration for KDE Plasma desktop"
 HOMEPAGE="https://invent.kde.org/plasma/"
@@ -13,15 +13,8 @@ BDEPEND="kde-frameworks/kcmutils:6
 	virtual/pkgconfig
 	
 "
-RDEPEND="kde-frameworks/kirigami:6
-	
-"
-DEPEND="${RDEPEND}
-	dev-libs/glib:2
-	dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
-	dev-qt/qtsvg:6
-	kde-frameworks/kcmutils:6
+RDEPEND="dev-libs/glib:2
+	virtual/kde-seed[gui,declarative,svg]
 	kde-frameworks/kconfig:6
 	kde-frameworks/kconfigwidgets:6
 	kde-frameworks/kcoreaddons:6
@@ -30,16 +23,14 @@ DEPEND="${RDEPEND}
 	kde-frameworks/kguiaddons:6
 	kde-frameworks/ki18n:6
 	kde-frameworks/kio:6
+	kde-frameworks/kirigami:6
 	kde-frameworks/knewstuff:6
 	kde-frameworks/kservice:6
 	kde-frameworks/kwindowsystem:6
-	x11-libs/gtk+:2
-	x11-libs/gtk+:3
+	x11-libs/gtk+:3[X]
 	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
+DEPEND="${RDEPEND}
+"
 
 # vim: filetype=ebuild
