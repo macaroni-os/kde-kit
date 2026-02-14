@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit cmake
 
 DESCRIPTION="Extra Plasma applets and engines"
 HOMEPAGE="https://invent.kde.org/plasma/"
@@ -10,14 +10,8 @@ SRC_URI="https://download.kde.org/stable/plasma/6.5.5/kdeplasma-addons-6.5.5.tar
 SLOT="6"
 KEYWORDS="*"
 IUSE="share webengine"
-RDEPEND="kde-frameworks/kirigami:6
-	kde-frameworks/kquickcharts:6
-	
-"
-DEPEND="${RDEPEND}
+RDEPEND="virtual/kde-seed[gui,declarative]
 	dev-qt/qt5compat:6[qml]
-	dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
 	kde-frameworks/kconfig:6
 	kde-frameworks/kconfigwidgets:6
 	kde-frameworks/kcoreaddons:6
@@ -31,6 +25,8 @@ DEPEND="${RDEPEND}
 	kde-frameworks/kservice:6
 	kde-frameworks/kunitconversion:6
 	kde-frameworks/kxmlgui:6
+	kde-frameworks/kirigami:6
+	kde-frameworks/kquickcharts:6
 	kde-plasma/libplasma:6
 	kde-plasma/plasma-workspace:6
 	kde-plasma/plasma5support:6
@@ -38,16 +34,14 @@ DEPEND="${RDEPEND}
 	webengine? ( dev-qt/qtwebengine:6 )
 	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
+DEPEND="${RDEPEND}
+"
 src_configure() {
-	  local mycmakeargs=(
-	      $(cmake_use_find_package share KF6Purpose)
-	      $(cmake_use_find_package webengine Qt6WebEngine)
-	  )
-	  kde6_src_configure
+	local mycmakeargs=(
+	  $(cmake_use_find_package share KF6Purpose)
+	  $(cmake_use_find_package webengine Qt6WebEngine)
+	)
+	cmake_src_configure
 }
 
 
