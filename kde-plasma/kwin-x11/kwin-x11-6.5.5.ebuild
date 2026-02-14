@@ -59,7 +59,7 @@ RDEPEND="virtual/kde-seed[gles2-only?,declarative,svg,gui,X]
 	x11-libs/libX11
 	x11-libs/libXi
 	x11-libs/libdrm
-	x11-libs/libxcb-1.10:=
+	x11-libs/libxcb:=
 	x11-libs/libxkbcommon
 	x11-libs/xcb-util-cursor
 	x11-libs/xcb-util-image
