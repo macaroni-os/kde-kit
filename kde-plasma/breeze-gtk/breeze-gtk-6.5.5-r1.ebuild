@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3+ )
-inherit kde6 python-any-r1
+inherit cmake python-any-r1
 
 DESCRIPTION="Official GTK+ port of Plasma's Breeze widget style"
 HOMEPAGE="https://invent.kde.org/plasma/"
@@ -16,9 +16,7 @@ BDEPEND="${PYTHON_DEPS}
 	kde-plasma/breeze:6
 	
 "
-python_check_deps() {
-	  python_has_version "dev-python/pycairo[${PYTHON_USEDEP}]"
-}
-
+DEPEND="${RDEPEND}
+"
 
 # vim: filetype=ebuild
