@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6
+inherit cmake
 
 DESCRIPTION="Breeze inspired QQC2 Style"
 HOMEPAGE="https://invent.kde.org/plasma/"
@@ -10,8 +10,7 @@ SRC_URI="https://download.kde.org/stable/plasma/6.5.5/qqc2-breeze-style-6.5.5.ta
 LICENSE="|| ( GPL-2+ LGPL-3+ ) CC0-1.0"
 SLOT="6"
 KEYWORDS="*"
-RDEPEND="dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
+RDEPEND="virtual/kde-seed[gui,declarative]
 	kde-frameworks/kcolorscheme:6
 	kde-frameworks/kconfig:6
 	kde-frameworks/kguiaddons:6
@@ -20,11 +19,6 @@ RDEPEND="dev-qt/qtbase:6[gui]
 	
 "
 DEPEND="${RDEPEND}
-	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
 
 # vim: filetype=ebuild
