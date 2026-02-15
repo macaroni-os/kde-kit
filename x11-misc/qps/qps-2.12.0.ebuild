@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit cmake xdg
+inherit cmake
 
 DESCRIPTION="Qt process viewer and manager"
 HOMEPAGE="https://lxqt-project.org"
