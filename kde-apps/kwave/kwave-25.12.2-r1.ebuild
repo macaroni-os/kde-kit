@@ -44,7 +44,7 @@ RDEPEND="virtual/kde-seed[gui,multimedia?]
 	  media-libs/libogg
 	  media-libs/opus
 	)
-	pulseaudio? ( media-libs/libpulse )
+	pulseaudio? ( media-sound/pulseaudio )
 	vorbis? (
 	  media-libs/libogg
 	  media-libs/libvorbis
