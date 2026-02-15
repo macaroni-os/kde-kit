@@ -2,37 +2,30 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6
+inherit cmake
 
 DESCRIPTION="QtQuick plugin providing high-performance charts"
 HOMEPAGE="https://invent.kde.org/frameworks/"
 SRC_URI="https://download.kde.org/stable/frameworks/6.22/kquickcharts-6.22.0.tar.xz -> kquickcharts-6.22.0.tar.xz"
+LICENSE="GPL-2"
 SLOT="6"
 KEYWORDS="*"
 IUSE="examples"
-RDEPEND="examples? ( !kde-frameworks/kquickcharts:5[examples(-)] )
-	
-"
-DEPEND="${RDEPEND}
-	dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
+RDEPEND="virtual/kde-seed[gui,declarative]
 	dev-qt/qtshadertools:6
 	examples? (
-	    dev-qt/qtbase:6
 	    kde-frameworks/kdeclarative:6
 	    kde-frameworks/kirigami:6
 	)
 	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
+DEPEND="${RDEPEND}
+"
 src_configure() {
-	  local mycmakeargs=(
-	      -DBUILD_EXAMPLES=$(usex examples)
-	  )
-	   kde6_src_configure
+	local mycmakeargs=(
+	  -DBUILD_EXAMPLES=$(usex examples)
+	)
+	cmake_src_configure
 }
 
 
