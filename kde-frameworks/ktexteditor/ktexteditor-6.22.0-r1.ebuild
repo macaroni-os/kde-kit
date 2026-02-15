@@ -2,19 +2,16 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6
+inherit cmake
 
 DESCRIPTION="Framework providing a full text editor component"
 HOMEPAGE="https://invent.kde.org/frameworks/"
 SRC_URI="https://download.kde.org/stable/frameworks/6.22/ktexteditor-6.22.0.tar.xz -> ktexteditor-6.22.0.tar.xz"
+LICENSE="GPL-2"
 SLOT="6"
 KEYWORDS="*"
 IUSE="+editorconfig"
-BDEPEND="test? ( kde-frameworks/kservice:6 )
-	
-"
-RDEPEND="dev-qt/qtbase:6[gui]
-	dev-qt/qtdeclarative:6
+RDEPEND="virtual/kde-seed[gui,declarative]
 	dev-qt/qtspeech:6
 	kde-frameworks/karchive:6
 	kde-frameworks/kauth:6
@@ -38,17 +35,12 @@ RDEPEND="dev-qt/qtbase:6[gui]
 	
 "
 DEPEND="${RDEPEND}
-	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
 src_configure() {
-	  local mycmakeargs=(
-	      $(cmake_use_find_package editorconfig EditorConfig)
-	  )
-	   kde6_src_configure
+	local mycmakeargs=(
+	  $(cmake_use_find_package editorconfig EditorConfig)
+	)
+	cmake_src_configure
 }
 
 
