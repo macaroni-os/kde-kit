@@ -11,7 +11,7 @@ SLOT="6"
 KEYWORDS="*"
 RDEPEND="virtual/kde-seed[gui,declarative]
 	dev-qt/qtwebengine:6[qml]
-	>=net-libs/signon-oauth2-0.25
+	>=net-libs/signon-oauth2-0.25_p20210102[qt6(+)]
 	>=net-libs/signon-ui-0.15_p20231016
 	kde-apps/kaccounts-integration:6
 	kde-frameworks/kcoreaddons:6
