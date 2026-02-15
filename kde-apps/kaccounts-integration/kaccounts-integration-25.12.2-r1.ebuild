@@ -20,8 +20,8 @@ RDEPEND="virtual/kde-seed[gui,declarative]
 	kde-frameworks/ki18n:6
 	kde-frameworks/kio:6
 	kde-frameworks/kwallet:6
-	>=net-libs/accounts-qt-1.17
-	>=net-libs/signond-8.61
+	>=net-libs/accounts-qt-1.17-r2
+	>=net-libs/signond-8.61-r102
 	
 "
 DEPEND="${RDEPEND}
