@@ -4,7 +4,7 @@
 EAPI=7
 inherit cmake
 
-DESCRIPTION="Qt bindings for libpulse"
+DESCRIPTION="Qt bindings for pulseaudio"
 HOMEPAGE="https://invent.kde.org/libraries/pulseaudio-qt"
 SRC_URI="https://download.kde.org/stable/pulseaudio-qt/pulseaudio-qt-1.7.0.tar.xz -> pulseaudio-qt-1.7.0.tar.xz"
 LICENSE="LGPL-2.1"
