@@ -2,17 +2,18 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6
+inherit cmake
 
 DESCRIPTION="Framework for managing bookmarks stored in XBEL format"
 HOMEPAGE="https://invent.kde.org/frameworks/"
 SRC_URI="https://download.kde.org/stable/frameworks/6.22/kbookmarks-6.22.0.tar.xz -> kbookmarks-6.22.0.tar.xz"
+LICENSE="GPL-2"
 SLOT="6"
 KEYWORDS="*"
 BDEPEND="dev-qt/qttools:6[linguist]
 	
 "
-RDEPEND="dev-qt/qtbase:6[gui]
+RDEPEND="virtual/kde-seed[gui]
 	kde-frameworks/kconfig:6
 	kde-frameworks/kcoreaddons:6
 	kde-frameworks/kiconthemes:6
@@ -20,7 +21,6 @@ RDEPEND="dev-qt/qtbase:6[gui]
 	
 "
 DEPEND="${RDEPEND}
-	
 "
 
 # vim: filetype=ebuild
