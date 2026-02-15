@@ -10,7 +10,7 @@ SRC_URI="https://download.kde.org/stable/release-service/25.12.2/src/signon-kwal
 SLOT="6"
 KEYWORDS="*"
 RDEPEND="kde-frameworks/kwallet:6
-	>=net-libs/signond-8.61
+	>=net-libs/signond-8.61-r100[qt6(+)]
 	
 "
 DEPEND="${RDEPEND}
