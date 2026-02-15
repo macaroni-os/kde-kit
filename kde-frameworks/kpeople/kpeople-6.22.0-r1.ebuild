@@ -2,15 +2,15 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6
+inherit cmake
 
 DESCRIPTION="KDE contact person abstraction library"
 HOMEPAGE="https://invent.kde.org/frameworks/"
 SRC_URI="https://download.kde.org/stable/frameworks/6.22/kpeople-6.22.0.tar.xz -> kpeople-6.22.0.tar.xz"
+LICENSE="GPL-2"
 SLOT="6"
 KEYWORDS="*"
-RDEPEND="dev-qt/qtbase:6[gui,sql]
-	dev-qt/qtdeclarative:6
+RDEPEND="virtual/kde-seed[gui,declarative,sql]
 	kde-frameworks/kconfig:6
 	kde-frameworks/kcontacts:6
 	kde-frameworks/kcoreaddons:6
@@ -20,15 +20,6 @@ RDEPEND="dev-qt/qtbase:6[gui,sql]
 	
 "
 DEPEND="${RDEPEND}
-	
 "
-src_test() {
-	  local CMAKE_SKIP_TESTS=(
-	      # bugs 668192, 816588: segfaults w/o virtx
-	      personsmodeltest
-	  )
-	   kde6_src_test -j1
-}
-
 
 # vim: filetype=ebuild
