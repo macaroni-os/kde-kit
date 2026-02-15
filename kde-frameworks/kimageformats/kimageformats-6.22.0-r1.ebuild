@@ -2,15 +2,16 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6
+inherit cmake
 
 DESCRIPTION="Framework providing additional format plugins for Qt's image I/O system"
 HOMEPAGE="https://invent.kde.org/frameworks/"
 SRC_URI="https://download.kde.org/stable/frameworks/6.22/kimageformats-6.22.0.tar.xz -> kimageformats-6.22.0.tar.xz"
+LICENSE="GPL-2"
 SLOT="6"
 KEYWORDS="*"
 IUSE="avif eps heif jpeg2k jpegxl openexr raw"
-RDEPEND="dev-qt/qtbase:6[gui]
+RDEPEND="virtual/kde-seed[gui]
 	kde-frameworks/karchive:6
 	avif? ( >=media-libs/libavif-0.8.2:= )
 	eps? ( dev-qt/qtbase:6 )
@@ -22,11 +23,6 @@ RDEPEND="dev-qt/qtbase:6[gui]
 	
 "
 DEPEND="${RDEPEND}
-	test? (
-	    dev-qt/qtimageformats:6
-	    heif? ( media-libs/libheif[x265] )
-	)
-	
 "
 src_configure() {
 	  local mycmakeargs=(
@@ -39,7 +35,7 @@ src_configure() {
 	      $(cmake_use_find_package openexr OpenEXR)
 	      $(cmake_use_find_package raw LibRaw)
 	  )
-	  kde6_src_configure
+	  cmake_src_configure
 }
 
 
