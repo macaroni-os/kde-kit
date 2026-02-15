@@ -45,7 +45,7 @@ RDEPEND="dev-qt/qtbase:6[gui]
 	media-libs/libogg
 	media-libs/opus
 	)
-	pulseaudio? ( media-libs/libpulse )
+	pulseaudio? ( media-sound/pulseaudio )
 	vorbis? (
 	media-libs/libogg
 	media-libs/libvorbis
@@ -85,7 +85,7 @@ DEPEND="${RDEPEND}
 	media-libs/libogg
 	media-libs/opus
 	)
-	pulseaudio? ( media-libs/libpulse )
+	pulseaudio? ( media-sound/pulseaudio )
 	vorbis? (
 	media-libs/libogg
 	media-libs/libvorbis
