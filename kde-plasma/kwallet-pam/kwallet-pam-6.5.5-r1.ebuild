@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6
+inherit cmake
 
 DESCRIPTION="KWallet PAM module for unlock KDE Wallet on login"
 HOMEPAGE="https://invent.kde.org/plasma/"
@@ -12,28 +12,24 @@ KEYWORDS="*"
 BDEPEND="virtual/pkgconfig
 	
 "
-RDEPEND="net-misc/socat
-	
-"
-DEPEND="${RDEPEND}
+RDEPEND="virtual/kde-seed
+	net-misc/socat
 	dev-libs/libgcrypt:=
 	sys-libs/pam
 	kde-frameworks/kwallet:6
 	
 "
-src_prepare() {
-	  kde6_src_prepare
-}
-
+DEPEND="${RDEPEND}
+"
 src_configure() {
-	  local mycmakeargs=(
-	      -DCMAKE_INSTALL_LIBDIR="/$(get_libdir)"
-	  )
-	  kde6_src_configure
+	local mycmakeargs=(
+	  -DCMAKE_INSTALL_LIBDIR="/$(get_libdir)"
+	)
+	cmake_src_configure
 }
 pkg_postinst() {
-	  elog "This package enables auto-unlocking of kde-frameworks/kwallet:6."
-	  elog "See also: https://wiki.gentoo.org/wiki/KDE#KWallet_auto-unlocking"
+	elog "This package enables auto-unlocking of kde-frameworks/kwallet:6."
+	elog "See also: https://wiki.gentoo.org/wiki/KDE#KWallet_auto-unlocking"
 }
 
 
