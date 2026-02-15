@@ -8,7 +8,7 @@ KDE_TEST="optional"
 QT_MINIMAL=5.12.3
 inherit kde5
 
-DESCRIPTION="Qt bindings for libpulse"
+DESCRIPTION="Qt bindings for pulseaudio"
 HOMEPAGE="https://invent.kde.org/libraries/pulseaudio-qt"
 SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
