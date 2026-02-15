@@ -43,7 +43,7 @@ src_configure() {
 src_install() {
 	cmake_src_install
 	doman lxqt-config-session/man/*.1 lxqt-session/man/*.1
-	newenvd "${FILESDIR}"/91lxqt-config-dir
+	doenvd "${FILESDIR}"/91lxqt-config-dir
 }
 
 
