@@ -27,7 +27,7 @@ RDEPEND="dev-qt/qtbase:6[gui]
 	alsa? ( >=media-libs/alsa-lib-1.0.14a )
 	pulseaudio? (
 	media-libs/libcanberra
-	media-libs/libpulse
+	media-sound/pulseaudio
 	)
 	
 "
