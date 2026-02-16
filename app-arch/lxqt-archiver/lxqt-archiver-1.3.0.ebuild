@@ -22,6 +22,10 @@ DEPEND="${RDEPEND}
 	
 "
 
+src_prepare() {
+	cmake_src_prepare
+}
+
 post_src_unpack() {
 	mv lxqt-lxqt-archiver-* ${S}
 }
