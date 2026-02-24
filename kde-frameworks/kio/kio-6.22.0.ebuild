@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit cmake xdg
+inherit cmake
 
 DESCRIPTION="Framework providing transparent file and data management"
 HOMEPAGE="https://invent.kde.org/frameworks/"
