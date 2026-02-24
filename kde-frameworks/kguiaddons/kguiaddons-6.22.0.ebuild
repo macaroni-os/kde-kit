@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit cmake xdg
+inherit cmake
 
 DESCRIPTION="Framework providing assorted high-level user interface components"
 HOMEPAGE="https://invent.kde.org/frameworks/"
