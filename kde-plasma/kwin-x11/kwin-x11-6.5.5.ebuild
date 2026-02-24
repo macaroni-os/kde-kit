@@ -76,6 +76,7 @@ DEPEND="${RDEPEND}
 "
 src_prepare() {
 	cmake_src_prepare
+	cmake_comment_add_subdirectory autotests test tests
 	if ! use systemd; then
 	  sed -e "s/^pkg_check_modules.*libsystemd/#&/" -i CMakeLists.txt || die
 	fi
