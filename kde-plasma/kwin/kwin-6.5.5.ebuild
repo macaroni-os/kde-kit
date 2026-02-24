@@ -90,6 +90,7 @@ DEPEND="${RDEPEND}
 "
 src_prepare() {
 	cmake_src_prepare
+	cmake_comment_add_subdirectory autotests test tests
 	# TODO: try to get a build switch upstreamed
 	if ! use screencast; then
 	  sed -e "s/^pkg_check_modules.*PipeWire/#&/" -i CMakeLists.txt || die
