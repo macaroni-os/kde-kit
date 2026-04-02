@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit cmake xdg
+inherit cmake
 
 DESCRIPTION="Core library of PCManFM-Qt (Qt binding for libfm)"
 HOMEPAGE="https://lxqt-project.org"
