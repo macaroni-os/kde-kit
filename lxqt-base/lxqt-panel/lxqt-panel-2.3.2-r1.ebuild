@@ -77,7 +77,7 @@ src_configure() {
 	      -DMOUNT_PLUGIN=$(usex mount)
 	      -DNETWORKMONITOR_PLUGIN=$(usex networkmonitor)
 	      -DQUICKLAUNCH_PLUGIN=$(usex quicklaunch)
-	      -DSENSORS_PLUGIN=$(usex lm-sensors)
+	      -DSENSORS_PLUGIN=$(usex lm_sensors)
 	      -DSHOWDESKTOP_PLUGIN=$(usex showdesktop)
 	      -DSPACER_PLUGIN=$(usex spacer)
 	      -DSTATUSNOTIFIER_PLUGIN=$(usex statusnotifier)
