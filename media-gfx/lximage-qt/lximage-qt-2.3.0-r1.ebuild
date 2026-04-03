@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit cmake xdg
+inherit cmake
 
 DESCRIPTION="The image viewer and screenshot tool for lxqt"
 HOMEPAGE="https://lxqt-project.org"
