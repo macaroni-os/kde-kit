@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit cmake xdg
+inherit cmake
 
 DESCRIPTION="Themes, graphics and icons for LXQt"
 HOMEPAGE="https://lxqt-project.org"
