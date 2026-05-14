@@ -25,4 +25,8 @@ RDEPEND="virtual/kde-seed[gui]
 DEPEND="${RDEPEND}
 "
 
+src_prepare() {
+	kde6_src_prepare
+}
+
 # vim: filetype=ebuild
