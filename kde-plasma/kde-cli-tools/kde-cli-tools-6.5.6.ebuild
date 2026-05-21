@@ -9,12 +9,11 @@ HOMEPAGE="https://invent.kde.org/plasma/"
 SRC_URI="https://download.kde.org/stable/plasma/6.5.6/kde-cli-tools-6.5.6.tar.xz -> kde-cli-tools-6.5.6.tar.xz"
 SLOT="6"
 KEYWORDS="*"
-IUSE="kdesu X"
+IUSE="X"
 BDEPEND="kde-frameworks/kcmutils:6
 	
 "
 RDEPEND="virtual/kde-seed[gui,svg,X?]
-	kdesu? ( >=${CATEGORY}/kdesu-gui-${PV} )
 	kde-frameworks/kcoreaddons:6
 	kde-frameworks/ki18n:6
 	kde-frameworks/kio:6
@@ -30,7 +29,6 @@ src_prepare() {
 }
 src_configure() {
 	local mycmakeargs=(
-	  -DCMAKE_DISABLE_FIND_PACKAGE_KF6Su=ON
 	  -DWITH_X11=$(usex X)
 	)
 	cmake_src_configure
