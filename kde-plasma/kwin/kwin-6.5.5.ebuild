@@ -74,7 +74,7 @@ RDEPEND="virtual/kde-seed[declarative,svg,gui,X,wayland,gles2-only?]
 	>=x11-libs/libxkbcommon-1.5.0
 	x11-libs/xcb-util-cursor
 	x11-libs/xcb-util-wm
-	accessibility? ( media-libs/libqaccessibilityclient:6 )
+	accessibility? ( media-libs/libqaccessibilityclient[qt6] )
 	lock? ( kde-plasma/kscreenlocker:6 )
 	screencast? ( >=media-video/pipewire-1.2.0:= )
 	shortcuts? ( kde-plasma/kglobalacceld:6 )
