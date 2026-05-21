@@ -19,7 +19,7 @@ RDEPEND="dev-qt/qtbase:6[gui]
 	kde-frameworks/kio:6
 	kde-frameworks/kwidgetsaddons:6
 	kde-frameworks/kxmlgui:6
-	keyboardfocus? ( >=media-libs/libqaccessibilityclient-0.6:6 )
+	keyboardfocus? ( media-libs/libqaccessibilityclient[qt6] )
 	
 "
 DEPEND="${RDEPEND}
