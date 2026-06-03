@@ -65,7 +65,7 @@ RDEPEND="virtual/kde-seed[gles2-only?,declarative,svg,gui,X]
 	x11-libs/xcb-util-image
 	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-wm
-	accessibility? ( media-libs/libqaccessibilityclient:6 )
+	accessibility? ( media-libs/libqaccessibilityclient )
 	lock? ( kde-plasma/kscreenlocker:6 )
 	shortcuts? ( kde-plasma/kglobalacceld:6 )
 	
