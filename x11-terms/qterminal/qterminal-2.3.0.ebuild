@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit cmake xdg
+inherit cmake
 
 DESCRIPTION="A lightweight Qt-based terminal emulator"
 HOMEPAGE="https://lxqt-project.org"
