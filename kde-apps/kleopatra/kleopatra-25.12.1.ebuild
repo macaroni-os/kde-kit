@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Certificate manager and GUI for OpenPGP and CMS cryptography"
 HOMEPAGE="https://apps.kde.org/kleopatra/"

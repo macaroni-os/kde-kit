@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Single-player Tetris-like KDE game"
 HOMEPAGE="https://apps.kde.org/kblocks/"

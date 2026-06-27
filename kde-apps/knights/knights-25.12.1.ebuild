@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Simple chess board based on KDE Frameworks"
 HOMEPAGE="https://apps.kde.org/knights/"

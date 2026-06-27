@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Import mbox email archives from various sources into Akonadi"
 HOMEPAGE="https://invent.kde.org/"

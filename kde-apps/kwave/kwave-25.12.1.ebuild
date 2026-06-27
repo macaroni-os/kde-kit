@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Sound editor built on KDE Frameworks that can edit many types of audio files"
 HOMEPAGE="https://apps.kde.org/kwave/"

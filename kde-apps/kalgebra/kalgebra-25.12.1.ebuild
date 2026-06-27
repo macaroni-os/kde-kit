@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="MathML-based 2D and 3D graph calculator by KDE"
 HOMEPAGE="https://apps.kde.org/kalgebra/"

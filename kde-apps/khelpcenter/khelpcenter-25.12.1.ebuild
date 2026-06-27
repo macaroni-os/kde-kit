@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Application to read documentation for KDE Plasma, Applications, Utilities"
 HOMEPAGE="https://apps.kde.org/khelpcenter/ https://userbase.kde.org/KHelpCenter"

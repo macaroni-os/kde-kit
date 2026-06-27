@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Logic-based symbol placement puzzle by KDE"
 HOMEPAGE="https://apps.kde.org/ksudoku/"

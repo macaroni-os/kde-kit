@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Alphabet learning application"
 HOMEPAGE="https://apps.kde.org/klettres/"

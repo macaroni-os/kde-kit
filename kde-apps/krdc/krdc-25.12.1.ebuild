@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Remote desktop connection (RDP and VNC) client"
 HOMEPAGE="https://apps.kde.org/krdc/"

@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="An adaptation of the Clickomania game"
 HOMEPAGE="https://apps.kde.org/klickety/"

@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="KDE Japanese dictionary and reference"
 HOMEPAGE="https://apps.kde.org/kiten/"

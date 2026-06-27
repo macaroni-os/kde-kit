@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="KDE version of the popular NetWalk game for system administrators"
 HOMEPAGE="https://apps.kde.org/knetwalk/"

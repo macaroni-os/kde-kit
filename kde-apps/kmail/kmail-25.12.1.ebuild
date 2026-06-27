@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Email client, supporting POP3 and IMAP mailboxes"
 HOMEPAGE="https://apps.kde.org/kmail2/"

@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="A little KDE game about balls and how to get rid of them"
 HOMEPAGE="https://apps.kde.org/klines/"

@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Little tool to execute programs after some time"
 HOMEPAGE="https://apps.kde.org/ktimer/"

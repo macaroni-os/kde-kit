@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Shell script to create the necessary framework to develop KDE applications"
 HOMEPAGE="https://apps.kde.org/kapptemplate/"

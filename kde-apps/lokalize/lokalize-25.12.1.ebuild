@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Localization tool for KDE software and other free and open source software"
 HOMEPAGE="https://apps.kde.org/lokalize/ https://l10n.kde.org/tools/"

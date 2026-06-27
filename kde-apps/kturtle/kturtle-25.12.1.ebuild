@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Educational programming environment using the Logo programming language"
 HOMEPAGE="https://apps.kde.org/kturtle/"

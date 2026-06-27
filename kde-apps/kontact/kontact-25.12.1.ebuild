@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Container application to unify several major PIM applications within one"
 HOMEPAGE="https://kontact.kde.org/ https://apps.kde.org/kontact/"

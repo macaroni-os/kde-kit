@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Frontend for GnuPG, a powerful encryption utility by KDE"
 HOMEPAGE="https://apps.kde.org/kgpg/"

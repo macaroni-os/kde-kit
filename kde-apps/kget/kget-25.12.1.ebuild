@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Advanced download manager by KDE"
 HOMEPAGE="https://apps.kde.org/kget/"
