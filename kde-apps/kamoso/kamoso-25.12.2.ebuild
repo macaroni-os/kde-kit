@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Application to take pictures and videos from your webcam"
 HOMEPAGE="https://apps.kde.org/kamoso/ https://userbase.kde.org/Kamoso"
