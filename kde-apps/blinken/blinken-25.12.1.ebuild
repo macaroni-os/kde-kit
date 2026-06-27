@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Memory enhancement game based on Simon Says"
 HOMEPAGE="https://apps.kde.org/blinken/"

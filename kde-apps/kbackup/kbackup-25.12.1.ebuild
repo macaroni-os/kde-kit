@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Program that lets you back up any directories or files"
 HOMEPAGE="https://apps.kde.org/kbackup/"

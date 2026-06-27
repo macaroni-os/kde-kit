@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Application to manage alarms and other timer based alerts for the desktop"
 HOMEPAGE="https://apps.kde.org/kalarm/ https://userbase.kde.org/KAlarm"

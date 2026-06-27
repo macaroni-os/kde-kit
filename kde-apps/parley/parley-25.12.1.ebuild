@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Vocabulary trainer to help you memorize things"
 HOMEPAGE="https://apps.kde.org/parley/"

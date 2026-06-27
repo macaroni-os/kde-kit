@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="KDE four-in-a-row game"
 HOMEPAGE="https://apps.kde.org/kfourinline/"

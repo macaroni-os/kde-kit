@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Image viewer by KDE"
 HOMEPAGE="https://apps.kde.org/gwenview/ https://userbase.kde.org/Gwenview"

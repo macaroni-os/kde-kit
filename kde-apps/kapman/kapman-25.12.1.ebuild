@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Pac-Man clone by KDE"
 HOMEPAGE="https://apps.kde.org/kapman/"

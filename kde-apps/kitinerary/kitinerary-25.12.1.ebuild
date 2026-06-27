@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Data Model and Extraction System for Travel Reservation information"
 HOMEPAGE="https://apps.kde.org/kontact/"

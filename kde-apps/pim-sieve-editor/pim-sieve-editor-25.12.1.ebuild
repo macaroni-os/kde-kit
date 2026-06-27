@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Assistant for editing IMAP Sieve filters"
 HOMEPAGE="https://invent.kde.org/"

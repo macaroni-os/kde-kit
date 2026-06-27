@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Program that helps to learn and practice touch typing"
 HOMEPAGE="https://apps.kde.org/ktouch/"

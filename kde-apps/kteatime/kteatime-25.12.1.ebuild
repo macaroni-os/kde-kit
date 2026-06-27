@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="KDE timer for making a fine cup of tea"
 HOMEPAGE="https://apps.kde.org/kteatime/"

@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Kill the bots or they kill you!"
 HOMEPAGE="https://apps.kde.org/killbots/"

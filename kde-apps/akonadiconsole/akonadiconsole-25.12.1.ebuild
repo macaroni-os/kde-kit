@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Application for debugging Akonadi Resources"
 HOMEPAGE="https://techbase.kde.org/KDE_PIM/Akonadi/Development_Tools"

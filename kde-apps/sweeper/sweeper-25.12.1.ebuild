@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Privacy settings widget to clean unwanted traces on the system"
 HOMEPAGE="https://apps.kde.org/sweeper/"

@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="VNC-compatible server to share Plasma desktops"
 HOMEPAGE="https://apps.kde.org/krfb/"

@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Single player arcade game, similar to Bomberman"
 HOMEPAGE="https://apps.kde.org/bomber/"

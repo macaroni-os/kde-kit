@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg kde6
 
 DESCRIPTION="Solitaire-like game played using the standard set of Mahjong tiles"
 HOMEPAGE="https://apps.kde.org/kshisen/"
