@@ -2,7 +2,7 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit xdg kde6
+inherit kde6 xdg
 
 DESCRIPTION="Utility for management of disks, partitions and file systems"
 HOMEPAGE="https://apps.kde.org/partitionmanager/"
