@@ -129,7 +129,7 @@ RDEPEND="virtual/kde-seed[declarative,svg,gui,libinput,sql,wayland?,X?]
 	        x11-libs/xcb-util-image
 	    )
 	)
-	
+	x11-misc/xdotool
 "
 DEPEND="${RDEPEND}
 "
