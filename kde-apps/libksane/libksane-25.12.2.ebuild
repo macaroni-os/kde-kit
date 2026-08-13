@@ -11,11 +11,10 @@ SLOT="6"
 KEYWORDS="*"
 IUSE="kwallet"
 RDEPEND="virtual/kde-seed[gui]
-	>=kde-apps/libksane-common
 	kde-frameworks/ki18n:6
 	kde-frameworks/ktextwidgets:6
 	kde-frameworks/kwidgetsaddons:6
-	media-libs/ksanecore:6
+	kde-apps/ksanecore:6
 	kwallet? ( kde-frameworks/kwallet:6 )
 	
 "
