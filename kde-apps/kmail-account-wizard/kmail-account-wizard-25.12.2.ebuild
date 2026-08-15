@@ -6,11 +6,11 @@ inherit cmake
 
 DESCRIPTION="Assistant for KMail accounts configuration"
 HOMEPAGE="https://invent.kde.org/"
-SRC_URI="https://download.kde.org/stable/release-service/25.12.2/src/kmail-account-wizard-25.12.2.tar.xz -> kmail-account-wizard-25.12.2.tar.xz"
+SRC_URI="https://download.kde.org/Attic//release-service/25.12.2/src/kmail-account-wizard-25.12.2.tar.xz -> kmail-account-wizard-25.12.2.tar.xz"
 SLOT="6"
 KEYWORDS="*"
 RDEPEND="virtual/kde-seed[gui]
-	dev-cpp/gpgmepp:=
+	app-crypt/gpgmepp:=
 	dev-libs/qgpgme:=
 	>=dev-libs/qtkeychain-0.14.2:=[qt6(+)]
 	kde-apps/akonadi:6=

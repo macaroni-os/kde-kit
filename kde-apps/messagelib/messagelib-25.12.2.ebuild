@@ -6,13 +6,13 @@ inherit cmake
 
 DESCRIPTION="Libraries for messaging functions"
 HOMEPAGE="https://invent.kde.org/"
-SRC_URI="https://download.kde.org/stable/release-service/25.12.2/src/messagelib-25.12.2.tar.xz -> messagelib-25.12.2.tar.xz"
+SRC_URI="https://download.kde.org/Attic//release-service/25.12.2/src/messagelib-25.12.2.tar.xz -> messagelib-25.12.2.tar.xz"
 SLOT="6"
 KEYWORDS="*"
 IUSE="speech"
 RDEPEND="virtual/kde-seed[gui]
 	dev-qt/qtwebengine:6
-	dev-cpp/gpgmepp:=
+	app-crypt/gpgmepp:=
 	dev-libs/qgpgme:=
 	dev-libs/openssl:=
 	>=dev-libs/ktextaddons-1.6.0:6[speech?]
