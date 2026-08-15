@@ -6,11 +6,11 @@ inherit cmake
 
 DESCRIPTION="Libraries for messaging functions"
 HOMEPAGE="https://invent.kde.org/"
-SRC_URI="https://download.kde.org/stable/release-service/25.12.2/src/mimetreeparser-25.12.2.tar.xz -> mimetreeparser-25.12.2.tar.xz"
+SRC_URI="https://download.kde.org/Attic//release-service/25.12.2/src/mimetreeparser-25.12.2.tar.xz -> mimetreeparser-25.12.2.tar.xz"
 SLOT="6"
 KEYWORDS="*"
 RDEPEND="virtual/kde-seed[gui,declarative]
-	dev-cpp/gpgmepp:=
+	app-crypt/gpgmepp:=
 	dev-libs/qgpgme:=
 	kde-apps/kmbox:6=
 	kde-apps/kmime:6=

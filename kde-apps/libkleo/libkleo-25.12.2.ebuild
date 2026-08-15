@@ -6,11 +6,11 @@ inherit cmake
 
 DESCRIPTION="Library for encryption handling"
 HOMEPAGE="https://invent.kde.org/"
-SRC_URI="https://download.kde.org/stable/release-service/25.12.2/src/libkleo-25.12.2.tar.xz -> libkleo-25.12.2.tar.xz"
+SRC_URI="https://download.kde.org/Attic//release-service/25.12.2/src/libkleo-25.12.2.tar.xz -> libkleo-25.12.2.tar.xz"
 SLOT="6"
 KEYWORDS="*"
 RDEPEND="virtual/kde-seed[gui]
-	dev-cpp/gpgmepp:=
+	app-crypt/gpgmepp:=
 	dev-libs/qgpgme:=
 	>=dev-libs/libgpg-error-1.36
 	kde-frameworks/kcodecs:6

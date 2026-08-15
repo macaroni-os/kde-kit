@@ -6,7 +6,7 @@ inherit cmake
 
 DESCRIPTION="Certificate manager and GUI for OpenPGP and CMS cryptography"
 HOMEPAGE="https://apps.kde.org/kleopatra/"
-SRC_URI="https://download.kde.org/stable/release-service/25.12.2/src/kleopatra-25.12.2.tar.xz -> kleopatra-25.12.2.tar.xz"
+SRC_URI="https://download.kde.org/Attic//release-service/25.12.2/src/kleopatra-25.12.2.tar.xz -> kleopatra-25.12.2.tar.xz"
 SLOT="6"
 KEYWORDS="*"
 IUSE="pim"
@@ -14,7 +14,7 @@ RESTRICT="test"
 RDEPEND="virtual/kde-seed[gui]
 	>=app-crypt/gnupg-2.1
 	app-crypt/paperkey
-	dev-cpp/gpgmepp:=
+	app-crypt/gpgmepp:=
 	dev-libs/qgpgme:=
 	dev-libs/libassuan:=
 	dev-libs/libgpg-error

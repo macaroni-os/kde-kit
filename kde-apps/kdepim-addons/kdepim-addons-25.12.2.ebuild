@@ -6,13 +6,13 @@ inherit cmake
 
 DESCRIPTION="Plugins for KDE Personal Information Management Suite"
 HOMEPAGE="https://apps.kde.org/kontact/"
-SRC_URI="https://download.kde.org/stable/release-service/25.12.2/src/kdepim-addons-25.12.2.tar.xz -> kdepim-addons-25.12.2.tar.xz"
+SRC_URI="https://download.kde.org/Attic//release-service/25.12.2/src/kdepim-addons-25.12.2.tar.xz -> kdepim-addons-25.12.2.tar.xz"
 SLOT="6"
 KEYWORDS="*"
 IUSE="activities importwizard markdown"
 RDEPEND="virtual/kde-seed[gui]
 	dev-qt/qtwebengine:6
-	dev-cpp/gpgmepp:=
+	app-crypt/gpgmepp:=
 	dev-libs/qgpgme:=
 	>=dev-libs/ktextaddons-1.6.0:6
 	kde-apps/akonadi:6=
