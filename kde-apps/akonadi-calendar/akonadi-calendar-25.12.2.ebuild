@@ -6,12 +6,12 @@ inherit cmake
 
 DESCRIPTION="Library for akonadi calendar integration"
 HOMEPAGE="https://invent.kde.org/"
-SRC_URI="https://download.kde.org/stable/release-service/25.12.2/src/akonadi-calendar-25.12.2.tar.xz -> akonadi-calendar-25.12.2.tar.xz"
+SRC_URI="https://download.kde.org/Attic//release-service/25.12.2/src/akonadi-calendar-25.12.2.tar.xz -> akonadi-calendar-25.12.2.tar.xz"
 SLOT="6"
 KEYWORDS="*"
 RESTRICT="test"
 RDEPEND="virtual/kde-seed[gui]
-	>=dev-cpp/gpgmepp-1.23.2:=
+	>=app-crypt/gpgmepp-1.23.2:=
 	>=dev-libs/qgpgme-1.23.2:=
 	kde-apps/akonadi:6=
 	kde-apps/akonadi-contacts:6=

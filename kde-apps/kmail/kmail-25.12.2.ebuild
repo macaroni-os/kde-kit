@@ -6,7 +6,7 @@ inherit cmake
 
 DESCRIPTION="Email client, supporting POP3 and IMAP mailboxes"
 HOMEPAGE="https://apps.kde.org/kmail2/"
-SRC_URI="https://download.kde.org/stable/release-service/25.12.2/src/kmail-25.12.2.tar.xz -> kmail-25.12.2.tar.xz"
+SRC_URI="https://download.kde.org/Attic//release-service/25.12.2/src/kmail-25.12.2.tar.xz -> kmail-25.12.2.tar.xz"
 SLOT="6"
 KEYWORDS="*"
 IUSE="activities speech telemetry"
@@ -19,7 +19,7 @@ RDEPEND="virtual/kde-seed[gui]
 	>=dev-libs/qtkeychain-0.14.2:=[qt6(+)]
 	=kde-apps/kdepim-runtime*:6
 	=kde-apps/kmail-account-wizard*:6
-	dev-cpp/gpgmepp:=
+	app-crypt/gpgmepp:=
 	dev-libs/qgpgme:=
 	>=dev-libs/ktextaddons-1.6.0:6[speech?]
 	>=dev-libs/libgpg-error-1.36

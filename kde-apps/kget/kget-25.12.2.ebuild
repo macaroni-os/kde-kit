@@ -6,7 +6,7 @@ inherit cmake
 
 DESCRIPTION="Advanced download manager by KDE"
 HOMEPAGE="https://apps.kde.org/kget/"
-SRC_URI="https://download.kde.org/stable/release-service/25.12.2/src/kget-25.12.2.tar.xz -> kget-25.12.2.tar.xz"
+SRC_URI="https://download.kde.org/Attic//release-service/25.12.2/src/kget-25.12.2.tar.xz -> kget-25.12.2.tar.xz"
 SLOT="6"
 KEYWORDS="*"
 IUSE="bittorrent gpg mms sqlite"
@@ -31,7 +31,7 @@ RDEPEND="virtual/kde-seed[gui,sql]
 	kde-frameworks/kxmlgui:6
 	bittorrent? ( net-libs/libktorrent:6 )
 	gpg? (
-	  dev-cpp/gpgmepp:=
+	  app-crypt/gpgmepp:=
 	  dev-libs/qgpgme:=
 	)
 	mms? ( media-libs/libmms )
