@@ -10,7 +10,7 @@ SRC_URI="https://download.kde.org/stable/release-service/25.12.1/src/libkleo-25.
 SLOT="6"
 KEYWORDS="*"
 RDEPEND="dev-cpp/gpgmepp:=
-	dev-libs/qgpgme:=
+	app-crypt/qgpgme:=
 	>=dev-libs/libgpg-error-1.36
 	dev-qt/qtbase:6[gui]
 	kde-frameworks/kcodecs:6
@@ -27,7 +27,7 @@ RDEPEND="dev-cpp/gpgmepp:=
 "
 DEPEND="${RDEPEND}
 	dev-cpp/gpgmepp:=
-	dev-libs/qgpgme:=
+	app-crypt/qgpgme:=
 	>=dev-libs/libgpg-error-1.36
 	dev-qt/qtbase:6[gui]
 	kde-frameworks/kcodecs:6

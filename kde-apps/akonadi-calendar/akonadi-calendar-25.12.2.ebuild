@@ -12,7 +12,7 @@ KEYWORDS="*"
 RESTRICT="test"
 RDEPEND="virtual/kde-seed[gui]
 	>=app-crypt/gpgmepp-1.23.2:=
-	>=dev-libs/qgpgme-1.23.2:=
+	>=app-crypt/qgpgme-1.23.2:=
 	kde-apps/akonadi:6=
 	kde-apps/akonadi-contacts:6=
 	kde-apps/akonadi-mime:6=

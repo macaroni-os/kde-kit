@@ -11,7 +11,7 @@ SLOT="6"
 KEYWORDS="*"
 RESTRICT="test"
 RDEPEND="dev-cpp/gpgmepp:=
-	dev-libs/qgpgme:=
+	app-crypt/qgpgme:=
 	dev-qt/qtbase:6[gui]
 	dev-qt/qtdeclarative:6
 	kde-apps/kmbox:6=

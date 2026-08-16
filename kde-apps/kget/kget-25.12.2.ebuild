@@ -32,7 +32,7 @@ RDEPEND="virtual/kde-seed[gui,sql]
 	bittorrent? ( net-libs/libktorrent:6 )
 	gpg? (
 	  app-crypt/gpgmepp:=
-	  dev-libs/qgpgme:=
+	  app-crypt/qgpgme:=
 	)
 	mms? ( media-libs/libmms )
 	sqlite? ( dev-db/sqlite:3 )

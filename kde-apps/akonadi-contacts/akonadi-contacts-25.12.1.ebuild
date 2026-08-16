@@ -10,7 +10,7 @@ SRC_URI="https://download.kde.org/stable/release-service/25.12.1/src/akonadi-con
 SLOT="6"
 KEYWORDS="*"
 RDEPEND=">=dev-cpp/gpgmepp-1.23.2:=
-	>=dev-libs/qgpgme-1.23.2:=
+	>=app-crypt/qgpgme-1.23.2:=
 	dev-qt/qtbase:6[gui]
 	kde-apps/akonadi:6=
 	kde-apps/akonadi-mime:6=

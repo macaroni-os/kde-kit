@@ -11,7 +11,7 @@ SLOT="6"
 KEYWORDS="*"
 RDEPEND="virtual/kde-seed[gui]
 	app-crypt/gpgmepp:=
-	dev-libs/qgpgme:=
+	app-crypt/qgpgme:=
 	>=dev-libs/libgpg-error-1.36
 	kde-frameworks/kcodecs:6
 	kde-frameworks/kcolorscheme:6

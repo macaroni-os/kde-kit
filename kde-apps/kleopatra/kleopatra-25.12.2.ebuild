@@ -15,7 +15,7 @@ RDEPEND="virtual/kde-seed[gui]
 	>=app-crypt/gnupg-2.1
 	app-crypt/paperkey
 	app-crypt/gpgmepp:=
-	dev-libs/qgpgme:=
+	app-crypt/qgpgme:=
 	dev-libs/libassuan:=
 	dev-libs/libgpg-error
 	kde-apps/kmime:6=
