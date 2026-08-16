@@ -17,7 +17,7 @@ RDEPEND=">=app-crypt/gnupg-2.1
 "
 DEPEND="${RDEPEND}
 	dev-cpp/gpgmepp:=
-	dev-libs/qgpgme:=
+	app-crypt/qgpgme:=
 	dev-libs/libassuan:=
 	dev-libs/libgpg-error
 	dev-qt/qtbase:6[gui]

@@ -13,7 +13,7 @@ IUSE="activities importwizard markdown"
 RDEPEND="virtual/kde-seed[gui]
 	dev-qt/qtwebengine:6
 	app-crypt/gpgmepp:=
-	dev-libs/qgpgme:=
+	app-crypt/qgpgme:=
 	>=dev-libs/ktextaddons-1.6.0:6
 	kde-apps/akonadi:6=
 	kde-apps/akonadi-calendar:6=

@@ -13,7 +13,7 @@ IUSE="speech"
 RDEPEND="virtual/kde-seed[gui]
 	dev-qt/qtwebengine:6
 	app-crypt/gpgmepp:=
-	dev-libs/qgpgme:=
+	app-crypt/qgpgme:=
 	dev-libs/openssl:=
 	>=dev-libs/ktextaddons-1.6.0:6[speech?]
 	kde-apps/akonadi:6=

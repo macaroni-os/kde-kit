@@ -11,7 +11,7 @@ SLOT="6"
 KEYWORDS="*"
 RESTRICT="test"
 RDEPEND="dev-cpp/gpgmepp:=
-	dev-libs/qgpgme:=
+	app-crypt/qgpgme:=
 	>=dev-libs/qtkeychain-0.14.2:=[qt6(+)]
 	dev-qt/qtbase:6[gui]
 	kde-apps/akonadi:6=

@@ -11,7 +11,7 @@ SLOT="6"
 KEYWORDS="*"
 RESTRICT="test"
 RDEPEND=">=dev-cpp/gpgmepp-1.23.2:=
-	>=dev-libs/qgpgme-1.23.2:=
+	>=app-crypt/qgpgme-1.23.2:=
 	dev-qt/qtbase:6[gui]
 	kde-apps/akonadi:6=
 	kde-apps/akonadi-contacts:6=

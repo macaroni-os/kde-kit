@@ -32,7 +32,7 @@ RDEPEND="dev-qt/qtbase:6[gui,sql]
 	bittorrent? ( net-libs/libktorrent:6 )
 	gpg? (
 	dev-cpp/gpgmepp:=
-	dev-libs/qgpgme:=
+	app-crypt/qgpgme:=
 	)
 	mms? ( media-libs/libmms )
 	sqlite? ( dev-db/sqlite:3 )
@@ -61,7 +61,7 @@ DEPEND="${RDEPEND}
 	bittorrent? ( net-libs/libktorrent:6 )
 	gpg? (
 	dev-cpp/gpgmepp:=
-	dev-libs/qgpgme:=
+	app-crypt/qgpgme:=
 	)
 	mms? ( media-libs/libmms )
 	sqlite? ( dev-db/sqlite:3 )

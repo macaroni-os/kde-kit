@@ -12,7 +12,7 @@ KEYWORDS="*"
 IUSE="speech"
 RESTRICT="test"
 RDEPEND="dev-cpp/gpgmepp:=
-	dev-libs/qgpgme:=
+	app-crypt/qgpgme:=
 	>=dev-libs/openssl-3.0.0:=
 	>=dev-libs/ktextaddons-1.6.0:6[speech?]
 	dev-qt/qtbase:6[gui]

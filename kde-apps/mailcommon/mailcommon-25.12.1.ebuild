@@ -12,7 +12,7 @@ KEYWORDS="*"
 IUSE="activities"
 RESTRICT="test"
 RDEPEND="dev-cpp/gpgmepp:=
-	dev-libs/qgpgme:=
+	app-crypt/qgpgme:=
 	>=dev-libs/ktextaddons-1.6.0:6
 	dev-qt/qtbase:6[gui]
 	dev-qt/qtmultimedia:6
