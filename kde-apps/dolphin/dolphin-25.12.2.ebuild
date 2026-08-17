@@ -2,11 +2,11 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 optfeature xdg
+inherit cmake xdg
 
 DESCRIPTION="Plasma filemanager focusing on usability"
 HOMEPAGE="https://apps.kde.org/dolphin/ https://userbase.kde.org/Dolphin"
-SRC_URI="https://download.kde.org/stable/release-service/25.12.2/src/dolphin-25.12.2.tar.xz -> dolphin-25.12.2.tar.xz"
+SRC_URI="https://download.kde.org/Attic//release-service/25.12.2/src/dolphin-25.12.2.tar.xz -> dolphin-25.12.2.tar.xz"
 SLOT="6"
 KEYWORDS="*"
 IUSE="semantic-desktop telemetry test"
@@ -52,10 +52,10 @@ src_prepare() {
 }
 src_configure() {
 	local mycmakeargs=(
-	    -DCMAKE_DISABLE_FIND_PACKAGE_PackageKitQt6=ON
-	    $(cmake_use_find_package semantic-desktop KF6Baloo)
-	    $(cmake_use_find_package semantic-desktop KF6BalooWidgets)
-	    $(cmake_use_find_package telemetry KF6UserFeedback)
+			-DCMAKE_DISABLE_FIND_PACKAGE_PackageKitQt6=ON
+			$(cmake_use_find_package semantic-desktop KF6Baloo)
+			$(cmake_use_find_package semantic-desktop KF6BalooWidgets)
+			$(cmake_use_find_package telemetry KF6UserFeedback)
 	)
 	cmake_src_configure
 }
