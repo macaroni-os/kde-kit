@@ -26,7 +26,7 @@ RDEPEND="virtual/kde-seed[gui]
 	kde-frameworks/kitemmodels:6
 	kde-frameworks/ktextwidgets:6
 	kde-frameworks/kxmlgui:6
-	
+	kde-apps/grantleetheme:6
 "
 DEPEND="${RDEPEND}
 "
