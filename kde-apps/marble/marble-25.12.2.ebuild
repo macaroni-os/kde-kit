@@ -33,7 +33,7 @@ RDEPEND="virtual/kde-seed[gui,sql,declarative,svg]
 	  kde-frameworks/kio:6
 	  kde-frameworks/kparts:6
 	  kde-frameworks/krunner:6
-	  webengine? ( dev-qt/qtwebengine:6[qml] )
+	  webengine? ( dev-qt/qtwebengine:6 )
 	)
 	pbf? (
 	  dev-cpp/abseil-cpp:=
