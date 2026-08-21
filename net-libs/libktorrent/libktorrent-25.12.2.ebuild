@@ -10,7 +10,7 @@ SRC_URI="https://download.kde.org/Attic//release-service/25.12.2/src/libktorrent
 LICENSE="GPL-2+"
 SLOT="6"
 KEYWORDS="*"
-IUSE="xfs"
+IUSE="xfs ssl"
 BDEPEND="sys-devel/gettext
 	
 "
@@ -27,6 +27,7 @@ RDEPEND="app-crypt/qca:2
 	kde-frameworks/kio:6
 	kde-frameworks/solid:6
 	xfs? ( sys-fs/xfsprogs )
+	ssl? ( >=dev-libs/openssl-3.0 )
 	
 "
 DEPEND="${RDEPEND}
@@ -42,9 +43,13 @@ src_prepare() {
 }
 src_configure() {
 	local mycmakeargs=(
-		-DUSE_CRYPTO_BACKEND=OpenSSL
 		-DWITH_XFS=$(usex xfs)
 	)
+	if use ssl ; then
+		mycmakeargs+=(
+			-DUSE_CRYPTO_BACKEND=OpenSSL
+		)
+	fi
 	cmake_src_configure
 }
 
