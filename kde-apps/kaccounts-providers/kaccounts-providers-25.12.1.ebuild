@@ -16,7 +16,7 @@ RDEPEND=">=net-libs/signon-oauth2-0.25_p20210102[qt6(+)]
 DEPEND="${RDEPEND}
 	dev-qt/qtbase:6[gui]
 	dev-qt/qtdeclarative:6
-	dev-qt/qtwebengine:6[qml]
+	dev-qt/qtwebengine:6
 	kde-apps/kaccounts-integration:6
 	kde-frameworks/kcoreaddons:6
 	kde-frameworks/ki18n:6
