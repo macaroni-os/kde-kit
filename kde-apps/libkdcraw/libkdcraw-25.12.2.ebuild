@@ -16,4 +16,13 @@ RDEPEND="virtual/kde-seed[gui]
 DEPEND="${RDEPEND}
 "
 
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_TESTS=OFF
+		-DBUILD_WITH_QT6=ON
+	)
+	cmake_src_configure
+}
+
+
 # vim: filetype=ebuild
