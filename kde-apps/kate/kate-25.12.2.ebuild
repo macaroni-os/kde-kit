@@ -6,10 +6,10 @@ inherit cmake flag-o-matic xdg
 
 DESCRIPTION="Multi-document editor with network transparency, Plasma integration and more"
 HOMEPAGE="https://kate-editor.org/ https://apps.kde.org/kate/"
-SRC_URI="https://download.kde.org/stable/release-service/25.12.2/src/kate-25.12.2.tar.xz -> kate-25.12.2.tar.xz"
+SRC_URI="https://download.kde.org/Attic//release-service/25.12.2/src/kate-25.12.2.tar.xz -> kate-25.12.2.tar.xz"
 SLOT="6"
 KEYWORDS="*"
-IUSE="sql telemetry"
+IUSE="kwrite sql telemetry"
 RDEPEND="virtual/kde-seed[gui,X,declarative,sql?]
 	kde-frameworks/kdoctools:6
 	kde-frameworks/karchive:6
@@ -43,15 +43,13 @@ src_prepare() {
 }
 src_configure() {
 	local mycmakeargs=(
-	    -DCMAKE_DISABLE_FIND_PACKAGE_SeleniumWebDriverATSPI=TRUE
-	    -DBUILD_addons=TRUE
-	    -DBUILD_kwrite=FALSE
-	    -USE_DBUS=TRUE
-	    -DBUILD_PYTHON_BINDINGS=FALSE
-	    $(cmake_use_find_package telemetry KF6UserFeedback)
+			-DCMAKE_DISABLE_FIND_PACKAGE_SeleniumWebDriverATSPI=TRUE
+			-DBUILD_addons=TRUE
+			-DBUILD_kwrite=$(usex kwrite)
+			-USE_DBUS=TRUE
+			-DBUILD_PYTHON_BINDINGS=FALSE
+			$(cmake_use_find_package telemetry KF6UserFeedback)
 	)
-	# provided by kde-apps/kate-lib
-	append-libs -lkateprivate
 	cmake_src_configure
 }
 
