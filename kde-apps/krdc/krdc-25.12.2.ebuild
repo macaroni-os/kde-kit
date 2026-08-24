@@ -35,7 +35,7 @@ RDEPEND="virtual/kde-seed[gui,wayland?]
 	activities? ( kde-plasma/plasma-activities:6 )
 	rdp? (
 	  kde-frameworks/kio:6
-	  >=net-misc/freerdp-2.10:3
+	  net-misc/freerdp
 	)
 	ssh? ( net-libs/libssh:= )
 	vnc? ( >=net-libs/libvncserver-0.9.15 )
