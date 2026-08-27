@@ -2,11 +2,11 @@
 # Autogen by MARK Devkit
 
 EAPI=7
-inherit kde6 xdg
+inherit xdg cmake
 
 DESCRIPTION="KDE Plasma control module for Plymouth"
 HOMEPAGE="https://invent.kde.org/plasma/plymouth-kcm"
-SRC_URI="https://download.kde.org/stable/plasma/6.5.5/plymouth-kcm-6.5.5.tar.xz -> plymouth-kcm-6.5.5.tar.xz"
+SRC_URI="https://download.kde.org/Attic//plasma/6.5.5/plymouth-kcm-6.5.5.tar.xz -> plymouth-kcm-6.5.5.tar.xz"
 LICENSE="GPL-2+"
 SLOT="6"
 KEYWORDS="~amd64 ~arm64 ~loong ~ppc64 ~x86"
@@ -29,5 +29,12 @@ RDEPEND="virtual/kde-seed[gui,declarative]
 "
 DEPEND="${RDEPEND}
 "
+src_prepare() {
+	cmake_src_prepare
+}
+pkg_postinst() {
+	xdg_pkg_postinst
+}
+
 
 # vim: filetype=ebuild
