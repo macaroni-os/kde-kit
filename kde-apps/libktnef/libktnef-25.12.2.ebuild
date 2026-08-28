@@ -18,5 +18,6 @@ RDEPEND="virtual/kde-seed
 "
 DEPEND="${RDEPEND}
 "
+S="${WORKDIR}/ktnef-25.12.2"
 
 # vim: filetype=ebuild
