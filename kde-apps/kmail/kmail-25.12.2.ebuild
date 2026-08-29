@@ -17,8 +17,8 @@ BDEPEND="dev-libs/libxslt
 RDEPEND="virtual/kde-seed[gui]
 	dev-qt/qtwebengine:6
 	>=dev-libs/qtkeychain-0.14.2:=[qt6(+)]
-	=kde-apps/kdepim-runtime*:6
-	=kde-apps/kmail-account-wizard*:6
+	kde-apps/kdepim-runtime:6
+	kde-apps/kmail-account-wizard:6
 	app-crypt/gpgmepp:=
 	app-crypt/qgpgme:=
 	>=dev-libs/ktextaddons-1.6.0:6[speech?]
