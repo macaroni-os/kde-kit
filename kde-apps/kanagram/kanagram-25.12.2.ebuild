@@ -13,7 +13,7 @@ IUSE="speech"
 RDEPEND="virtual/kde-seed[gui,declarative,multimedia]
 	dev-qt/qtmultimedia:6[qml]
 	speech? ( dev-qt/qtspeech:6 )
-	kde-apps/kdeedu-data:*
+	kde-apps/kdeedu-data:6
 	kde-apps/libkeduvocdocument:6
 	kde-frameworks/kconfig:6
 	kde-frameworks/kconfigwidgets:6
