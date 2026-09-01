@@ -14,7 +14,7 @@ RDEPEND="virtual/kde-seed[gui,declarative,svg,multimedia]
 	dev-qt/qtmultimedia:6[qml]
 	dev-qt/qtdeclarative:6[widgets]
 	dev-libs/kirigami-addons:6
-	kde-apps/kdeedu-data:*
+	kde-apps/kdeedu-data:6
 	kde-frameworks/kirigami:6
 	kde-apps/libkeduvocdocument:6
 	kde-frameworks/kcompletion:6
