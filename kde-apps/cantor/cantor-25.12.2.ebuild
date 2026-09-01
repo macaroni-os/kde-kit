@@ -15,7 +15,7 @@ BDEPEND="sys-devel/gettext
 "
 RDEPEND="virtual/kde-seed[gui,cups,svg]
 	dev-qt/qtwebengine:6
-	julia? ( dev-lang/julia )
+	julia? ( dev-lang/julia-bin )
 	postscript? ( app-text/libspectre )
 	kde-frameworks/karchive:6
 	kde-frameworks/kcompletion:6
