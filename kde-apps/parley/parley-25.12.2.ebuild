@@ -11,7 +11,7 @@ SLOT="6"
 KEYWORDS="*"
 IUSE="webengine"
 RDEPEND="virtual/kde-seed[gui,multimedia,svg]
-	kde-apps/kdeedu-data:*
+	kde-apps/kdeedu-data:6
 	app-i18n/translate-shell
 	dev-libs/libxml2:2=
 	dev-libs/libxslt
