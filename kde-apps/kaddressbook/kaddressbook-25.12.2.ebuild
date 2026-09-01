@@ -11,7 +11,7 @@ SLOT="6"
 KEYWORDS="*"
 IUSE="activities telemetry"
 RDEPEND="virtual/kde-seed[gui]
-	=kde-apps/kdepim-runtime*:6
+	kde-apps/kdepim-runtime:6
 	kde-apps/akonadi:6=
 	kde-apps/akonadi-contacts:6=
 	kde-apps/akonadi-search:6=
