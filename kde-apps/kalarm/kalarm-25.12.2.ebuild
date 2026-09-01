@@ -11,7 +11,7 @@ SLOT="6"
 KEYWORDS="*"
 IUSE="mpv +pim speech X"
 RDEPEND="virtual/kde-seed[gui]
-	pim? ( =kde-apps/kdepim-runtime*:6 )
+	pim? ( kde-apps/kdepim-runtime:6 )
 	kde-apps/kcalutils:6=
 	kde-apps/kidentitymanagement:6=
 	kde-apps/kmime:6=
