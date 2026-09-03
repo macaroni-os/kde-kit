@@ -6,7 +6,7 @@ inherit cmake
 
 DESCRIPTION="KDE patience game"
 HOMEPAGE="https://apps.kde.org/kpat/"
-SRC_URI="https://download.kde.org/stable/release-service/25.12.2/src/kpat-25.12.2.tar.xz -> kpat-25.12.2.tar.xz"
+SRC_URI="https://download.kde.org/Attic//release-service/25.12.2/src/kpat-25.12.2.tar.xz -> kpat-25.12.2.tar.xz"
 SLOT="6"
 KEYWORDS="*"
 BDEPEND="app-arch/gzip
@@ -31,5 +31,12 @@ RDEPEND="virtual/kde-seed[gui,svg]
 "
 DEPEND="${RDEPEND}
 "
+src_configure() {
+	local mycmakeargs=(
+	-DWITH_BH_SOLVER=OFF
+	)
+	cmake_src_configure
+}
+
 
 # vim: filetype=ebuild
