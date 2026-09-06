@@ -38,7 +38,7 @@ RDEPEND="virtual/kde-seed[gui,cups,svg]
 	lua? ( dev-lang/luajit:2 )
 	qalculate? ( sci-libs/libqalculate:= )
 	python? (
-	    >=dev-python/python3-12
+	    dev-lang/python
 	    dev-python/matplotlib
 	    dev-python/numpy
 	)
