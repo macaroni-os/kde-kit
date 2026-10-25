@@ -9,7 +9,6 @@ HOMEPAGE="https://apps.kde.org/kalzium/"
 SRC_URI="https://download.kde.org/stable/release-service/25.12.1/src/kalzium-25.12.1.tar.xz -> kalzium-25.12.1.tar.xz"
 SLOT="6"
 KEYWORDS="*"
-IUSE="solver"
 RDEPEND="sci-chemistry/chemical-mime-data
 	
 "
@@ -32,7 +31,6 @@ DEPEND="${RDEPEND}
 	kde-frameworks/kunitconversion:6
 	kde-frameworks/kwidgetsaddons:6
 	kde-frameworks/kxmlgui:6
-	solver? ( dev-ml/facile:=[ocamlopt] )
 	
 "
 src_prepare() {
